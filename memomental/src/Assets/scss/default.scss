@@ -9,20 +9,22 @@ header{
   height: 90px;
   border-bottom: 2px solid #889cbf;
 
+  .align{
+    display: flex;
+  }
 
   .logo{
-     position: absolute;
+     position: relative;
      top: 58%; left:15px;
-     @include translateY(-50%)
    }
 
   .titre{
-    position: relative;
-    top: 58%; left:100px;
-    @include translateY(-50%);
+    top: 58%; left:70%;
+    margin-left: 5%;
     color: black;
     font-family: "Comic Sans MS";
   }
+
 
 
   nav{
@@ -99,5 +101,5 @@ div{
   position: relative;
   width: 20%;
   top: 30%;
-  left: -10%;
+  margin: 20%;
 }

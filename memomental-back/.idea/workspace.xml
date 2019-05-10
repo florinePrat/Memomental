@@ -2,11 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e3d50bfc-af38-4275-943d-1b9398690be4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../memomental/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../memomental/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../memomental/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../memomental/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../memomental/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../memomental/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../memomental/src/Assets/css/default.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/../memomental/src/Assets/css/default.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../memomental/src/Assets/scss/default.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../memomental/src/Assets/scss/default.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../memomental/src/components/headerComponent/header.js" beforeDir="false" afterPath="$PROJECT_DIR$/../memomental/src/components/headerComponent/header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../memomental/src/components/pages/images/imacc.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/../memomental/src/components/pages/images/imacc.jpg" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -164,12 +165,12 @@
       <updated>1557319472739</updated>
       <workItem from="1557319475190" duration="9977000" />
       <workItem from="1557334292355" duration="936000" />
-      <workItem from="1557338362995" duration="4264000" />
+      <workItem from="1557338362995" duration="4460000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15177000" />
+    <option name="totallyTimeSpent" value="15373000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />

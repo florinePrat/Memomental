@@ -14,14 +14,16 @@ class Header extends Component{
     render(){
         return(
             <header>
-                 <div className="logo">
-                     <img src={logo} alt="logo"/>
-                 </div>
-                <div className="titre">
-                    <h2> Memomental </h2>
+                <div className="align">
+                     <div className="logo">
+                         <img src={logo} alt="logo"/>
+                     </div>
+                    <div className="titre">
+                        <h2> Memomental </h2>
+                    </div>
                 </div>
 
-                <RBN id={ "sidebar" }>
+                <RBN>
                         <ul>
                             <li className="first">
                                 <Link to="/">Home</Link>
