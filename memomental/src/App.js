@@ -11,7 +11,6 @@ import Cartes from './components/Cartes/cartes';
 import Mycarte from './components/Cartes/mycartes';
 import Addcarte from './components/Cartes/addcartes';
 import Recto from './components/Cartes/addrecto';
-import Verso from './components/Cartes/addverso';
 import MyComponent from './httpRequest';
 import { Switch } from 'react-router-dom';
 import { Login } from './components/Login/Login.js';
@@ -36,7 +35,6 @@ class App extends Component{
                     <PrivateRoute path='/Mycarte' component={Mycarte}/>
                     <PrivateRoute path='/Addcarte' component={Addcarte}/>
                     <PrivateRoute path='/Recto' component={Recto}/>
-                    <PrivateRoute path='/Verso' component={Verso}/>
                 </Switch>
             </div>
 
