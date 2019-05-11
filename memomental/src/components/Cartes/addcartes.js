@@ -20,7 +20,7 @@ class Addcarte extends React.Component{
         if(this.state.cat.length === 0){
             return;
         }
-        API.login(this.state.nom,this.state.cat).then(function(data){
+        API.addcard(this.state.nom,this.state.cat).then(function(data){
             localStorage.setItem('token', data.data.token);
             window.location = "/Recto"
         },function(error){

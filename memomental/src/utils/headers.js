@@ -1,7 +1,7 @@
 const basicHeaders = {'Content-Type': 'application/json'
 };
 
-const tockenHeaders =
+const tokenHeaders =
     {'Content-Type': 'application/json',
         'Authorization' : 'Bearer ' + localStorage.getItem('token')
 };

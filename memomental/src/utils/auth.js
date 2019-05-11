@@ -1,5 +1,5 @@
 import axios from 'axios';
-import basicHeaders from './headers';
+import {basicHeaders,tokenHeaders} from './headers';
 
 const burl = "http://localhost:8080";
 
@@ -10,7 +10,7 @@ export default {
             'email' : email,
             'password' : password
         },{
-            basicHeaders: basicHeaders
+            headers: basicHeaders
         })
     },
     signup : function(email,password,prenom,nom){
@@ -20,14 +20,15 @@ export default {
             'firstName' : prenom,
             'lastName' : nom
         },{
-            basicHeaders: basicHeaders
+            headers: basicHeaders
         })
     },
 
     isAuth : function() {
-        return (localStorage.getItem('token') !== null);
+        return localStorage.getItem('token') !== null;
     },
     logout : function() {
         localStorage.clear();
     }
 }
+
