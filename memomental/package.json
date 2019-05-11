@@ -24,6 +24,7 @@
     "react-css-burger": "^0.2.0",
     "react-dom": "^16.8.6",
     "react-http-request": "^2.0.0",
+    "react-navigation": "^3.9.1",
     "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.0",
     "snapsvg": "^0.5.1",

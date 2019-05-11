@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import RBN from 'react-burger-nav';
+import { createStackNavigator } from 'react-navigation'
 import {
     Link
 } from 'react-router-dom';
@@ -10,7 +10,7 @@ class Header extends Component{
         return(
             <header>
 
-                <RBN>
+                
                     <ul>
                         <li className="first">
                             <Link to="/">Home</Link>
@@ -22,7 +22,6 @@ class Header extends Component{
                             <Link to="/Login">Connexion</Link>
                         </li>
                     </ul>
-                </RBN>
 
             </header>
         )
