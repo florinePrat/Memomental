@@ -1,7 +1,6 @@
 import React from 'react';
-import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
+import { Button, FormGroup, FormControl } from "react-bootstrap";
 import API from '../../utils/API';
-import { Link } from 'react-router-dom'
 
 export class Signup extends React.Component {
     constructor(props) {
@@ -11,10 +10,21 @@ export class Signup extends React.Component {
             prenom: "",
             nom: "",
             password: "",
-            cpassword: ""
+            cpassword: "",
+            isLoggedIn: false
         };
         this.handleChange.bind(this);
         this.send.bind(this);
+        this.handleLoginClick = this.handleLoginClick.bind(this);
+        this.handleLogoutClick = this.handleLogoutClick.bind(this);
+    }
+
+    handleLoginClick() {
+        this.setState({isLoggedIn: true});
+    }
+
+    handleLogoutClick() {
+        this.setState({isLoggedIn: false});
     }
 
     send = event => {
@@ -30,27 +40,71 @@ export class Signup extends React.Component {
         if (this.state.password.length === 0 || this.state.password !== this.state.cpassword) {
             return;
         }
-        var _send = {
-            email: this.state.email,
-            prenom: this.state.prenom,
-            nom: this.state.nom,
-            password: this.state.password
-        };
-        API.signup(_send).then(function (data) {
+        API.signup(this.state.email, this.state.prenom, this.state.nom, this.state.password).then(function (data) {
             localStorage.setItem('token', data.data.token);
-            window.location = "/dashboard"
+            window.location = "/Cartes"
         }, function (error) {
             console.log(error);
-            return 0;
+            return;
         })
     };
+
+    sendLog = event => {
+        if(this.state.email.length === 0){
+            return;
+        }
+        if(this.state.password.length === 0){
+            return;
+        }
+        API.login(this.state.email, this.state.password).then(function(data){
+            localStorage.setItem('token', data.data.token);
+            window.location = "/Cartes"
+        },function(error){
+            console.log(error);
+            return;
+        })
+    };
+
     handleChange = event => {
         this.setState({
             [event.target.id]: event.target.value
         });
     };
 
-    render() {
+    GuestGreeting() {
+        return (
+            <div className="Login">
+                <h1> Connexion </h1>
+                <p>Email</p>
+                <FormGroup controlId="email" bssize="large">
+                    <FormControl autoFocus type="email" value={this.state.email} onChange={this.handleChange}/>
+                </FormGroup>
+                <p>Mot de passe</p>
+                <FormGroup controlId="password" bssize="large">
+                    <FormControl  value={this.state.password} onChange={this.handleChange}  type="password" />
+                </FormGroup>
+                <p> Pas de compte ?
+                    <Button
+                        onClick={this.handleLoginClick}
+                        bssize="large"
+                        type="submit"
+                    >
+                        S'inscrire
+                    </Button>
+                </p>
+                <Button
+                    onClick={this.sendLog}
+                    block
+                    bssize="large"
+                    type="submit"
+                >
+                    Se connecter
+                </Button>
+            </div>
+        )
+    }
+
+    UserGreeting() {
         return (
             <div className="Login">
                 <h1> Inscription </h1>
@@ -74,7 +128,15 @@ export class Signup extends React.Component {
                 <FormGroup controlId="cpassword" bsSize="large">
                     <FormControl value={this.state.cpassword} onChange={this.handleChange} type="password"/>
                 </FormGroup>
-                <p> Déjà inscrit ?  <Link to="/Login"> Se connecter </Link> </p>
+                <p> Déjà inscrit ?
+                    <Button
+                        onClick={this.handleLogoutClick}
+                        bssize="large"
+                        type="submit"
+                    >
+                        Se connecter
+                    </Button>
+                </p>
                 <Button
                     onClick={this.send}
                     block
@@ -85,5 +147,19 @@ export class Signup extends React.Component {
                 </Button>
             </div>
         )
+    }
+
+
+
+    render() {
+        return (
+            <div>
+                {
+                    this.state.isLoggedIn
+                        ? this.UserGreeting()
+                        : this.GuestGreeting()
+                }
+            </div>
+        );
     }
 }

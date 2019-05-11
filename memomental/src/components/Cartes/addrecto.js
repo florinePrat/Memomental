@@ -9,20 +9,20 @@ class Recto extends React.Component {
         this.state = {
             quest: "",
             rep: "",
-            isLoggedIn: false
+            isRectoIn: false
         };
         this.handleChange.bind(this);
         this.send.bind(this);
-        this.handleLoginClick = this.handleLoginClick.bind(this);
-        this.handleLogoutClick = this.handleLogoutClick.bind(this);
+        this.handleRectoClick = this.handleRectoClick.bind(this);
+        this.handleVersoClick = this.handleVersoClick.bind(this);
     }
 
-    handleLoginClick() {
-        this.setState({isLoggedIn: true});
+    handleRectoClick() {
+        this.setState({isRectoIn: true});
     }
 
-    handleLogoutClick() {
-        this.setState({isLoggedIn: false});
+    handleVersoClick() {
+        this.setState({isRectoIn: false});
     }
 
     send = event => {
@@ -46,7 +46,7 @@ class Recto extends React.Component {
         });
     };
 
-    GuestGreeting() {
+    RectoCreation() {
         return (
             <div>
                 <div className="container-fluid">
@@ -63,7 +63,7 @@ class Recto extends React.Component {
                             <FormControl type="text" value={this.state.rep} onChange={this.handleChange}/>
                         </FormGroup>
                         <Button
-                            onClick={this.handleLoginClick}
+                            onClick={this.handleRectoClick}
                             block
                             bssize="large"
                             type="submit"
@@ -77,7 +77,7 @@ class Recto extends React.Component {
         )
     }
 
-    UserGreeting() {
+    VersoCreation() {
         return (
             <div>
                 <div className="container-fluid">
@@ -105,7 +105,7 @@ class Recto extends React.Component {
                     </div>
                 </div>
                 <button onClick={() => {
-                    this.handleLogoutClick()
+                    this.handleVersoClick()
                 }}>
                     Retour
                 </button>
@@ -118,9 +118,9 @@ class Recto extends React.Component {
         return (
             <div>
                 {
-                    this.state.isLoggedIn
-                        ? this.UserGreeting()
-                        : this.GuestGreeting()
+                    this.state.isRectoIn
+                        ? this.VersoCreation()
+                        : this.RectoCreation()
                 }
             </div>
         );
