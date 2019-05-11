@@ -2,10 +2,10 @@
 
 
 module.exports= function(){
-     var express = require('express');
-     var router = express.Router();
-     var auth = require('./auth.js')();
-    router.post('/login', auth.authenticate);
-
+     const express = require('express');
+     const router = express.Router();
+     const login = require('./authRoutes/login.js')();
+     router.post('/login', login.authenticate);
+     router.post('/register', require('./authRoutes/register'));
     return router;
 };

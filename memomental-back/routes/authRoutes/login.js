@@ -27,8 +27,7 @@ module.exports = function(){
                 };
                 //we return JWT
 
-
-                var token = jwt.sign(user,require('../config/config.js').secret , {
+                var token = jwt.sign(user,process.env.hashkey , {
                     expiresIn : "1d",
                 });
                 console.log(token);

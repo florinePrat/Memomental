@@ -1,10 +1,12 @@
-var express = require('express');
+require('dotenv').config()
+require('./config/db')
+const express = require('express');
 
-var bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 
-var http = require('http');
+const http = require('http');
 
-var app = express();
+const app = express();
 //parse the request body
 app.use(bodyParser.json());
 
@@ -22,10 +24,10 @@ app.use(function(req, res, next) {
 //routes accessible without being authenticated are redirected in routes
 app.use('/', require('./routes')());
 //Create the server
-var server = http.createServer(app);
+const server = http.createServer(app);
 
 //Open the server
 server.listen(8080, function(){
     console.log("Listening on 8080");
 });
-
+console.log(process.env.DB_HOST);
