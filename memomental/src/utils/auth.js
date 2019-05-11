@@ -1,8 +1,8 @@
 import axios from 'axios';
-const headers = {
-    'Content-Type': 'application/json'
-}
-const burl = "http://localhost:8080"
+import basicHeaders from './headers';
+
+const burl = "http://localhost:8080";
+
 
 export default {
     login : function(email,password) {
@@ -10,7 +10,7 @@ export default {
             'email' : email,
             'password' : password
         },{
-            headers: headers
+            basicHeaders: basicHeaders
         })
     },
     signup : function(email,password,prenom,nom){
@@ -20,7 +20,7 @@ export default {
             'firstName' : prenom,
             'lastName' : nom
         },{
-            headers: headers
+            basicHeaders: basicHeaders
         })
     },
 

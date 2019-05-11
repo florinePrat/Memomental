@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from "react-bootstrap";
 
-import API from '../../utils/API';
+import API from '../../utils/auth';
 
 export class Dashboard extends React.Component {
     constructor(props){

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, FormGroup, FormControl } from "react-bootstrap";
-import API from '../../utils/API';
+import API from '../../utils/auth';
 
 export class Signup extends React.Component {
     constructor(props) {

@@ -7,21 +7,9 @@ import {
 
 class Header extends Component{
 
-    state = {
-        active: false,
-    };
-
     render(){
         return(
             <header>
-                <div className="align">
-                    <div className="logo">
-                        <img src={logo} alt="logo"/>
-                    </div>
-                    <div className="titre">
-                        <h2> Memomental </h2>
-                    </div>
-                </div>
 
                 <RBN>
                     <ul>
@@ -36,9 +24,6 @@ class Header extends Component{
                         </li>
                     </ul>
                 </RBN>
-
-
-
 
             </header>
         )
