@@ -7,5 +7,6 @@ module.exports= function(){
      const login = require('./authRoutes/login.js')();
      router.post('/login', login.authenticate);
      router.post('/register', require('./authRoutes/register'));
+     router.post('/isAuth', require('./middlewares/isAuth'));
     return router;
 };

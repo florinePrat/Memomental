@@ -27,7 +27,7 @@ module.exports = function(){
                 };
                 //we return JWT
 
-                var token = jwt.sign(user,process.env.hashkey , {
+                var token = jwt.sign(user,process.env.tokenKey , {
                     expiresIn : "1d",
                 });
                 console.log(token);

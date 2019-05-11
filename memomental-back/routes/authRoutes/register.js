@@ -11,7 +11,7 @@ module.exports = async (req, res) => {
         const user = await UserController.createUser(email,firstName, lastName, password)
         //if success token creation of 1day
         console.log('user created"');
-        var token = jwt.sign(user.toJSON(),process.env.hashkey , {
+        var token = jwt.sign(user.toJSON(),process.env.tokenKey , {
             expiresIn : "1d",
         });
         console.log(token);
