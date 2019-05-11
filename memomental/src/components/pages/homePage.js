@@ -6,22 +6,23 @@ class Homepage extends Component{
     render(){
         return(
             <div className="background">
-                <div className="container-fluid">
+                    <div className="boxcarte">
 
-                    <p> Est-tu prêt à booster ta mémoire ??</p>
+                        <p> Est-tu prêt à booster ta mémoire ??</p>
 
-                    <Link to="/Signup">
-                        <Button
-                            bssize="large"
-                            type="submit"
-                        >
-                            C'est parti !
+                        <Link to="/Signup">
+                            <Button
+                                className="btn-acc"
+                                bssize="large"
+                                type="submit"
+                            >
+                                C'est parti !
 
-                        </Button>
-                    </Link>
+                            </Button>
+                        </Link>
+                    </div>
 
                 </div>
-            </div>
         )
     }
 }

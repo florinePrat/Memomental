@@ -58,7 +58,7 @@ header{
   width: 100%;
   max-width: 600px;
   margin: auto;
-  margin-top: 100px;
+  margin-top: 50px;
 }
 
 div{
@@ -98,10 +98,15 @@ div{
 }
 
 .background{
-  background-image: url("../../../src/components/pages/images/imacc.jpg");
-  background-color: #39679b;
+  background-color: #fefdff;
   background-attachment:fixed;
   background-position:center center;
+  background-repeat:no-repeat;
   margin: auto;
-  padding: 100%;
+  padding-top: 20%;
+
+  .btn-acc{
+    position: relative;
+    left:27%;
+  }
 }
