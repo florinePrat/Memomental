@@ -13,8 +13,15 @@ export default {
             headers: headers
         })
     },
-    signup : function(send){
-        return axios.post(burl + '/user/Signup',send,{headers: headers})
+    signup : function(email,password,prenom,nom){
+        return axios.post(burl + '/register',{
+            'email' : email,
+            'password' : password,
+            'fisrt name' : prenom,
+            'last name' : nom
+        },{
+            headers: headers
+        })
     },
 
     isAuth : function() {
