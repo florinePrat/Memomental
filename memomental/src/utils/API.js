@@ -17,7 +17,7 @@ export default {
         return axios.post(burl + '/register',{
             'email' : email,
             'password' : password,
-            'fisrtName' : prenom,
+            'firstName' : prenom,
             'lastName' : nom
         },{
             headers: headers
