@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './images/logo.jpg';
 import RBN from 'react-burger-nav';
 import {
     Link
