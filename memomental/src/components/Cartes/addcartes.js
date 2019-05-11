@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import API from "../../utils/auth";
+import cardsRequest from "../../utils/cards";
 import {Button, FormControl, FormGroup} from "react-bootstrap";
 
 class Addcarte extends React.Component{
@@ -20,8 +20,8 @@ class Addcarte extends React.Component{
         if(this.state.cat.length === 0){
             return;
         }
-        API.addcard(this.state.nom,this.state.cat).then(function(data){
-            localStorage.setItem('token', data.data.token);
+        cardsRequest.addcard(this.state.nom,this.state.cat).then(function(data){
+            console.log(data);
             window.location = "/Recto"
         },function(error){
             console.log(error);
