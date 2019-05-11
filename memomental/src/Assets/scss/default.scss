@@ -97,9 +97,10 @@ div{
   left:27%;
 }
 
-.imacc{
-  position: relative;
-  width: 20%;
-  top: 30%;
-  margin: 20%;
+.background{
+  background-image: url("../../../src/components/pages/images/imacc.jpg");
+  background-color: #39679b;
+  background-attachment:fixed;
+  background-repeat:no-repeat;
+  background-position:center center;
 }
