@@ -28,7 +28,7 @@ const createCard = async (name, rectoQuestion, rectoAnswer, versoQuestion, versi
         return savedCard
     } catch (error) {
         console.log(error.message)
-        throw error
+        return error;
     }
 }
 

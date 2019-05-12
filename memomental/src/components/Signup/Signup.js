@@ -51,8 +51,8 @@ export class Signup extends React.Component {
         API.signup(this.state.email, this.state.prenom, this.state.nom, this.state.password).then(function (data) {
            if(data.status==="200")
            {
-               localStorage.setItem('token', data.data.token);
-               window.location = "/Cartes"
+               localStorage.setItem('token', data.token);
+                window.location = "/Cartes"
            }
            else
            {
@@ -79,6 +79,7 @@ export class Signup extends React.Component {
         }
         else{
             API.login(this.state.email, this.state.password).then(function(data){
+                console.log(data.data.token);
                 localStorage.setItem('token', data.data.token);
                 window.location = "/Cartes"
             },function(error){

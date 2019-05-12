@@ -5,9 +5,15 @@ module.exports= function(){
      const express = require('express');
      const router = express.Router();
 
-     const login = require('./authRoutes/login.js')();
-     router.post('/login',require('./authRoutes/login.js').authenticate());
+
+//Handle all non restricted routes (ie all authenticate routes)
+     router.post('/login',require('./authRoutes/login'));
      router.post('/register', require('./authRoutes/register'));
-     router.use('/card', require("./privateRoutes/cards"));
+
+//Handle all resricted routes
+     router.use('/api/card', require("./privateRoutes/cards"));
+
     return router;
 };
+
+
