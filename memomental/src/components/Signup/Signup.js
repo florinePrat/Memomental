@@ -29,16 +29,24 @@ export class Signup extends React.Component {
 
     send = event => {
         if (this.state.email.length === 0) {
-            return;
+            return(
+                alert('mail vide')
+            );
         }
         if (this.state.prenom.length === 0) {
-            return;
+            return(
+                alert('prenom vide')
+            );
         }
         if (this.state.nom.length === 0) {
-            return;
+            return(
+                alert('nom vide')
+            );
         }
         if (this.state.password.length === 0 || this.state.password !== this.state.cpassword) {
-            return;
+            return(
+                alert('votre mot de passe est vide ou il est different de la confirmation')
+            );
         }
         API.signup(this.state.email, this.state.prenom, this.state.nom, this.state.password).then(function (data) {
            if(data.status==="200")
@@ -48,7 +56,7 @@ export class Signup extends React.Component {
            }
            else
            {
-               console.log('erreur lors de la connexion ',data.message);
+               alert(data.message);
            }
 
 
@@ -60,7 +68,6 @@ export class Signup extends React.Component {
 
     sendLog = event => {
         if(this.state.email.length === 0){
-            console.log('mailvide');
             return(
                 alert('mail vide')
             );
@@ -126,23 +133,23 @@ export class Signup extends React.Component {
             <div className="Login">
                 <h1> Inscription </h1>
                 <p>Email</p>
-                <FormGroup controlId="email" bsSize="large">
+                <FormGroup controlId="email" bssize="large">
                     <FormControl autoFocus type="email" value={this.state.email} onChange={this.handleChange}/>
                 </FormGroup>
                 <p>Prénom</p>
-                <FormGroup controlId="prenom" bsSize="large">
+                <FormGroup controlId="prenom" bssize="large">
                     <FormControl value={this.state.prenom} onChange={this.handleChange} type="name"/>
                 </FormGroup>
                 <p>Nom</p>
-                <FormGroup controlId="nom" bsSize="large">
+                <FormGroup controlId="nom" bssize="large">
                     <FormControl value={this.state.nom} onChange={this.handleChange} type="name"/>
                 </FormGroup>
                 <p>Mot de passe</p>
-                <FormGroup controlId="password" bsSize="large">
+                <FormGroup controlId="password" bssize="large">
                     <FormControl value={this.state.password} onChange={this.handleChange} type="password"/>
                 </FormGroup>
                 <p>Confirmez mot de passe</p>
-                <FormGroup controlId="cpassword" bsSize="large">
+                <FormGroup controlId="cpassword" bssize="large">
                     <FormControl value={this.state.cpassword} onChange={this.handleChange} type="password"/>
                 </FormGroup>
                 <p> Déjà inscrit ?
@@ -157,7 +164,7 @@ export class Signup extends React.Component {
                 <Button
                     onClick={this.send}
                     block
-                    bsSize="large"
+                    bssize="large"
                     type="submit"
                 >
                     Inscription
