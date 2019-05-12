@@ -24,6 +24,7 @@ const createUser = async (email, firstName, lastName, password) => {
             email: email,
             password : hashedPassword,
         });
+        console.log(user);
         const savedUser= await user.save()
         return savedUser
     } catch (error) {
@@ -32,7 +33,20 @@ const createUser = async (email, firstName, lastName, password) => {
     }
 }
 
+const getUserByEmail = async(email) => {
+    try {
+        console.log(email);
+        const user = await User.find({ email : email});
+        return user;
+    } catch(error)
+    {
+        console.log("erreur lors de la recherche de l'utilisateur par email");
+        return error;
+    }
+}
+
 module.exports = {
     getUserById,
     createUser,
+    getUserByEmail,
 };

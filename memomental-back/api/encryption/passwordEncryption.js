@@ -15,7 +15,6 @@ const passwordEncryption = async(password) => {
         throw error
     }
 };
-
 module.exports = {
     passwordEncryption
 };

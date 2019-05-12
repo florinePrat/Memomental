@@ -1,25 +1,37 @@
-module.exports = function() {
+module.exports = async (req,res) => {
+ try {
+     const jwt = require('jsonwebtoken');
 
-    const jwt = require('jsonwebtoken');
-    return function (req, res, next) {
-        console.log("is auth");
-        let bearerToken;
-        const bearerHeader = req.headers["authorization"];
-        if (typeof bearerHeader !== 'undefined') {
-            const bearer = bearerHeader.split(" ");
-            bearerToken = bearer[1];
-            req.token = bearerToken;
-            let decode = jwt.verify(req.token, process.env.hashkey, function (err) {
-                if (err) {
-                    console.log("Impossible d'accéder à cette page protégée");
-                    res.sendStatus(403);
-                } else {
-                    return true;
-                    console.log("is connected");
-                }
-            });
-        }
-    };
+     console.log("is auth");
+     let bearerToken;
+     console.log(req.headers);
+     const bearerHeader = req.headers["authorization"];
+     if (typeof bearerHeader !== 'undefined') {
+         const bearer = bearerHeader.split(" ");
+         bearerToken = bearer[1];
+         console.log(bearerToken);
+         jwt.verify(bearerToken, process.env.tokenKey, function (err) {
+             if (err) {
+                 console.log("Impossible d'accéder à cette page protégée 12");
+                 res.sendStatus(403);
+                 return false;
+             } else {
+                 console.log("is connected");
+                 return true;
+             }
+         });
+     }
+     else
+     {
+         console.log("Aucun token ");
+         res.sendStatus(403);
+     }
+ } catch(error){
+     console.log("try / catch ");
+     res.sendStatus(403);
+ }
+
+
 }
 
 

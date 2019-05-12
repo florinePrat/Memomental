@@ -21,6 +21,8 @@ app.use(function(req, res, next) {
         next();
     }
 });
+//All routes with retricted content pass trough the isAuth middleware to verify authentication
+app.all('/api/*', require('./middlewares/isAuth'));
 //routes accessible without being authenticated are redirected in routes
 app.use('/', require('./routes')());
 //Create the server

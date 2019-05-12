@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 module.exports = async (req, res) => {
     try {
         console.log("arrivée dans la registration");
+        console.log(req.body);
         const { email, firstName, lastName, password} = req.body;
         console.log(req.body);
         /* @TODO : check data validity with regExp + trim */
@@ -22,10 +23,12 @@ module.exports = async (req, res) => {
             token: token,
             user : user.toJSON()
         });
-        return res.status(201).json(user)
     }catch (e) {
         console.log("utilisateur non créé :",e);
-        return e ;
+
+        return {
+            message : "Impossible de créer l'utilisateur"
+        } ;
     }
 
     }
