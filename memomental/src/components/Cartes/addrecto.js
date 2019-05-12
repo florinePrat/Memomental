@@ -7,8 +7,10 @@ class Recto extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            quest: "",
-            rep: "",
+            quest1: "",
+            rep1: "",
+            quest2: "",
+            rep2: "",
             isRectoIn: false
         };
         this.handleChange.bind(this);
@@ -26,19 +28,28 @@ class Recto extends React.Component {
     }
 
     send = event => {
-        if (this.state.quest.length === 0) {
+        if (this.state.quest1.length === 0) {
             return;
         }
-        if (this.state.rep.length === 0) {
+        else if (this.state.rep1.length === 0) {
             return;
         }
-        API.login(this.state.quest, this.state.rep).then(function (data) {
-            localStorage.setItem('token', data.data.token);
-            window.location = "/Recto"
-        }, function (error) {
-            console.log(error);
+        else if (this.state.quest2.length === 0) {
             return;
-        })
+        }
+        else if (this.state.rep2.length === 0) {
+            return;
+        }
+        else {
+            API.login(this.state.quest1, this.state.rep1,this.state.quest2, this.state.rep2).then(function (data) {
+                localStorage.setItem('token', data.data.token);
+                window.location = "/gcard"
+            }, function (error) {
+                console.log(error);
+                return;
+            })
+        }
+
     };
     handleChange = event2 => {
         this.setState({
@@ -55,12 +66,12 @@ class Recto extends React.Component {
                     <div className="boxcarte">
                         <h2> Recto </h2>
                         <p>Question</p>
-                        <FormGroup controlId="quest" bssize="large">
-                            <FormControl autoFocus type="text" value={this.state.quest} onChange={this.handleChange}/>
+                        <FormGroup controlId="quest1" bssize="large">
+                            <FormControl autoFocus type="text" value={this.state.quest1} onChange={this.handleChange}/>
                         </FormGroup>
                         <p>Réponse</p>
-                        <FormGroup controlId="rep" bssize="large">
-                            <FormControl type="text" value={this.state.rep} onChange={this.handleChange}/>
+                        <FormGroup controlId="rep1" bssize="large">
+                            <FormControl type="text" value={this.state.rep1} onChange={this.handleChange}/>
                         </FormGroup>
                         <Button
                             onClick={this.handleRectoClick}
@@ -86,12 +97,12 @@ class Recto extends React.Component {
                     <div className="boxcarte">
                         <h2> Verso </h2>
                         <p>Question</p>
-                        <FormGroup controlId="rep" bssize="large">
-                            <FormControl autoFocus type="text" value={this.state.rep} onChange={this.handleChange}/>
+                        <FormGroup controlId="rep2" bssize="large">
+                            <FormControl autoFocus type="text" value={this.state.rep1} onChange={this.handleChange}/>
                         </FormGroup>
                         <p>Réponse</p>
-                        <FormGroup controlId="quest" bssize="large">
-                            <FormControl type="text" value={this.state.quest} onChange={this.handleChange}/>
+                        <FormGroup controlId="quest2" bssize="large">
+                            <FormControl type="text" value={this.state.quest1} onChange={this.handleChange}/>
                         </FormGroup>
                         <Button
                             onClick={this.send}
