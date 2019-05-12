@@ -41,8 +41,17 @@ export class Signup extends React.Component {
             return;
         }
         API.signup(this.state.email, this.state.prenom, this.state.nom, this.state.password).then(function (data) {
-            localStorage.setItem('token', data.data.token);
-            window.location = "/Cartes"
+           if(data.status=="200")
+           {
+               localStorage.setItem('token', data.data.token);
+               window.location = "/Cartes"
+           }
+           else
+           {
+               console.log('erreur lors de la connexion ',data.message);
+           }
+
+
         }, function (error) {
             console.log(error);
             return;
