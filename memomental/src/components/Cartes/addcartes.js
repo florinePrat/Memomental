@@ -17,16 +17,18 @@ class Addcarte extends React.Component{
         if(this.state.nom.length === 0){
             return;
         }
-        if(this.state.cat.length === 0){
+        else if(this.state.cat.length === 0){
             return;
         }
-        cardsRequest.addcard(this.state.nom,this.state.cat).then(function(data){
-            console.log(data);
-            window.location = "/Recto"
-        },function(error){
-            console.log(error);
-            return;
-        })
+        else {
+            cardsRequest.addcard(this.state.nom,this.state.cat).then(function(data){
+                console.log(data);
+                window.location = "/Recto"
+            },function(error){
+                console.log(error);
+                return;
+            })
+        }
     };
     handleChange = event2 => {
         this.setState({
