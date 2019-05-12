@@ -6,7 +6,8 @@ const CardSchema = new mongoose.Schema({
     rectoQuestion : { type : String, required : true},
     versoAnswer : { type : String, required : true},
     rectoAnswer : { type : String, required : true},
-    //labels : [{type:mongoose.Schema.Label.ObjectId, ref:"Label"}]
+    owners : [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
+    labels : [{type:mongoose.Schema.Types.ObjectId, ref:"Label"}]
 })
 
 const Card = mongoose.model('Card', CardSchema);

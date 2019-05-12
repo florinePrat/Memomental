@@ -37,7 +37,8 @@ const getUserByEmail = async(email) => {
     try {
         console.log(email);
         const user = await User.find({ email : email});
-        return user;
+        console.log("user ",user);
+        return user[0];
     } catch(error)
     {
         console.log("erreur lors de la recherche de l'utilisateur par email");

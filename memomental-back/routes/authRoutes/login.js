@@ -7,7 +7,7 @@ module.exports = async (req,res)=> {
         const jwt = require('jsonwebtoken');
         const UserController = require('../../api/controllers/UserController');
         console.log(req.body);
-        if(req.body.email == undefined && req.body.password == undefined) {
+        if(req.body.email === undefined && req.body.password === undefined) {
             console.log("aucun message reçu");
             //if data is empty we return 401 status
             return res.json({
@@ -26,26 +26,30 @@ module.exports = async (req,res)=> {
             const bcrypt = require('bcrypt');
             console.log(password)
             //comparing encrypted password of user
-            const match = await   bcrypt.compare(password,user[0].password.toString());
+            const match = await  bcrypt.compare(password,user.password.toString());
             if(match)
             {
                 //if password compare is true, we return token
                 const tokenUser =
-                    {
-                        email: user.email,
-                        firstName: user.firstName,
-                        lastName: user.lastName
-                    }
-                console.log("connected");
-                var token = jwt.sign(tokenUser, process.env.tokenKey, {
+                {
+                    id : user._id,
+                    email: user.email,
+                    firstName: user.firstName,
+                    lastName: user.lastName
+                }
+                console.log("connected with : ",tokenUser);
+                const token = jwt.sign(tokenUser, process.env.tokenKey, {
                     expiresIn: "1d",
                 });
+                console.log(jwt.decode(token));
                 console.log(token);
                 //return satuts OK with token
                 return  res.status(200).json({
                     success: true,
                     message: 'Connected !',
-                    token: token
+                    token: token,
+                    firstName: user.firstName,
+                    lastName: user.lastName
                 });
             }
             else

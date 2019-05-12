@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import axios from 'axios';
+import {tokenHeaders} from '../../utils/headers';
 
 class gcard extends React.Component{
 
@@ -9,7 +10,9 @@ class gcard extends React.Component{
     }
 
     componentDidMount() {
-        axios.get('http://localhost:8080/api/getCardsByUser')
+        axios.get('http://localhost:8080/api/card/getCardsByUser',{
+            headers: tokenHeaders
+        } )
             .then(res => {
                 const cards = res.data;
                 this.setState({ cards });
@@ -30,9 +33,10 @@ class gcard extends React.Component{
                     </ul>
                 </nav>
 
-                <ul>
-                    { this.state.cards.map(cards => <li>{cards.name}</li>)}
-                </ul>
+
+                    { this.state.cards.map(cards => <div className="boxcarte">Nom : {cards.name} Cat : {cards.labels[0]}
+                    </div>)}
+
 
 
             </div>

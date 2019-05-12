@@ -12,7 +12,14 @@ module.exports = async (req, res) => {
         const user = await UserController.createUser(email,firstName, lastName, password)
         //if success token creation of 1day
         console.log('user created"');
-        var token = jwt.sign(user.toJSON(),process.env.tokenKey , {
+        const tokenUser =
+            {
+                id : user._id,
+                email: user.email,
+                firstName: user.firstName,
+                lastName: user.lastName
+            }
+        const token = jwt.sign(tokenUser,process.env.tokenKey , {
             expiresIn : "1d",
         });
         console.log(token);
@@ -21,7 +28,8 @@ module.exports = async (req, res) => {
             success: true,
             message: 'Connected !',
             token: token,
-            user : user.toJSON()
+            firstName: user.firstName,
+            lastName: user.lastName
         });
     }catch (e) {
         console.log("utilisateur non créé :",e);

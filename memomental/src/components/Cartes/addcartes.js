@@ -68,7 +68,6 @@ class Addcarte extends React.Component{
         }
         else {
             cardsRequest.addcard(this.state.nom,this.state.cat, this.state.quest1, this.state.rep1,this.state.quest2, this.state.rep2).then(function (data) {
-                localStorage.setItem('token', data.data.token);
                 window.location = "/gcard"
             }, function (error) {
                 console.log(error);
