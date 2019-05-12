@@ -155,12 +155,12 @@ class Addcarte extends React.Component{
                     <div className="boxcarte">
                         <h2> Verso </h2>
                         <p>Question</p>
-                        <FormGroup controlId="rep2" bssize="large">
-                            <FormControl autoFocus type="text" value={this.state.rep1} onChange={this.handleChange}/>
+                        <FormGroup controlId="quest2" bssize="large">
+                            <FormControl autoFocus type="text" value={this.state.quest2} onChange={this.handleChange}/>
                         </FormGroup>
                         <p>Réponse</p>
-                        <FormGroup controlId="quest2" bssize="large">
-                            <FormControl type="text" value={this.state.quest1} onChange={this.handleChange}/>
+                        <FormGroup controlId="rep2" bssize="large">
+                            <FormControl type="text" value={this.state.rep2} onChange={this.handleChange}/>
                         </FormGroup>
                         <Button
                             onClick={this.send}

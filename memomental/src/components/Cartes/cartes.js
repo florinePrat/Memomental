@@ -23,6 +23,15 @@ class Carte extends Component{
                             C'est parti !
                         </Button>
                     </Link>
+                    <Link to="/gcard">
+                        <Button
+                            className="btn-info"
+                            bssize="small"
+                            type="submit"
+                        >
+                            Gérer mes cartes
+                        </Button>
+                    </Link>
 
                 </div>
 
