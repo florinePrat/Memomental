@@ -2,7 +2,5 @@
 const express = require('express');
 
 const router = express.Router();
-
-router.post('/login', require('./login'));
-router.post('/register', require('./register'));
+router.post('/add', require('./addCard'));
 module.exports = router;
