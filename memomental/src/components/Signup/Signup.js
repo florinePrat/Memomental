@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, FormGroup, FormControl } from "react-bootstrap";
 import API from '../../utils/auth';
+import { Alert } from 'bootstrap';
 
 export class Signup extends React.Component {
     constructor(props) {
@@ -41,7 +42,7 @@ export class Signup extends React.Component {
             return;
         }
         API.signup(this.state.email, this.state.prenom, this.state.nom, this.state.password).then(function (data) {
-           if(data.status=="200")
+           if(data.status==="200")
            {
                localStorage.setItem('token', data.data.token);
                window.location = "/Cartes"
@@ -60,18 +61,26 @@ export class Signup extends React.Component {
 
     sendLog = event => {
         if(this.state.email.length === 0){
-            return;
+            console.log('mailvide');
+            return(
+                alert('mail vide')
+            );
         }
-        if(this.state.password.length === 0){
-            return;
+        else if(this.state.password.length === 0){
+            return(
+                alert('mot de passe vide')
+            );
         }
-        API.login(this.state.email, this.state.password).then(function(data){
-            localStorage.setItem('token', data.data.token);
-            window.location = "/Cartes"
-        },function(error){
-            console.log(error);
-            return;
-        })
+        else{
+            API.login(this.state.email, this.state.password).then(function(data){
+                localStorage.setItem('token', data.data.token);
+                window.location = "/Cartes"
+            },function(error){
+                console.log(error);
+                return;
+            })
+        }
+
     };
 
     handleChange = event => {

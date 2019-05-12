@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {basicHeaders,tokenHeaders} from './headers';
+import {tokenHeaders} from './headers';
 
 const burl = "http://localhost:8080";
 

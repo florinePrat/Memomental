@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {basicHeaders,tokenHeaders} from './headers';
+import {basicHeaders} from './headers';
 
 const burl = "http://localhost:8080";
 
@@ -13,7 +13,7 @@ export default {
             headers: basicHeaders
         })
     },
-    signup : function(email,password,prenom,nom){
+    signup : function(email,prenom,nom,password){
         return axios.post(burl + '/register',{
             'email' : email,
             'password' : password,

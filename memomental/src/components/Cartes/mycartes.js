@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import API from "../../utils/auth";
 import {Button, FormControl, FormGroup} from "react-bootstrap";
 var question = 'Quelle est la capitale de l autralie ? ';

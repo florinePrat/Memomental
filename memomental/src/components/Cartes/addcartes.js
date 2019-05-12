@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import cardsRequest from "../../utils/cards";
 import {Button, FormControl, FormGroup} from "react-bootstrap";
 
