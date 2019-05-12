@@ -12,7 +12,7 @@ import Mycarte from './components/Cartes/mycartes';
 import Addcarte from './components/Cartes/addcartes';
 import Recto from './components/Cartes/addrecto';
 import { Switch } from 'react-router-dom';
-import { Signup } from './components/Signup/Signup.js';
+import { Signup } from './components/signup/Signup.js';
 import { PrivateRoute } from './components/PrivateRoute.js';
 
 
