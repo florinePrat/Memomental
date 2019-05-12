@@ -10,7 +10,6 @@ import Cartes from './components/Cartes/cartes';
 import Mycarte from './components/Cartes/mycartes';
 import Addcarte from './components/Cartes/addcartes';
 import gcard from './components/Cartes/gestioncards';
-import Recto from './components/Cartes/addrecto';
 import { Switch } from 'react-router-dom';
 import { Signup } from './components/signup/Signup.js';
 import { PrivateRoute } from './components/PrivateRoute.js';
@@ -32,7 +31,6 @@ class App extends Component{
                     <PrivateRoute path='/Mycarte' component={Mycarte}/>
                     <PrivateRoute path='/Addcarte' component={Addcarte}/>
                     <PrivateRoute path='/gcard' component={gcard}/>
-                    <PrivateRoute path='/Recto' component={Recto}/>
                 </Switch>
             </div>
 
