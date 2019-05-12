@@ -6,11 +6,8 @@ module.exports= function(){
      const router = express.Router();
 
      const login = require('./authRoutes/login.js')();
-     router.post('/login', login.authenticate);
+     router.post('/login',require('./authRoutes/login.js').authenticate());
      router.post('/register', require('./authRoutes/register'));
-     router.post('/isAuth', require('../middlewares/isAuth'));
-     router.use('/card',
-          require("./privateRoutes/cards")
-     );
+     router.use('/card', require("./privateRoutes/cards"));
     return router;
 };
