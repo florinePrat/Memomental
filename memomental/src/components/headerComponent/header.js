@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import logo from './images/logo.jpg';
-import RBN from 'react-burger-nav';
-import {
-    Link
-} from 'react-router-dom';
+import {Link} from 'react-router-dom'
 
 class Header extends Component{
 
@@ -23,22 +20,17 @@ class Header extends Component{
                     </div>
                 </div>
 
-                <RBN>
+
+                <nav>
                         <ul>
                             <li className="first">
                                 <Link to="/">Home</Link>
                             </li>
                             <li>
-                                <Link to="/Signup">Inscription</Link>
-                            </li>
-                            <li className="last">
-                                <Link to="/Login">Connexion</Link>
+                                <Link to="/Signup">Login/Signup</Link>
                             </li>
                         </ul>
-                </RBN>
-
-
-
+                </nav>
 
             </header>
         )
