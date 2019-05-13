@@ -1,11 +1,11 @@
 const CardController = require('../../../api/controllers/CardController');
-const jwt = require('jsonwebtoken');
+const decodeToken = require('../../../api/encryption/decodeToken');
 
 module.exports = async (req, res) => {
     try {
         console.log('arrivé dans la recherche de cartes ');
-        const token = req.headers["authorization"].split(" ")[1];
-        const decoded = jwt.decode(token);
+        const decoded=decodeToken(req);
+        console.log("decoded token ",decoded);
         const cards = await CardController.getCardsByUser(decoded.id);
         return res.status(200).json(cards)
     }catch(error) {

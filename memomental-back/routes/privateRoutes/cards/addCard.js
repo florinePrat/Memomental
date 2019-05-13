@@ -1,6 +1,6 @@
 const CardController = require('../../../api/controllers/CardController');
 const LabelController = require('../../../api/controllers/LabelController');
-const jwt = require('jsonwebtoken');
+const decodeToken = require('../../../api/encryption/decodeToken');
 
 module.exports = async (req, res) => {
     try {
@@ -8,8 +8,8 @@ module.exports = async (req, res) => {
           const  {nom, cat, quest1, rep1, quest2 , rep2} = req.body;
           console.log("ctégorie :", cat)
           console.log(req.body);
-        const token = req.headers["authorization"].split(" ")[1];
-        const decoded = jwt.decode(token);
+        const decoded=decodeToken(req);
+        console.log("decoded token ",decoded);
           let label = await  LabelController.getLabelByName(cat);
           console.log('label by name OK ',label);
           if(label ===undefined)
@@ -20,7 +20,6 @@ module.exports = async (req, res) => {
           console.log("id du label créé  :",label._id);
           const card = await CardController.createCard(nom,quest1,rep1,quest2,rep2,decoded.id,label._id);
           console.log("création de carte");
-          label = await LabelController.addCard(label._id,card._id)
         console.log("maj du label")
          console.log(label);
           console.log(card);

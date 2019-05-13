@@ -33,3 +33,4 @@ server.listen(8080, function(){
     console.log("Listening on 8080");
 });
 console.log(process.env.DB_HOST);
+app.use('*',(req,res) => res.sendStatus(404));

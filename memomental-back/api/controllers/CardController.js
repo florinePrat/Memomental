@@ -35,6 +35,21 @@ const createCard = async (name, rectoQuestion, rectoAnswer, versoQuestion, verso
         return error;
     }
 }
+const updateCard = async (id,name, rectoQuestion, rectoAnswer, versoQuestion, versoAnswer,labelId) => {
+    try {
+        console.log(id);
+        return await Card.findOneAndUpdate({_id : id}, {$set :{ name: name,
+                rectoQuestion: rectoQuestion,
+                rectoAnswer: rectoAnswer,
+                versoQuestion: versoQuestion,
+                versoAnswer : versoAnswer,
+                labels : [labelId]} },
+            { new : true});
+    } catch (error) {
+        console.log(error.message)
+        return error;
+    }
+}
 const getCardsByUser = async(idUser) =>
 {
     try {
@@ -52,8 +67,8 @@ const getCardsByUser = async(idUser) =>
             {
                 //for each label in the card, we search label name and push into an array
                 const newLabel = await LabelController.getLabelById(label);
-                console.log(newLabel.name)
-                labels.push(newLabel.name )
+                console.log(newLabel);
+                labels.push(newLabel);
                 console.log("après push",labels);
             });
             console.log("labels après push hors each",labels)
@@ -69,9 +84,22 @@ const getCardsByUser = async(idUser) =>
         return error;
     }
 }
+const isOwner = async(idUser,idCard) =>
+{
+    try {
+        const isOwner = await Card.find({owners : idUser, _id : idCard });
+        console.log(isOwner);
+        return isOwner;
+    } catch (error) {
+        console.log(error.message)
+        return error;
+    }
+}
 
 module.exports = {
     getCardById,
     createCard,
     getCardsByUser,
+    updateCard,
+    isOwner
 };

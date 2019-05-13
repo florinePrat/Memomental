@@ -31,27 +31,19 @@ const createLabel = async (name,color) => {
 const getLabelByName = async(name) =>
 {
     try {
+        console.log("est appelé");
        const  label = await Label.find({name : name});
+       console.log(label);
        return label[0];
     } catch
     {
         console.log("erreur lors de la recheche");
 ;    }
 }
-const addCard = async (labelId, cardId) =>
-{
-    try {
-        return await Label.findByIdAndUpdate(labelId,{ $push: {cards : cardId}});
 
-    } catch
-    {
-        console.log("erreur lors de l'ajout de la carte");
-    }
-}
 
 module.exports = {
     getLabelById,
     createLabel,
     getLabelByName,
-    addCard,
 };
