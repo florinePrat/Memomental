@@ -28,22 +28,18 @@ class Addcarte extends React.Component{
 
     handleRectoClick() {
         this.setState({isRectoIn: true});
-        console.log("je suis dans recto click ")
     }
 
     handleVersoClick() {
         this.setState({isRectoIn: false});
-        console.log("je suis dans verso click ")
     }
 
     handleAddClick() {
         this.setState({isAddIn: true});
-        console.log("je suis dans add click ")
     }
 
     handleNoAddClick() {
         this.setState({isAddIn: false});
-        console.log("je suis dans noadd click ")
     }
 
 

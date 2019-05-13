@@ -2,12 +2,14 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import axios from 'axios';
 import {tokenHeaders} from '../../utils/headers';
+import {Button} from "react-bootstrap";
 
 class gcard extends React.Component{
 
     state ={
         cards: []
     }
+
 
     componentDidMount() {
      /*   axios.get('http://localhost:8080/api/card/getCardsByUser',{
@@ -22,14 +24,25 @@ class gcard extends React.Component{
     const cards = [
         {
             name : "name",
-            labels : ["cat"]
+            labels : ["cat"],
+            rectoQuestion: "question d'une recto"
         },
         {
             name : "name2",
             labels : ["cat2"]
-        }]
+        }];
         this.setState({cards});
 
+    }
+
+    isView(){
+        { this.state.cards.map(cards =>
+            <div className="boxcarte">
+                <p>Nom : {cards.name} </p>
+                <p>Cat : {cards.labels[0]}</p>
+                <p>Question : {cards.rectoQuestion} </p>
+            </div>
+        )}
     }
 
 
@@ -49,8 +62,32 @@ class gcard extends React.Component{
 
                     { this.state.cards.map(cards =>
                         <div className="boxcarte">
-                            <p>Nom : {cards.name} Cat : {cards.labels[0]}</p>
-                            <p>Voir </p>
+                            <p>Nom : {cards.name} </p>
+                            <p>Cat : {cards.labels[0]}</p>
+
+                            <Button
+                                onClick={this.isView()}
+                                bssize="large"
+                            >
+                                Voir
+                            </Button>
+
+                            <Button
+                                onClick={""}
+                                bssize="large"
+                                type="submit"
+                            >
+                                Modifier
+                            </Button>
+
+                            <Button
+                                onClick={""}
+                                bssize="large"
+                                type="submit"
+                            >
+                                Supprimer
+                            </Button>
+
                         </div>)}
 
 
