@@ -10,13 +10,26 @@ class gcard extends React.Component{
     }
 
     componentDidMount() {
-        axios.get('http://localhost:8080/api/card/getCardsByUser',{
+     /*   axios.get('http://localhost:8080/api/card/getCardsByUser',{
             headers: tokenHeaders
         } )
             .then(res => {
                 const cards = res.data;
+
                 this.setState({ cards });
-            })
+            })*/
+
+    const cards = [
+        {
+            name : "name",
+            labels : ["cat"]
+        },
+        {
+            name : "name2",
+            labels : ["cat2"]
+        }]
+        this.setState({cards});
+
     }
 
 
@@ -34,8 +47,11 @@ class gcard extends React.Component{
                 </nav>
 
 
-                    { this.state.cards.map(cards => <div className="boxcarte">Nom : {cards.name} Cat : {cards.labels[0]}
-                    </div>)}
+                    { this.state.cards.map(cards =>
+                        <div className="boxcarte">
+                            <p>Nom : {cards.name} Cat : {cards.labels[0]}</p>
+                            <p>Voir </p>
+                        </div>)}
 
 
 
