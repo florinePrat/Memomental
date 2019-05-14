@@ -13,4 +13,4 @@ mongoose.connection.once('open', function() {
     console.log('Connection error:', error)
 })
 
-//require('../api/models')
+require('../api/models');
