@@ -20,9 +20,48 @@ export default {
     },
 
     dayCard : function(rep) {
-        console.log(tokenHeaders)
-        return axios.post(burl + '/api/card/day',{
+        console.log(tokenHeaders);
+        return axios.post(burl + '/api/card/answer',{
             'rep' : rep
+        },{
+            headers: tokenHeaders
+        })
+    },
+
+    myDayCard : function(res) {
+        console.log(tokenHeaders);
+        return axios.get(burl + '/api/card/today',{
+            headers: tokenHeaders
+        })
+            .then(res => {
+                    const cards = res.data;
+                    this.setState({cards})
+                }
+            )
+    },
+
+    userCard : function(res) {
+        console.log(tokenHeaders);
+        return axios.get(burl + '/api/card/getCardsByUser',{
+            headers: tokenHeaders
+        })
+            .then(res => {
+                    const cards = res.data;
+                    this.setState({cards})
+                }
+            )
+    },
+
+    updateCard : function(_id, name, label, rectoQuestion, versoQuestion, rectoAnswer, versoAnswer) {
+        console.log(tokenHeaders);
+        return axios.put(burl + '/api/card/edit',{
+            '_id' : _id,
+            'name': name,
+            'label': label,
+            'rectoQuestion': rectoQuestion,
+            'versoQuestion': versoQuestion,
+            'rectoAnswer': versoAnswer,
+            'versoAnswer': versoAnswer
         },{
             headers: tokenHeaders
         })

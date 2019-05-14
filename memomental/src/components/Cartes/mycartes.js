@@ -1,6 +1,7 @@
 import React from 'react';
 import cardDay from "../../utils/cards";
 import {Button, FormControl, FormGroup} from "react-bootstrap";
+import MyDayCard from './dayCard';
 import axios from 'axios';
 import {tokenHeaders} from '../../utils/headers';
 
@@ -11,14 +12,16 @@ class Mycarte extends React.Component{
     };
 
     constructor(props) {
-        super(props);
+        super(props);/*
         this.state = {
             rep : "",
             labels : "Cat Geographie",
             rectoQuestion: "question d'une recto"
         };
-        this.handleChange.bind(this);
+        /*this.handleChange.bind(this);
         this.send.bind(this);
+
+         */
     }
 
     componentDidMount() {
@@ -40,20 +43,26 @@ class Mycarte extends React.Component{
             {
                 name : "name2",
                 labels : ["cat2"]
+            }
+            ,
+            {
+                name : "name2",
+                labels : ["cat2"]
             }];
         this.setState({cards});
     }
 
-        send = event => {
-        if(this.state.rep.length === 0){
-            return;
-        }
-        cardDay.dayCard(this.state.rep).then(function(data){
-            window.location = "/Mycarte"
-        },function(error){
-            console.log(error);
-            return;
-        })
+    /*
+    send = event => {
+    if(this.state.rep.length === 0){
+        return;
+    }
+    cardDay.dayCard(this.state.rep).then(function(data){
+        window.location = "/Mycarte"
+    },function(error){
+        console.log(error);
+        return;
+    })
     };
 
 
@@ -63,12 +72,23 @@ class Mycarte extends React.Component{
         });
     };
 
+     */
+
 
     render(){
         return(
             <div className="container-fluid">
                 <h1> Mes cartes </h1>
 
+                { this.state.cards.map(card =>
+                    <MyDayCard
+                        name={card.name}
+                        labels={card.labels[0]}
+                        rectoQuestion={card.rectoQuestion}
+                    />
+                )}
+
+                {/*
                 <div className="boxcarte">
 
                     <h3>{this.state.labels}</h3>
@@ -87,6 +107,8 @@ class Mycarte extends React.Component{
                     </Button>
 
                 </div>
+
+                 */}
             </div>
         )
     }

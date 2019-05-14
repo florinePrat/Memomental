@@ -13,12 +13,12 @@ class gcard extends React.Component{
 
     constructor(props) {
         super(props);
-
-        this.isView = this.isView.bind(this);
     }
 
 
     componentDidMount() {
+
+
      /*   axios.get('http://localhost:8080/api/card/getCardsByUser',{
             headers: tokenHeaders
         } )
@@ -40,17 +40,6 @@ class gcard extends React.Component{
         }];
         this.setState({cards});
 
-    }
-
-    isView(){
-        return(
-        this.state.cards.map(cards =>
-            <div className="boxcarte">
-                <p>Nom : {cards.name} </p>
-                <p>Cat : {cards.labels[0]}</p>
-                <p>Question : {cards.rectoQuestion} </p>
-            </div>
-        ))
     }
 
 

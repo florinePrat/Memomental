@@ -186,6 +186,7 @@ export class Signup extends React.Component {
 
     render() {
         return (
+
             <div>
                 {
                     this.state.isLoggedIn

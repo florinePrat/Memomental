@@ -19,9 +19,9 @@ class card extends Component{
 
                 this.state.isDeployed
                 ?   <div className="boxcarte">
-                        <p>Nom : {this.props.name} </p>
-                        <p>Cat : {this.props.labels[0]}</p>
-                        <p>Question : {this.props.rectoQuestion} </p>
+                        <h3>Cat : {this.props.labels[0]}</h3>
+                        <h2>Question : {this.props.rectoQuestion} </h2>
+                        <h2>Reponse : {this.props.rectoAnswer} </h2>
                         <Button
                             onClick={()=>{
                                 this.setState({isDeployed:false})
@@ -35,8 +35,9 @@ class card extends Component{
                     </div>
 
                     : <div className="boxcarte">
+                        <h3>Cat : {this.props.labels[0]}</h3>
                         <p>Nom : {this.props.name} </p>
-                        <p>Cat : {this.props.labels[0]}</p>
+
 
                         <Button
                             onClick={()=>{

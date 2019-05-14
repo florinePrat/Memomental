@@ -61,6 +61,10 @@ header{
   margin-top: 50px;
 }
 
+.btn-primary{
+  margin-left: 1%;
+}
+
 div{
   h1{
     text-align: center;
@@ -111,12 +115,4 @@ div{
   }
 }
 
-.center-navbar {
-  text-align: center;
-}
-.center-navbar .navbar {
-  display: inline-block;
-}
-.center-navbar .navbar .container {
-  width: 100%;
-}
+
