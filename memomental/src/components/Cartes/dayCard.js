@@ -22,8 +22,10 @@ class dayCard extends Component{
         if(this.state.rep.length === 0){
             return;
         }
-        cardDay.dayCard(this.state.rep).then(function(data){
+        cardDay.dayCard(this.state.rep).then(function(res){
+            if( res.data === true)
             window.location = "/Mycarte"
+            else (this.setState({isDeployed: true}))
         },function(error){
             console.log(error);
             return;
