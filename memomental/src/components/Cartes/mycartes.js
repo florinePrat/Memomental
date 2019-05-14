@@ -3,8 +3,6 @@ import cardDay from "../../utils/cards";
 import {Button, FormControl, FormGroup} from "react-bootstrap";
 import axios from 'axios';
 import {tokenHeaders} from '../../utils/headers';
-var question = 'Quelle est la capitale de l autralie ? ';
-var cat = 'Geographie';
 
 class Mycarte extends React.Component{
 
@@ -15,7 +13,9 @@ class Mycarte extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            rep : ""
+            rep : "",
+            labels : "Cat Geographie",
+            rectoQuestion: "question d'une recto"
         };
         this.handleChange.bind(this);
         this.send.bind(this);
@@ -44,7 +44,6 @@ class Mycarte extends React.Component{
         this.setState({cards});
     }
 
-
         send = event => {
         if(this.state.rep.length === 0){
             return;
@@ -71,8 +70,9 @@ class Mycarte extends React.Component{
                 <h1> Mes cartes </h1>
 
                 <div className="boxcarte">
-                    <h3>{cat}</h3>
-                    <h2>{question}</h2>
+
+                    <h3>{this.state.labels}</h3>
+                    <h2>{this.state.rectoQuestion}</h2>
 
                     <FormGroup controlId="rep" bssize="large">
                         <FormControl autoFocus type="text" value={this.state.rep} onChange={this.handleChange}/>
