@@ -19,6 +19,15 @@ export default {
         })
     },
 
+    dayCard : function(rep) {
+        console.log(tokenHeaders)
+        return axios.post(burl + '/api/card/day',{
+            'rep' : rep
+        },{
+            headers: tokenHeaders
+        })
+    },
+
 
 
 }

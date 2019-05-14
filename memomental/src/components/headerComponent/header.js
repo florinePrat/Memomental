@@ -1,42 +1,33 @@
 import React, { Component } from 'react';
-import logo from './images/logo.jpg';
-import {Link} from 'react-router-dom'
-
-class Header extends Component{
-
-    state = {
-        active: false,
-    };
-
-    render(){
-        return(
-            <header>
-                <div className="align">
-                     <div className="logo">
-                         <img src={logo} alt="logo"/>
-                     </div>
-                    <div className="titre">
-                        <h2> Memomental </h2>
-                    </div>
-                </div>
+import logo from './images/logo.png';
+import {Navbar, Nav} from "react-bootstrap";
 
 
-                <nav>
-                        <ul>
-                            <li className="first">
-                                <Link to="/">Home</Link>
-                            </li>
-                            <li>
-                                <Link to="/Signup">Login/Signup</Link>
-                            </li>
-                        </ul>
-                </nav>
+class NavBar extends Component {
 
-            </header>
+    render() {
+        return (
+            <Navbar bg="light" expand="lg">
+
+                <Navbar.Brand href="#home">
+                    <img
+                        alt="logo"
+                        src={logo}
+                        width="30"
+                        height="30"
+                        className="logo"
+                    />
+                    {' Memomental'}
+                </Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav className="mr-auto">
+                        <Nav.Link href="/">Home</Nav.Link>
+                        <Nav.Link href="/Signup">Login/Signup</Nav.Link>
+                    </Nav>
+                </Navbar.Collapse>
+            </Navbar>
         )
     }
 }
-
-
-
-export default Header;
+export default NavBar;

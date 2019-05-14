@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, FormGroup, FormControl } from "react-bootstrap";
 import API from '../../utils/auth';
+import Alert from "react-bootstrap/Alert";
 
 export class Signup extends React.Component {
     constructor(props) {
@@ -30,8 +31,14 @@ export class Signup extends React.Component {
     send = event => {
         if (this.state.email.length === 0) {
             return(
-                alert('mail vide')
-            );
+                [
+                    'danger',
+                ].map((variant, idx) => (
+                    <Alert key={idx} variant={variant}>
+                        This is a {variant} alert—check it out!
+                    </Alert>
+                )
+                ));
         }
         if (this.state.prenom.length === 0) {
             return(
@@ -82,13 +89,14 @@ export class Signup extends React.Component {
                 console.log(data.data.token);
                 localStorage.setItem('token', data.data.token);
                 window.location = "/Cartes"
-            },function(error){
+            }).catch(function(error){
                 console.log(error);
-                return;
-            })
+                return;})
+
+            }
         }
 
-    };
+    ;
 
     handleChange = event => {
         this.setState({

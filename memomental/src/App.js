@@ -4,7 +4,6 @@ import {
     Route
 } from 'react-router-dom';
 import './Assets/css/default.min.css'
-import Header from './components/headerComponent/header';
 import Homepage from './components/pages/homePage';
 import Cartes from './components/Cartes/cartes';
 import Mycarte from './components/Cartes/mycartes';
@@ -13,6 +12,7 @@ import gcard from './components/Cartes/gestioncards';
 import { Switch } from 'react-router-dom';
 import { Signup } from './components/Signup/Signup.js';
 import { PrivateRoute } from './components/PrivateRoute.js';
+import NavBar from "./components/headerComponent/header";
 
 
 class App extends Component{
@@ -21,7 +21,7 @@ class App extends Component{
         <Router>
 
           <div className="App">
-            <Header />
+              <NavBar/>
               <Route exact path="/" component={Homepage}/>
               <Route exact path ="/Signup" component={Signup}/>
           </div>
