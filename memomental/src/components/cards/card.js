@@ -2,8 +2,8 @@ import {Component} from "react";
 import React from "react";
 import {Button} from "react-bootstrap";
 
-
-class card extends Component{
+// this class return the front of managcards and use js to view details of cards
+class mycard extends Component{
 
 
     constructor(props) {
@@ -71,4 +71,4 @@ class card extends Component{
         )
     }
 }
-export default card;
+export default mycard;

@@ -3,6 +3,7 @@ import {Button} from "react-bootstrap";
 import {Link} from "react-router-dom";
 var nbcarteday = '';
 
+// this class is the home page for card, display nb of cards for the current day
 class card extends Component{
     render(){
         return(
@@ -14,7 +15,7 @@ class card extends Component{
                     <p>Aujourd'hui vous avez </p>
                     {nbcarteday} <p> cartes à réviser </p>
 
-                    <Link to="/Mycarte">
+                    <Link to="/myCard">
                         <Button
                             className="btn-info"
                             bssize="small"

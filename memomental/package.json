@@ -2,6 +2,9 @@
   "name": "memomental",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "8.11.3"
+  },
   "dependencies": {
     "@mobiscroll/react-lite": "^4.6.3",
     "axios": "^0.18.0",

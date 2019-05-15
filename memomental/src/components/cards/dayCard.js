@@ -4,7 +4,7 @@ import {Button, FormControl, FormGroup} from "react-bootstrap";
 import cardDay from "../../utils/cards";
 
 
-
+// this class send a answer to back for verify the answer and done the card of the day
 class dayCard extends Component{
 
 
@@ -25,7 +25,7 @@ class dayCard extends Component{
         }
         cardDay.dayCard(this.state.rep).then(function(res){
             if( res.data === true)
-            window.location = "/Mycarte"
+            window.location = "/myCard"
             else (this.setState({isDeployed: true,rep : res.data}))
         },function(error){
             console.log(error);

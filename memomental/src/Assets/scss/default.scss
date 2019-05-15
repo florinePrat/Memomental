@@ -1,5 +1,6 @@
 @import "_config.scss";
 
+//header css
 header{
   position: relative;
   display: block;
@@ -26,7 +27,7 @@ header{
   }
 
 
-
+  // css for navigation and menu
   nav{
     position: absolute;
     top: 58%; right:15px;
@@ -54,6 +55,7 @@ header{
 
 }
 
+// css for login and signup
 .Login {
   width: 100%;
   max-width: 600px;
@@ -61,10 +63,12 @@ header{
   margin-top: 50px;
 }
 
+// css for button in login, signup, cards for margin between both
 .btn-primary{
   margin-left: 1%;
 }
 
+// css for center text
 div{
   h1{
     text-align: center;
@@ -77,6 +81,8 @@ div{
 
 
 }
+
+// css for card's look
 .boxcarte{
   border-style: solid;
   border-color: #889cbf;
@@ -96,11 +102,13 @@ div{
   }
 }
 
+// css for btn in cards
 .btn-info {
   position: relative;
   left:27%;
 }
 
+// css for background
 .background{
   background-color: #fefdff;
   background-attachment:fixed;
@@ -109,6 +117,7 @@ div{
   margin: auto;
   padding-top: 20%;
 
+  // css for btn homepage
   .btn-acc{
     position: relative;
     left:27%;

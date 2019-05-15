@@ -1,10 +1,11 @@
 import React from 'react';
 import cardDay from "../../utils/cards";
 import {Button, FormControl, FormGroup} from "react-bootstrap";
-import MyDayCard from './dayCard';
+import dayCard from './dayCard';
 import axios from 'axios';
 import {tokenHeaders} from '../../utils/headers';
 
+// this class manage myCard for the request to display the card of day
 class myCard extends React.Component{
 
     state ={
@@ -59,7 +60,7 @@ class myCard extends React.Component{
                 <h1> Mes cartes </h1>
 
                 { this.state.cards.map(card =>
-                    <MyDayCard
+                    <dayCard
                         name={card.name}
                         labels={card.labels}
                         rectoQuestion={card.rectoQuestion}

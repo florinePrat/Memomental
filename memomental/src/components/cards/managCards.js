@@ -1,10 +1,11 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import MyCard from './card';
+import mycard from './card';
 import axios from 'axios';
 import {tokenHeaders} from '../../utils/headers';
 import {Button} from "react-bootstrap";
 
+// this class display all of the cards for 1 user and propose to manage them
 class gcard extends React.Component{
 
     state ={
@@ -58,7 +59,7 @@ class gcard extends React.Component{
 
 
                     { this.state.cards.map(card =>
-                        <MyCard
+                        <mycard
                             name={card.name}
                             labels={card.labels[0]}
                             rectoQuestion={card.rectoQuestion}

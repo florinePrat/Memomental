@@ -2,6 +2,7 @@ import React from 'react';
 import cardsRequest from "../../utils/cards";
 import {Button, FormControl, FormGroup} from "react-bootstrap";
 
+// this class is for add a new card in db with a name, cat(labels), a recto question and answer and verso question and answer
 class addCard extends React.Component{
 
 
