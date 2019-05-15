@@ -9,7 +9,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "cd memomental-back  &&  node serveur.js",
-    "heroku-postbuild": "cd memomental && npm install --only=dev && npm install && npm run build"
+    "heroku-postbuild": "cd memomental && npm install && npm run build && cd memomental-back && npm install"
   },
   "repository": {
     "type": "git",
