@@ -25,54 +25,32 @@ class Mycarte extends React.Component{
     }
 
     componentDidMount() {
-        /*   axios.get('http://localhost:8080/api/card/getCardsByUser',{
+        axios.get('http://localhost:8080/api/card/today',{
                headers: tokenHeaders
            } )
                .then(res => {
                    const cards = res.data;
 
                    this.setState({ cards });
-               })*/
-
+               });
+/*
         const cards = [
             {
                 name : "name",
-                labels : ["cat"],
+                labels : [{name :"cat", color : "red"}],
                 rectoQuestion: "question d'une recto"
             },
             {
                 name : "name2",
-                labels : ["cat2"]
+                labels : [{name :"cat", color : "red"}],
             }
             ,
             {
                 name : "name2",
-                labels : ["cat2"]
-            }];
+                labels : [{name :"cat", color : "red"}]
+            }];*/
         this.setState({cards});
     }
-
-    /*
-    send = event => {
-    if(this.state.rep.length === 0){
-        return;
-    }
-    cardDay.dayCard(this.state.rep).then(function(data){
-        window.location = "/Mycarte"
-    },function(error){
-        console.log(error);
-        return;
-    })
-    };
-
-
-    handleChange = event2 => {
-        this.setState({
-            [event2.target.id]: event2.target.value
-        });
-    };
-
-     */
 
 
     render(){
@@ -83,32 +61,11 @@ class Mycarte extends React.Component{
                 { this.state.cards.map(card =>
                     <MyDayCard
                         name={card.name}
-                        labels={card.labels[0]}
+                        labels={card.labels}
                         rectoQuestion={card.rectoQuestion}
                     />
                 )}
 
-                {/*
-                <div className="boxcarte">
-
-                    <h3>{this.state.labels}</h3>
-                    <h2>{this.state.rectoQuestion}</h2>
-
-                    <FormGroup controlId="rep" bssize="large">
-                        <FormControl autoFocus type="text" value={this.state.rep} onChange={this.handleChange}/>
-                    </FormGroup>
-                    <Button
-                        onClick={this.send}
-                        block
-                        bssize="large"
-                        type="submit"
-                    >
-                        Envoyer
-                    </Button>
-
-                </div>
-
-                 */}
             </div>
         )
     }

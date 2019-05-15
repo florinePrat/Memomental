@@ -12,6 +12,7 @@ class dayCard extends Component{
         super(props);
         this.state = {
             isDeployed: false,
+            rep:"",
         };
         this.handleChange.bind(this);
         this.send.bind(this);
@@ -25,7 +26,7 @@ class dayCard extends Component{
         cardDay.dayCard(this.state.rep).then(function(res){
             if( res.data === true)
             window.location = "/Mycarte"
-            else (this.setState({isDeployed: true}))
+            else (this.setState({isDeployed: true,rep : res.data}))
         },function(error){
             console.log(error);
             return;
@@ -40,13 +41,14 @@ class dayCard extends Component{
     };
 
     render(){
+        console.log(this.props.labels)
         return(
 
             this.state.isDeployed
                 ?   <div className="boxcarte">
-                    <h3>Cat : {this.props.labels[0]}</h3>
+                    <h3  style={{color:this.props.labels[0].color}}>Cat : {this.props.labels[0].name}</h3>
                     <h2>Question : {this.props.rectoQuestion} </h2>
-                    <h2>Reponse : {this.props.rectoAnswer} </h2>
+                    <h2>Reponse : {this.state.rep} </h2>
                     <Button
                         onClick={()=>{
                             this.setState({isDeployed:false})
@@ -60,7 +62,7 @@ class dayCard extends Component{
                 </div>
 
                 : <div className="boxcarte">
-                    <h3>Cat : {this.props.labels[0]}</h3>
+                    <h3  style={{backgroundColor:this.props.labels[0].color}}>Cat : {this.props.labels[0].name}</h3>
                     <h2>Question : {this.props.rectoQuestion} </h2>
 
                     <FormGroup controlId="rep" bssize="large">

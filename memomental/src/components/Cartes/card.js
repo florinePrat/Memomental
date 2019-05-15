@@ -18,8 +18,8 @@ class card extends Component{
         return(
 
                 this.state.isDeployed
-                ?   <div className="boxcarte">
-                        <h3>Cat : {this.props.labels[0]}</h3>
+                ?   <div className="boxcarte" >
+                        <h3 style={{color:this.props.labels[0].color}}>Cat : {this.props.labels[0]}</h3>
                         <h2>Question : {this.props.rectoQuestion} </h2>
                         <h2>Reponse : {this.props.rectoAnswer} </h2>
                         <Button

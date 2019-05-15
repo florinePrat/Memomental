@@ -3,20 +3,6 @@
   "version": "1.0.0",
   "description": "projet web ig3",
   "main": "index.js",
-  "dependencies": {
-    "mdbootstrap": "^4.8.1",
-    "navbar": "^2.1.0",
-    "react": "^16.8.6",
-    "react-alert": "^5.5.0",
-    "react-dom": "^16.8.6",
-    "react-responsive-navbar": "^1.0.11",
-    "react-router": "^5.0.0",
-    "reactstrap": "^8.0.0",
-    "serve": "^11.0.0"
-  },
-  "devDependencies": {
-    "react-scripts": "^3.0.1"
-  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "react-scripts start",
@@ -25,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/florinePrat/Memomental.git",
+    "url": "git+https://github.com/florinePrat/Memomental.git"
   },
   "author": "florine",
   "license": "ISC",
