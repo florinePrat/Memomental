@@ -2,7 +2,7 @@ import React from 'react';
 import cardsRequest from "../../utils/cards";
 import {Button, FormControl, FormGroup} from "react-bootstrap";
 
-class Addcarte extends React.Component{
+class addCard extends React.Component{
 
 
     constructor(props) {
@@ -194,4 +194,4 @@ class Addcarte extends React.Component{
     }
 
 }
-export default Addcarte;
+export default addCard;

@@ -3,7 +3,7 @@ import {Button} from "react-bootstrap";
 import {Link} from "react-router-dom";
 var nbcarteday = '';
 
-class Carte extends Component{
+class card extends Component{
     render(){
         return(
             <div className="container-fluid">
@@ -39,4 +39,4 @@ class Carte extends Component{
         )
     }
 }
-export default Carte;
+export default card;

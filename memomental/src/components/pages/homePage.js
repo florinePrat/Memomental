@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Link} from "react-router-dom";
 import {Button} from "react-bootstrap";
 
-class Homepage extends Component{
+class homePage extends Component{
     render(){
         return(
             <div className="background">
@@ -27,4 +27,4 @@ class Homepage extends Component{
         )
     }
 }
-export default Homepage;
+export default homePage;

@@ -4,10 +4,10 @@ import {
     Route
 } from 'react-router-dom';
 import './Assets/css/default.min.css'
-import Homepage from './components/pages/homePage';
-import Cartes from './components/cards/homeCards';
-import Mycarte from './components/cards/myCards';
-import Addcarte from './components/cards/addcartes';
+import homePage from './components/pages/homePage';
+import card from './components/cards/homeCards';
+import myCard from './components/cards/myCards';
+import addCard from './components/cards/addCards';
 import gcard from './components/cards/managCards';
 import { Switch } from 'react-router-dom';
 import { signup } from './components/signup/signup.js';
@@ -22,14 +22,14 @@ class App extends Component{
 
           <div className="App">
               <NavBar/>
-              <Route exact path="/" component={Homepage}/>
+              <Route exact path="/" component={homePage}/>
               <Route exact path ="/signup" component={signup}/>
           </div>
             <div className="App-content">
                 <Switch>
-                    <PrivateRoute path='/cartes' component={Cartes}/>
-                    <PrivateRoute path='/Mycarte' component={Mycarte}/>
-                    <PrivateRoute path='/Addcarte' component={Addcarte}/>
+                    <PrivateRoute path='/card' component={card}/>
+                    <PrivateRoute path='/myCard' component={myCard}/>
+                    <PrivateRoute path='/addCard' component={addCard}/>
                     <PrivateRoute path='/gcard' component={gcard}/>
                 </Switch>
             </div>

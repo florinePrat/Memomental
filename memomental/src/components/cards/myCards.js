@@ -5,7 +5,7 @@ import MyDayCard from './dayCard';
 import axios from 'axios';
 import {tokenHeaders} from '../../utils/headers';
 
-class Mycarte extends React.Component{
+class myCard extends React.Component{
 
     state ={
         cards: []
@@ -71,4 +71,4 @@ class Mycarte extends React.Component{
     }
 
 }
-export default Mycarte;
+export default myCard;
