@@ -29,7 +29,7 @@ app.use('/', require('./routes')());
 const server = http.createServer(app);
 
 app.get("*", (req, res) => {
-    res.sendFile(path.join("ProjetWeb", "memomental", "build", "index.html"));
+    res.sendFile(path.join(_dirname, "memomental", "build", "index.html"));
 });
 
 

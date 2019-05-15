@@ -10,7 +10,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "cd memomental-back  &&  node serveur.js",
     "build": "react-scripts build",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "heroku-postbuild": "cd memomental && npm install --only=dev && npm install && npm run build"
   },
   "repository": {
     "type": "git",
