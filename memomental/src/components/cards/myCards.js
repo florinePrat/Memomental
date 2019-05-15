@@ -1,6 +1,4 @@
 import React from 'react';
-import cardDay from "../../utils/cards";
-import {Button, FormControl, FormGroup} from "react-bootstrap";
 import dayCard from './dayCard';
 import axios from 'axios';
 import {tokenHeaders} from '../../utils/headers';
@@ -13,16 +11,14 @@ class myCard extends React.Component{
     };
 
     constructor(props) {
-        super(props);/*
+        super(props);
         this.state = {
             rep : "",
-            labels : "Cat Geographie",
-            rectoQuestion: "question d'une recto"
+            labels : "",
+            rectoQuestion: ""
         };
-        /*this.handleChange.bind(this);
-        this.send.bind(this);
 
-         */
+
     }
 
     componentDidMount() {
@@ -31,26 +27,9 @@ class myCard extends React.Component{
            } )
                .then(res => {
                    const cards = res.data;
-
+                    console.log(res.data);
                    this.setState({ cards });
                });
-/*
-        const cards = [
-            {
-                name : "name",
-                labels : [{name :"cat", color : "red"}],
-                rectoQuestion: "question d'une recto"
-            },
-            {
-                name : "name2",
-                labels : [{name :"cat", color : "red"}],
-            }
-            ,
-            {
-                name : "name2",
-                labels : [{name :"cat", color : "red"}]
-            }];*/
-        this.setState({cards});
     }
 
 

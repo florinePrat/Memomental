@@ -28,17 +28,15 @@ const createLabel = async (name,color) => {
         return error;
     }
 }
-const getLabelByName = async(name) =>
-{
+const getLabelByName = async(name) => {
     try {
         console.log("est appelé");
-       const  label = await Label.find({name : name});
-       console.log(label);
-       return label[0];
-    } catch
-    {
-        console.log("erreur lors de la recheche");
-;    }
+        const label = await Label.find({name: name});
+        console.log(label);
+        return label[0];
+    } catch (error) {
+        console.log("erreur lors de la recheche")
+    }
 }
 
 

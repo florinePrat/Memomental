@@ -23,9 +23,9 @@ class NavBar extends Component {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
                         <Nav.Link href="/">Home</Nav.Link>
-                        <Nav.Link href="/Signup">Login/Signup</Nav.Link>
-                        <Nav.Link href='/cartes' >Mes cartes</Nav.Link>
-                        <Nav.Link href='/Mycarte' >Mes cartes du jour</Nav.Link>
+                        <Nav.Link href="/signup">Login/Signup</Nav.Link>
+                        <Nav.Link href='/card' >Mes cartes</Nav.Link>
+                        <Nav.Link href='/myCard' >Mes cartes du jour</Nav.Link>
                         <Nav.Link href='/' >Logout</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>

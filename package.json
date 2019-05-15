@@ -8,7 +8,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "react-scripts start",
+    "start": "cd memomental-back  &&  node serveur.js",
     "build": "react-scripts build",
     "eject": "react-scripts eject"
   },

@@ -60,7 +60,7 @@ export class signup extends React.Component {
            if(data.status==="200")
            {
                localStorage.setItem('token', data.token);
-                window.location = "/cards"
+                window.location = "/card"
            }
            else
            {
@@ -89,7 +89,7 @@ export class signup extends React.Component {
             API.login(this.state.email, this.state.password).then(function(data){
                 console.log(data.data.token);
                 localStorage.setItem('token', data.data.token);
-                window.location = "/cards"
+                window.location = "/card"
             }).catch(function(error){
                 console.log(error);
                 return;})
