@@ -3,7 +3,7 @@ import {tokenHeaders} from './headers';
 
 const burl = "http://localhost:8080";
 
-
+// this is the request for card's actions
 export default {
     addcard : function(nom,cat,quest1,rep1,quest2,rep2) {
         console.log(tokenHeaders)

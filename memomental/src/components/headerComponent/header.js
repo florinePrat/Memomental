@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './images/logo.png';
 import {Navbar, Nav} from "react-bootstrap";
 
-
+// the navbar of application
 class NavBar extends Component {
 
     render() {

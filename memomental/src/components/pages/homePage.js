@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {Link} from "react-router-dom";
 import {Button} from "react-bootstrap";
 
+// this page is the home page before the signup
 class homePage extends Component{
     render(){
         return(
@@ -11,7 +12,7 @@ class homePage extends Component{
                         <p> Est-tu prêt à booster ta mémoire ??</p>
 
 
-                        <Link to="/Signup">
+                        <Link to="/signup">
                             <Button
                                 className="btn-acc"
                                 bssize="large"

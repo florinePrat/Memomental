@@ -3,6 +3,7 @@ import { Button, FormGroup, FormControl } from "react-bootstrap";
 import API from '../../utils/auth';
 import Alert from "react-bootstrap/Alert";
 
+// this is the singup and login page swip with js
 export class signup extends React.Component {
     constructor(props) {
         super(props);

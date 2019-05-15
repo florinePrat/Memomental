@@ -3,7 +3,7 @@ import {basicHeaders} from './headers';
 
 const burl = "http://localhost:8080";
 
-
+// this is the request for authentification
 export default {
     login : function(email,password) {
         return axios.post(burl + '/login',{
