@@ -5,12 +5,12 @@ import {
 } from 'react-router-dom';
 import './Assets/css/default.min.css'
 import Homepage from './components/pages/homePage';
-import Cartes from './components/Cartes/cartes';
-import Mycarte from './components/Cartes/mycartes';
-import Addcarte from './components/Cartes/addcartes';
-import gcard from './components/Cartes/gestioncards';
+import Cartes from './components/cards/homeCards';
+import Mycarte from './components/cards/myCards';
+import Addcarte from './components/cards/addcartes';
+import gcard from './components/cards/managCards';
 import { Switch } from 'react-router-dom';
-import { Signup } from './components/Signup/Signup.js';
+import { signup } from './components/signup/signup.js';
 import { PrivateRoute } from './components/PrivateRoute.js';
 import NavBar from "./components/headerComponent/header";
 
@@ -23,7 +23,7 @@ class App extends Component{
           <div className="App">
               <NavBar/>
               <Route exact path="/" component={Homepage}/>
-              <Route exact path ="/Signup" component={Signup}/>
+              <Route exact path ="/signup" component={signup}/>
           </div>
             <div className="App-content">
                 <Switch>

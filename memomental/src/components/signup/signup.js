@@ -3,7 +3,7 @@ import { Button, FormGroup, FormControl } from "react-bootstrap";
 import API from '../../utils/auth';
 import Alert from "react-bootstrap/Alert";
 
-export class Signup extends React.Component {
+export class signup extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -59,7 +59,7 @@ export class Signup extends React.Component {
            if(data.status==="200")
            {
                localStorage.setItem('token', data.token);
-                window.location = "/Cartes"
+                window.location = "/cards"
            }
            else
            {
@@ -88,7 +88,7 @@ export class Signup extends React.Component {
             API.login(this.state.email, this.state.password).then(function(data){
                 console.log(data.data.token);
                 localStorage.setItem('token', data.data.token);
-                window.location = "/Cartes"
+                window.location = "/cards"
             }).catch(function(error){
                 console.log(error);
                 return;})
@@ -198,4 +198,4 @@ export class Signup extends React.Component {
     }
 }
 
-export default Signup;
+export default signup;

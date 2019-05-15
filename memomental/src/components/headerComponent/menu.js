@@ -4,7 +4,7 @@ import {Icon, Header} from 'react-native-elements'
 
 //these are the components to be navigated to from the menu
 import Home from '../pages/homePage'
-import Cartes from '../Cartes/cartes'
+import Cartes from '../cards/homeCards'
 
 const Menu = createDrawerNavigator(
     {

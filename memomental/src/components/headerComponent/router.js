@@ -1,6 +1,6 @@
 import { createStackNavigator } from 'react-navigation'
 import MenuContainer from './menu'
-import Signup from '../Signup/Signup'
+import Signup from '../signup/signup'
 
 const EntryStack = createStackNavigator(
     {
