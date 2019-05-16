@@ -2,7 +2,7 @@ require('dotenv').config()
 require('./config/db')
 const express = require('express');
 const path = require('path');
-
+const favicon = requiere('serve-favicon');
 const bodyParser = require('body-parser');
 
 const http = require('http');
@@ -10,6 +10,8 @@ const http = require('http');
 const app = express();
 //parse the request body
 app.use(bodyParser.json());
+
+app.use(favicon(path.join(__dirname, '..', 'memomental', 'public', 'favicon.ico')));
 
 //Creates the different headers for the response
 app.use(function(req, res, next) {

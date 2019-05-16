@@ -1,10 +1,39 @@
 import React, { Component } from 'react';
 import {Button} from "react-bootstrap";
 import {Link} from "react-router-dom";
-var nbcarteday = '';
+import axios from 'axios';
+import {tokenHeaders} from '../../utils/headers';
 
 // this class is the home page for card, display nb of cards for the current day
 class card extends Component{
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            cards: []
+        }
+    }
+
+    componentDidMount() {
+
+        /*axios.get('http://localhost:8080/api/card/getCardsByUser',{
+             headers: tokenHeaders
+         } )
+             .then(res => {
+                 const cards = res.data;
+                 this.setState({ cards });
+                 console.log(this.setState({cards}));
+             })*/
+
+        const cards = [
+            {
+                lenght : 9
+            }];
+        this.setState({cards});
+        console.log(this.setState({cards}));
+    }
+
+
     render(){
         return(
             <div className="container-fluid">
@@ -13,7 +42,8 @@ class card extends Component{
                 <div className="boxcarte">
 
                     <p>Aujourd'hui vous avez </p>
-                    {nbcarteday} <p> cartes à réviser </p>
+                    <p>{this.state.cards.lenght} </p>
+                    <p> cartes à réviser </p>
 
                     <Link to="/myCard">
                         <Button

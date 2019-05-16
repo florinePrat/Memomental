@@ -1,9 +1,9 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import Mycard from './card';
+import {Button} from "react-bootstrap";
 import axios from 'axios';
 import {tokenHeaders} from '../../utils/headers';
-import {Button} from "react-bootstrap";
 
 // this class display all of the cards for 1 user and propose to manage them
 class gcard extends React.Component{
@@ -32,7 +32,7 @@ class gcard extends React.Component{
         {
             name : "name",
             labels : ["cat"],
-            rectoQuestion: "question d'une recto"
+            rectoQuestion: "question d'une recto",
         },
         {
             name : "name2",
@@ -51,9 +51,10 @@ class gcard extends React.Component{
 
                 <nav>
                     <ul>
-                        <li className="first">
-                            <Link to="/addCard">Ajouter une carte</Link>
-                        </li>
+                        <Button
+                            className="btn-info"
+                            href="/addCard">Ajouter une carte
+                        </Button>
                     </ul>
                 </nav>
 
@@ -66,8 +67,6 @@ class gcard extends React.Component{
                             fn={(id)=>console.log(id)}
                         />
                         )}
-
-
 
             </div>
         )

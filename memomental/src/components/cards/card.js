@@ -20,9 +20,30 @@ class mycard extends Component{
                 this.state.isDeployed
                 ?   <div className="boxcarte" >
                         <h3 style={{color:this.props.labels[0].color}}>Cat : {this.props.labels[0].name}</h3>
-                        <h2>Question : {this.props.rectoQuestion} </h2>
-                        <h2>Reponse : {this.props.rectoAnswer} </h2>
+                        <p>Question recto : {this.props.rectoQuestion} </p>
+                        <p>Reponse recto : {this.props.rectoAnswer} </p>
+                        <p>Question verso : {this.props.versoQuestion} </p>
+                        <p>Reponse verso : {this.props.versoAnswer} </p>
                         <Button
+                            className="btn-info"
+                            onClick={()=>{
+                                this.setState({isDeployed:false});
+                            }}
+                            bssize="large"
+                        >
+                            modifier
+                        </Button>
+                        <Button
+                            className="btn-info"
+                            onClick={()=>{
+                                this.setState({isDeployed:false});
+                            }}
+                            bssize="large"
+                        >
+                            supprimer
+                        </Button>
+                        <Button
+                            className="btn-info"
                             onClick={()=>{
                                 this.setState({isDeployed:false});
                                 this.props.fn(this.props.name)
@@ -35,11 +56,12 @@ class mycard extends Component{
                     </div>
 
                     : <div className="boxcarte">
-                        <h3>Cat : {this.props.labels[0].name}</h3>
+                        <h3  style={{color:this.props.labels[0].color}}>Cat : {this.props.labels[0].name}</h3>
                         <p>Nom : {this.props.name} </p>
 
 
                         <Button
+                            className="btn-info"
                             onClick={()=>{
                                 this.setState({isDeployed:true})
                             }}
@@ -47,22 +69,6 @@ class mycard extends Component{
                         >
                             Voir
                         </Button>
-
-                        {/*<Button
-                            onClick={}
-                            bssize="large"
-                            type="submit"
-                        >
-                            Modifier
-                        </Button>
-
-                        <Button
-                            onClick={}
-                            bssize="large"
-                            type="submit"
-                        >
-                            Supprimer
-                        </Button>*/}
 
                     </div>
 

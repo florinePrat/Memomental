@@ -10,7 +10,6 @@ export class signup extends React.Component {
         this.state = {
             email: "",
             prenom: "",
-            nom: "",
             password: "",
             isLoggedIn: false
         };
@@ -45,17 +44,12 @@ export class signup extends React.Component {
                 alert('prenom vide')
             );
         }
-        if (this.state.nom.length === 0) {
-            return(
-                alert('nom vide')
-            );
-        }
         if (this.state.password.length === 0 ) {
             return(
                 alert('votre mot de passe est vide ou il est different de la confirmation')
             );
         }
-        API.signup(this.state.email, this.state.prenom, this.state.nom, this.state.password).then(function (data) {
+        API.signup(this.state.email, this.state.prenom, this.state.password).then(function (data) {
            if(data.status==="200")
            {
                localStorage.setItem('token', data.token);
@@ -124,6 +118,7 @@ export class signup extends React.Component {
                     </a>
                 </p>
                 <Button
+                    className="btn-info"
                     onClick={this.sendLog}
                     bssize="large"
                     type="submit"
@@ -146,10 +141,6 @@ export class signup extends React.Component {
                 <FormGroup controlId="prenom" bssize="large">
                     <FormControl value={this.state.prenom} onChange={this.handleChange} type="name"/>
                 </FormGroup>
-                <p>Nom</p>
-                <FormGroup controlId="nom" bssize="large">
-                    <FormControl value={this.state.nom} onChange={this.handleChange} type="name"/>
-                </FormGroup>
                 <p>Mot de passe</p>
                 <FormGroup controlId="password" bssize="large">
                     <FormControl value={this.state.password} onChange={this.handleChange} type="password"/>
@@ -162,6 +153,7 @@ export class signup extends React.Component {
                     </a>
                 </p>
                 <Button
+                    className="btn-info"
                     onClick={this.send}
                     bssize="large"
                     type="submit"

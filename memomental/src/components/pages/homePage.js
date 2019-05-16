@@ -6,7 +6,6 @@ import {Button} from "react-bootstrap";
 class homePage extends Component{
     render(){
         return(
-            <div className="background">
                     <div className="boxcarte">
 
                         <p> Est-tu prêt à booster ta mémoire ??</p>
@@ -14,7 +13,7 @@ class homePage extends Component{
 
                         <Link to="/signup">
                             <Button
-                                className="btn-acc"
+                                className="btn-info"
                                 bssize="large"
                                 type="submit"
                             >
@@ -23,8 +22,6 @@ class homePage extends Component{
                             </Button>
                         </Link>
                     </div>
-
-                </div>
         )
     }
 }

@@ -13,12 +13,11 @@ export default {
             headers: basicHeaders
         })
     },
-    signup : function(email,prenom,nom,password){
+    signup : function(email,prenom,password){
         return axios.post(burl + '/register',{
             'email' : email,
             'password' : password,
             'firstName' : prenom,
-            'lastName' : nom
         },{
             headers: basicHeaders
         })
