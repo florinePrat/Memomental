@@ -61,6 +61,10 @@ header{
   max-width: 600px;
   margin: auto;
   margin-top: 50px;
+  p,a{
+    margin-right: 2%;
+    margin-left: 2%;
+  }
 }
 
 // css for button in login, signup, cards for margin between both

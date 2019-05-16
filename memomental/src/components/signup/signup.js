@@ -118,13 +118,11 @@ export class signup extends React.Component {
                     <FormControl  value={this.state.password} onChange={this.handleChange}  type="password" />
                 </FormGroup>
                 <p> Pas de compte ?
-                    <Button
+                    <a href="#"
                         onClick={this.handleLoginClick}
-                        bssize="large"
-                        type="submit"
                     >
                         S'inscrire
-                    </Button>
+                    </a>
                 </p>
                 <Button
                     onClick={this.sendLog}
@@ -163,13 +161,11 @@ export class signup extends React.Component {
                     <FormControl value={this.state.cpassword} onChange={this.handleChange} type="password"/>
                 </FormGroup>
                 <p> Déjà inscrit ?
-                    <Button
+                    <a href = "#"
                         onClick={this.handleLogoutClick}
-                        bssize="large"
-                        type="submit"
                     >
                         Se connecter
-                    </Button>
+                    </a>
                 </p>
                 <Button
                     onClick={this.send}
