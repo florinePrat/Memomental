@@ -12,7 +12,6 @@ export class signup extends React.Component {
             prenom: "",
             nom: "",
             password: "",
-            cpassword: "",
             isLoggedIn: false
         };
         this.handleChange.bind(this);
@@ -51,7 +50,7 @@ export class signup extends React.Component {
                 alert('nom vide')
             );
         }
-        if (this.state.password.length === 0 || this.state.password !== this.state.cpassword) {
+        if (this.state.password.length === 0 ) {
             return(
                 alert('votre mot de passe est vide ou il est different de la confirmation')
             );
@@ -107,7 +106,7 @@ export class signup extends React.Component {
 
     GuestGreeting() {
         return (
-            <div className="Login">
+            <div className="boxcarte">
                 <h1> Connexion </h1>
                 <p>Email</p>
                 <FormGroup controlId="email" bssize="large">
@@ -126,7 +125,6 @@ export class signup extends React.Component {
                 </p>
                 <Button
                     onClick={this.sendLog}
-                    block
                     bssize="large"
                     type="submit"
                 >
@@ -138,7 +136,7 @@ export class signup extends React.Component {
 
     UserGreeting() {
         return (
-            <div className="Login">
+            <div className="boxcarte">
                 <h1> Inscription </h1>
                 <p>Email</p>
                 <FormGroup controlId="email" bssize="large">
@@ -156,10 +154,6 @@ export class signup extends React.Component {
                 <FormGroup controlId="password" bssize="large">
                     <FormControl value={this.state.password} onChange={this.handleChange} type="password"/>
                 </FormGroup>
-                <p>Confirmez mot de passe</p>
-                <FormGroup controlId="cpassword" bssize="large">
-                    <FormControl value={this.state.cpassword} onChange={this.handleChange} type="password"/>
-                </FormGroup>
                 <p> Déjà inscrit ?
                     <a href = "#"
                         onClick={this.handleLogoutClick}
@@ -169,7 +163,6 @@ export class signup extends React.Component {
                 </p>
                 <Button
                     onClick={this.send}
-                    block
                     bssize="large"
                     type="submit"
                 >

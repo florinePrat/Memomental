@@ -61,11 +61,11 @@ header{
   max-width: 600px;
   margin: auto;
   margin-top: 50px;
-  p,a{
-    margin-right: 2%;
-    margin-left: 2%;
-  }
-}
+
+}p,a{
+   margin-right: 2%;
+   margin-left: 2%;
+ }
 
 
 // css for center text
@@ -92,6 +92,10 @@ div{
   text-align: center;
   box-sizing: border-box;
   margin: auto;
+  p,a{
+    margin-right: 2%;
+    margin-left: 2%;
+  }
   h3{
     border-style: solid;
     border-color: black;
