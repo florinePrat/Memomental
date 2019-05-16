@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {basicHeaders} from './headers';
 
-const burl = "http://localhost:8080";
+const burl = "https://memomental.herokuapp.com";
 
 // this is the request for authentification
 export default {
