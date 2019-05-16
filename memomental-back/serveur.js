@@ -29,7 +29,7 @@ app.use('/', require('./routes')());
 //Create the server
 const server = http.createServer(app);
 
-app.use(express.static(path.join(__dirname, "memomental", "build")));
+app.use(express.static(path.join(__dirname,"..", "memomental", "build")));
 
 
 app.get("*", (req, res) => {
