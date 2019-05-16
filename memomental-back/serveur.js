@@ -2,7 +2,7 @@ require('dotenv').config()
 require('./config/db')
 const express = require('express');
 const path = require('path');
-const favicon = requiere('serve-favicon');
+const favicon = require('serve-favicon');
 const bodyParser = require('body-parser');
 
 const http = require('http');
