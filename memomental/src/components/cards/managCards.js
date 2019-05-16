@@ -19,7 +19,7 @@ class gcard extends React.Component{
 
     componentDidMount() {
 
-       axios.get('http://localhost:8080/api/card/getCardsByUser',{
+       axios.get('https://memomental.herokuapp.com/api/card/getCardsByUser',{
             headers: tokenHeaders
         } )
             .then(res => {
@@ -29,19 +29,6 @@ class gcard extends React.Component{
             }, function(data){
                 console.log(data);
             })
-
-   /* const cards = [
-        {
-            name : "name",
-            labels : ["cat"],
-            rectoQuestion: "question d'une recto",
-        },
-        {
-            name : "name2",
-            labels : ["cat2"]
-        }];
-        this.setState({cards});
-        console.log(this.setState({cards}));*/
     }
 
 

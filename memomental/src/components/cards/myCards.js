@@ -20,7 +20,7 @@ class myCard extends React.Component{
     }
 
     componentDidMount() {
-        axios.get('http://localhost:8080/api/card/today',{
+        axios.get('https://memomental.herokuapp.com/api/card/today',{
                headers: tokenHeaders
            } )
                .then(res => {
