@@ -33,7 +33,7 @@ app.use(express.static(path.join(__dirname, "memomental", "build")));
 
 
 app.get("*", (req, res) => {
-    res.sendFile("../memomental/build/index.html");
+    res.sendFile(path.join(__dirname,"..", "memomental", "build", "index.html"));
 });
 
 
