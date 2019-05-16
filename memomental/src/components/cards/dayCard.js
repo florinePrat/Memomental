@@ -51,7 +51,7 @@ class dayCard extends Component{
                     <h2>Reponse : {this.state.rep} </h2>
                     <Button
                         onClick={()=>{
-                            this.setState({isDeployed:false})
+                            this.setState({isDeployed:false});
                             this.props.fn(this.props.name)
                         }}
                         bssize="large"

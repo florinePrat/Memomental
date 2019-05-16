@@ -24,7 +24,7 @@ class mycard extends Component{
                         <h2>Reponse : {this.props.rectoAnswer} </h2>
                         <Button
                             onClick={()=>{
-                                this.setState({isDeployed:false})
+                                this.setState({isDeployed:false});
                                 this.props.fn(this.props.name)
                             }}
                             bssize="large"
@@ -48,8 +48,8 @@ class mycard extends Component{
                             Voir
                         </Button>
 
-                        <Button
-                            onClick={""}
+                        {/*<Button
+                            onClick={}
                             bssize="large"
                             type="submit"
                         >
@@ -57,12 +57,12 @@ class mycard extends Component{
                         </Button>
 
                         <Button
-                            onClick={""}
+                            onClick={}
                             bssize="large"
                             type="submit"
                         >
                             Supprimer
-                        </Button>
+                        </Button>*/}
 
                     </div>
 

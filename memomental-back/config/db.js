@@ -3,7 +3,7 @@ mongoose.Promise = Promise;
 
 
 // Connect to Mongoose
-mongoose.connect(process.env.MONGO_URI, {
+mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true
 })
 
