@@ -9,15 +9,14 @@ module.exports = async (req, res) => {
         console.log(req.body);
         /* @TODO : check data validity with regExp + trim */
         //creation of user in database
-        const user = await UserController.createUser(email,firstName, lastName, password)
+        const user = await UserController.createUser(email,firstName, password)
         //if success token creation of 1day
         console.log('user created"');
         const tokenUser =
             {
                 id : user._id,
                 email: user.email,
-                firstName: user.firstName,
-                lastName: user.lastName
+                firstName: user.firstName
             }
         const token = jwt.sign(tokenUser,process.env.tokenKey , {
             expiresIn : "1d",
@@ -28,8 +27,7 @@ module.exports = async (req, res) => {
             success: true,
             message: 'Connected !',
             token: token,
-            firstName: user.firstName,
-            lastName: user.lastName
+            firstName: user.firstName
         });
     }catch (e) {
         console.log("utilisateur non créé :",e);

@@ -14,13 +14,12 @@ getUserById = async (id) => {
         throw error
     }
 }
-const createUser = async (email, firstName, lastName, password) => {
+const createUser = async (email, firstName, password) => {
     try {
         /*@TODO : check if user email already exists in database */
         const hashedPassword = await passwordEncryption.passwordEncryption(password);
         const user = new User({
             firstName: firstName,
-            lastName: lastName,
             email: email,
             password : hashedPassword,
         });

@@ -9,7 +9,7 @@ export class signup extends React.Component {
         super(props);
         this.state = {
             email: "",
-            prenom: "",
+            firstName: "",
             password: "",
             isLoggedIn: false
         };
@@ -39,9 +39,9 @@ export class signup extends React.Component {
                 )
                 ));
         }
-        if (this.state.prenom.length === 0) {
+        if (this.state.firstName.length === 0) {
             return(
-                alert('prenom vide')
+                alert('firstName vide')
             );
         }
         if (this.state.password.length === 0 ) {
@@ -49,7 +49,7 @@ export class signup extends React.Component {
                 alert('votre mot de passe est vide ou il est different de la confirmation')
             );
         }
-        API.signup(this.state.email, this.state.prenom, this.state.password).then(function (data) {
+        API.signup(this.state.email, this.state.firstName, this.state.password).then(function (data) {
            if(data.status==="200")
            {
                localStorage.setItem('token', data.token);
@@ -138,8 +138,8 @@ export class signup extends React.Component {
                     <FormControl autoFocus type="email" value={this.state.email} onChange={this.handleChange}/>
                 </FormGroup>
                 <p>Prénom</p>
-                <FormGroup controlId="prenom" bssize="large">
-                    <FormControl value={this.state.prenom} onChange={this.handleChange} type="name"/>
+                <FormGroup controlId="firstName" bssize="large">
+                    <FormControl value={this.state.firstName} onChange={this.handleChange} type="name"/>
                 </FormGroup>
                 <p>Mot de passe</p>
                 <FormGroup controlId="password" bssize="large">
