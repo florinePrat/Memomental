@@ -29,8 +29,11 @@ app.use('/', require('./routes')());
 //Create the server
 const server = http.createServer(app);
 
+app.use(express.static(path.join(__dirname, "memomental", "build")));
+
+
 app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "memomental", "build", "index.html"));
+    res.sendFile("../memomental/build/index.html");
 });
 
 
