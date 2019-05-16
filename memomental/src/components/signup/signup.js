@@ -50,7 +50,8 @@ export class signup extends React.Component {
             );
         }
         API.signup(this.state.email, this.state.firstName, this.state.password).then(function (data) {
-           if(data.status==="200")
+            console.log(data.status);
+           if(data.status===200)
            {
                localStorage.setItem('token', data.token);
                 window.location = "/card"
@@ -133,6 +134,7 @@ export class signup extends React.Component {
         return (
             <div className="boxcarte">
                 <h1> Inscription </h1>
+
                 <p>Email</p>
                 <FormGroup controlId="email" bssize="large">
                     <FormControl autoFocus type="email" value={this.state.email} onChange={this.handleChange}/>

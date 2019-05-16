@@ -54,28 +54,7 @@ const getCardsByUser = async(idUser) =>
 {
     try {
         //searching all cards by user
-        const cards = await Card.find({ owners : idUser});
-        // @TODO : find solution to avoid n2 research
-        let labels;
-
-        cards.forEach(function(card)
-        {
-            console.log("avant get",card.labels)
-            //for each cards
-            labels = [];
-            card.labels.forEach(async function(label)
-            {
-                //for each label in the card, we search label name and push into an array
-                const newLabel = await LabelController.getLabelById(label);
-                console.log(newLabel);
-                labels.push(newLabel);
-                console.log("après push",labels);
-            });
-            console.log("labels après push hors each",labels)
-            //we replace labels id array by labels names array
-            card.labels = labels;
-            console.log("après get",card.labels);
-        });
+        const cards = await Card.find({ owners : idUser}).populate('labels');
         console.log(cards);
         return cards;
     } catch(error)
@@ -87,11 +66,22 @@ const getCardsByUser = async(idUser) =>
 const isOwner = async(idUser,idCard) =>
 {
     try {
+
         const isOwner = await Card.find({owners : idUser, _id : idCard });
         console.log(isOwner);
         return isOwner;
     } catch (error) {
         console.log(error.message)
+        return error;
+    }
+}
+const deleteCard = async(idCard) =>
+{
+    try {
+        const deleted = await Card.deleteOne({_id : idCard});
+        return deleted;
+    } catch (error) {
+        console.log("erreur lors de la suppression",error.message)
         return error;
     }
 }
@@ -101,5 +91,6 @@ module.exports = {
     createCard,
     getCardsByUser,
     updateCard,
-    isOwner
+    isOwner,
+    deleteCard
 };

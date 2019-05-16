@@ -18,7 +18,7 @@ module.exports = async (req, res) => {
                 labels : object.card.labels
             }
         })
-        console.log(returnCards);
+        console.log("cartes à retourner",returnCards);
         return res.status(200).json(returnCards);
     }catch(error) {
         console.log("impossible de récupérer les cartes ",error)

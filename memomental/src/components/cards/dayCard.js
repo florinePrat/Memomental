@@ -10,6 +10,7 @@ class dayCard extends Component{
 
     constructor(props) {
         super(props);
+        console.log(props);
         this.state = {
             isDeployed: false,
             rep:"",
@@ -41,12 +42,12 @@ class dayCard extends Component{
     };
 
     render(){
-        console.log(this.props.labels)
+
         return(
 
             this.state.isDeployed
                 ?   <div className="boxcarte">
-                    <h3  style={{color:this.props.labels[0].color}}>Cat : {this.props.labels[0].name}</h3>
+                    <h3 style={{backgroundColor:this.props.labels[0].color}}>Cat : {this.props.labels[0].name}</h3>
                     <h2>Question : {this.props.rectoQuestion} </h2>
                     <h2>Reponse : {this.state.rep} </h2>
                     <Button

@@ -4,7 +4,7 @@ const decodeToken = require('../../../api/encryption/decodeToken');
 module.exports = async (req, res) => {
     try {
         console.log('arrivé dans la recherche de cartes ');
-        const decoded=decodeToken(req);
+        const decoded= await decodeToken(req);
         console.log("decoded token ",decoded);
         const cards = await CardController.getCardsByUser(decoded.id);
         return res.status(200).json(cards)

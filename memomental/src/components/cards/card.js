@@ -3,11 +3,12 @@ import React from "react";
 import {Button} from "react-bootstrap";
 
 // this class return the front of managcards and use js to view details of cards
-class mycard extends Component{
+class myCards  extends Component{
 
 
     constructor(props) {
         super(props);
+        console.log(props);
         this.state = {
             isDeployed: false,
         };
@@ -15,11 +16,12 @@ class mycard extends Component{
     }
 
     render(){
+        console.log("données :",this.props)
         return(
 
                 this.state.isDeployed
                 ?   <div className="boxcarte" >
-                        <h3 style={{color:this.props.labels[0].color}}>Cat : {this.props.labels[0].name}</h3>
+                        <h3 style={{backgroundColor:this.props.labels[0].color}}>Cat : {this.props.labels[0].name}</h3>
                         <p>Question recto : {this.props.rectoQuestion} </p>
                         <p>Reponse recto : {this.props.rectoAnswer} </p>
                         <p>Question verso : {this.props.versoQuestion} </p>
@@ -56,7 +58,7 @@ class mycard extends Component{
                     </div>
 
                     : <div className="boxcarte">
-                        <h3  style={{color:this.props.labels[0].color}}>Cat : {this.props.labels[0].name}</h3>
+                        <h3  style={{backgroundColor:this.props.labels[0].color}}>Cat : {this.props.labels[0].name}</h3>
                         <p>Nom : {this.props.name} </p>
 
 
@@ -77,4 +79,4 @@ class mycard extends Component{
         )
     }
 }
-export default mycard;
+export default myCards;

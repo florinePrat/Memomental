@@ -4,7 +4,7 @@ import { AUTH_LOGIN } from 'react-admin';
 export default (type, params) => {
     if (type === AUTH_LOGIN) {
         const { username, password } = params;
-        const request = new Request('localhost://8080', {
+        const request = new Request(process.env.apiUrl, {
             method: 'POST',
             body: JSON.stringify({ username:"user", password:"passwd" }),
             headers: new Headers({ 'Content-Type': 'application/json' }),

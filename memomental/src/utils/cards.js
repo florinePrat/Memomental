@@ -1,7 +1,8 @@
 import axios from 'axios';
 import {tokenHeaders} from './headers';
 
-const burl = "http://localhost:8080";
+const burl = process.env.REACT_APP_API_URL;
+//const burl = "http://localhost:8080";
 
 // this is the request for card's actions
 export default {
