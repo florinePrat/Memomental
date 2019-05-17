@@ -24,17 +24,31 @@ class dayCard extends Component{
         if(this.state.rep.length === 0){
             return;
         }
-        console.log(this.props._id);
-        cardDay.dayCard({answer : this.state.rep, _id : this.props._id}).then(function(res){
-            console.log(res.data)
-            if( res.data)
-            window.location = "/myCard"
-            else (this.setState({isDeployed: true,rep : res.data}))
+        else
+        {
+            console.log(this.props._id);
+            let result;
+            cardDay.dayCard({answer : this.state.rep, _id : this.props._id}).then( res => {
+                console.log(res.data)
+                if(res.data.validAnswer)
+                {
+                    console.log('bonne réponse');
+                    window.location = "/myCard"
+                }
 
-        },function(error){
-            console.log(error);
-            return;
-        })
+                else {
+                    this.setState({isDeployed : true, rep : res.data.wantedAnswer});
+                    result =  res.data.wantedAnswer;
+                }
+
+
+            },function(error){
+                console.log(error);
+                return;
+            })
+            this.setState({isDeployed : true,rep : result});
+        }
+
     };
 
     handleChange = event2 => {
@@ -55,7 +69,6 @@ class dayCard extends Component{
                     <Button
                         onClick={()=>{
                             this.setState({isDeployed:false});
-                            this.props.fn(this.props.name)
                         }}
                         bssize="large"
                     >

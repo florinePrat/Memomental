@@ -16,7 +16,7 @@ class card extends Component{
 
     componentDidMount() {
 
-        axios.get('http://localhost:8080/api/card/getCardsByUser',{
+        axios.get('http://localhost:8080/api/card/today',{
              headers: tokenHeaders
          } )
              .then(res => {
@@ -38,7 +38,7 @@ class card extends Component{
                 <div className="boxcarte">
 
                     <p>Aujourd'hui vous avez </p>
-                    <p>{this.state.cards.lenght} </p>
+                    <p>{this.state.cards.length} </p>
                     <p> cartes à réviser </p>
 
                     <Link to="/myCard">

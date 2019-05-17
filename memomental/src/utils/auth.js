@@ -23,11 +23,13 @@ export default {
     },
 
     isAuth : function() {
-        return true//localStorage.getItem('token') !== null;
+        console.log(localStorage.getItem('token'))
+        return localStorage.getItem('token') !== null;
     },
 
     logout : function() {
         localStorage.clear();
+        return true;
     }
 }
 

@@ -15,6 +15,7 @@ import { PrivateRoute } from './components/PrivateRoute.js';
 import NavBar from "./components/headerComponent/header";
 import dotenv from 'dotenv';
 
+
 // class App call all components and verify if login for some pages with PrivateRoute
 class App extends Component{
   render(){

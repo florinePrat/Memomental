@@ -53,8 +53,9 @@ export class signup extends React.Component {
             console.log(data.status);
            if(data.status===200)
            {
-               localStorage.setItem('token', data.token);
-                window.location = "/card"
+               console.log(data)
+               localStorage.setItem('token', data.data.token);
+               window.location = "/card"
            }
            else
            {

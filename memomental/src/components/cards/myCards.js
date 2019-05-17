@@ -36,16 +36,18 @@ class myCard extends React.Component{
         return(
             <div className="container-fluid">
                 <h1> Mes cartes </h1>
-
-                { this.state.cards.map(card =>
-                    <DayCard
-                        _id={card._id}
-                        name={card.name}
-                        labels={card.labels}
-                        question={card.question}
-                    />
-                )}
-
+                {this.state.cards.length ?
+                    this.state.cards.map(card =>
+                            <DayCard
+                                _id={card._id}
+                                name={card.name}
+                                labels={card.labels}
+                                question={card.question}
+                            />
+                        )
+                     :
+                    <p> Vous n'avez aucune carte à réviser</p>
+                }
             </div>
         )
     }

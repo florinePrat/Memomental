@@ -20,12 +20,14 @@ module.exports = async (req, res) => {
         { //if user can answer to this card
             console.log("is owner");
             const learning = await LearningController.getLearningByUserAndCard(decoded.id,_id);
-            let validAnswer;
+            let validAnswer,wantedAnswer;
             if(learning.recto) {
-                validAnswer = answer ===card.rectoAnswer?true:card.rectoAnswer;
+                validAnswer = answer ===card.rectoAnswer
+                 wantedAnswer = card.rectoAnswer;
             }
             else {
-                validAnswer = answer ===card.versoAnswer?true:card.versoAnswer;
+                validAnswer = answer ===card.versoAnswer;
+                 wantedAnswer = card.rectoAnswer;
             }
             console.log("réponse valide :",validAnswer);
             //getting learning of this card for this user
@@ -57,7 +59,7 @@ module.exports = async (req, res) => {
                 }
             }
             console.log("nouveau learning",updatedLearning);
-            return res.status(200).json( {validAnswer})
+            return res.status(200).json( {validAnswer,wantedAnswer})
         }
         else{
             //else return unauthorized
