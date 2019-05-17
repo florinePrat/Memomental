@@ -39,6 +39,7 @@ class dayCard extends Component{
                 else {
                     this.setState({isDeployed : true, rep : res.data.wantedAnswer});
                     result =  res.data.wantedAnswer;
+                    window.location = "/myCard"
                 }
 
 

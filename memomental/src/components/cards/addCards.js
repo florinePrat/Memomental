@@ -15,11 +15,11 @@ class addCard extends React.Component{
             this.state = {
                 _id : card._id,
                 quest1: card.rectoQuestion,
-                rep1:" ",
-                quest2: "",
-                rep2: "",
-                nom : "",
-                cat : "",
+                rep1: card.rectoAnswer,
+                quest2: card.versoQuestion,
+                rep2: card.versoAnswer,
+                nom : card.name,
+                cat : card.label[0].name,
                 isRectoIn: false,
                 isAddIn: false }
         }
