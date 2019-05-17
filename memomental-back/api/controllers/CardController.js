@@ -13,7 +13,7 @@ const getCardById = async (id) => {
         console.log("Impossible de trouver la carte demandée ");
         return error;
     }
-}
+};
 const createCard = async (name, rectoQuestion, rectoAnswer, versoQuestion, versoAnswer,userId,labelId) => {
     try {
         console.log(name);
@@ -27,13 +27,13 @@ const createCard = async (name, rectoQuestion, rectoAnswer, versoQuestion, verso
             labels : [labelId]
         });
         console.log('carte cree');
-        const savedCard= await card.save()
+        const savedCard= await card.save();
         return savedCard
     } catch (error) {
-        console.log(error.message)
+        console.log(error.message);
         return error;
     }
-}
+};
 const updateCard = async (id,name, rectoQuestion, rectoAnswer, versoQuestion, versoAnswer,labelId) => {
     try {
         console.log(id);
@@ -45,10 +45,10 @@ const updateCard = async (id,name, rectoQuestion, rectoAnswer, versoQuestion, ve
                 labels : [labelId]} },
             { new : true});
     } catch (error) {
-        console.log(error.message)
+        console.log(error.message);
         return error;
     }
-}
+};
 const getCardsByUser = async(idUser) =>
 {
     try {
@@ -58,10 +58,10 @@ const getCardsByUser = async(idUser) =>
         return cards;
     } catch(error)
     {
-        console.log(error.message)
+        console.log(error.message);
         return error;
     }
-}
+};
 const isOwner = async(idUser,idCard) =>
 {
     try {
@@ -70,22 +70,22 @@ const isOwner = async(idUser,idCard) =>
         console.log(isOwner);
         return isOwner;
     } catch (error) {
-        console.log(error.message)
+        console.log(error.message);
         return error;
     }
-}
+};
 const deleteCard = async(idCard) =>
 {
     try {
 
         const deleted = await Card.deleteOne({_id : idCard});
-        const deleteLearning = await Learning.deleteMany({ card : idCard})
+        const deleteLearning = await Learning.deleteMany({ card : idCard});
         return deleted;
     } catch (error) {
-        console.log("erreur lors de la suppression",error.message)
+        console.log("erreur lors de la suppression",error.message);
         return error;
     }
-}
+};
 
 module.exports = {
     getCardById,

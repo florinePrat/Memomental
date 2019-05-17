@@ -11,10 +11,13 @@ export class signup extends React.Component {
             email: "",
             firstName: "",
             password: "",
-            isLoggedIn: false
+            isLoggedIn: false,
+            error:false
         };
         this.handleChange.bind(this);
         this.send.bind(this);
+
+        this.sendLog.bind(this);
         this.handleLoginClick = this.handleLoginClick.bind(this);
         this.handleLogoutClick = this.handleLogoutClick.bind(this);
     }
@@ -30,44 +33,29 @@ export class signup extends React.Component {
     send = event => {
         if (this.state.email.length === 0) {
             return(
-                [
-                    'danger',
-                ].map((variant, idx) => (
-                    <Alert key={idx} variant={variant}>
-                        This is a {variant} alert—check it out!
-                    </Alert>
-                )
-                ));
+                alert('email vide')
+            );
         }
-        if (this.state.firstName.length === 0) {
+        else if (this.state.firstName.length === 0) {
             return(
                 alert('firstName vide')
             );
         }
-        if (this.state.password.length === 0 ) {
+        else if (this.state.password.length === 0 ) {
             return(
                 alert('votre mot de passe est vide ou il est different de la confirmation')
             );
+        }else{
+            API.signup(this.state.email, this.state.firstName, this.state.password).then(res => {
+                localStorage.setItem('token', res.data.token);
+                window.location = "/card"
+            }, function (error) {
+                console.log(error);
+                this.setState({error:error.response.data.error});
+            })
         }
-        API.signup(this.state.email, this.state.firstName, this.state.password).then(function (data) {
-            console.log(data.status);
-           if(data.status===200)
-           {
-               console.log(data)
-               localStorage.setItem('token', data.data.token);
-               window.location = "/card"
-           }
-           else
-           {
-               alert(data.message);
-           }
-
-
-        }, function (error) {
-            console.log(error);
-            return;
-        })
-    };
+        }
+        ;
 
     sendLog = event => {
         if(this.state.email.length === 0){
@@ -81,13 +69,13 @@ export class signup extends React.Component {
             );
         }
         else{
-            API.login(this.state.email, this.state.password).then(function(data){
-                console.log(data.data.token);
-                localStorage.setItem('token', data.data.token);
+            API.login(this.state.email, this.state.password).then(res =>{
+                console.log(res.data.token);
+                localStorage.setItem('token', res.data.token);
                 window.location = "/card"
-            }).catch(function(error){
-                console.log(error);
-                return;})
+            }, error=>{
+                console.log(error.response.data.error);
+                this.setState({error:error.response.data.error});})
 
             }
         }
@@ -104,6 +92,11 @@ export class signup extends React.Component {
         return (
             <div className="boxcarte">
                 <h1> Connexion </h1>
+                {this.state.error ?
+                    <div style={{color:"red"}}>
+                        {this.state.error}
+                    </div>:false
+                }
                 <p>Email</p>
                 <FormGroup controlId="email" bssize="large">
                     <FormControl autoFocus type="email" value={this.state.email} onChange={this.handleChange}/>
@@ -135,7 +128,11 @@ export class signup extends React.Component {
         return (
             <div className="boxcarte">
                 <h1> Inscription </h1>
-
+                {this.state.error ?
+                    <div style={{color:"red"}}>
+                        {this.state.error}
+                    </div>:false
+                }
                 <p>Email</p>
                 <FormGroup controlId="email" bssize="large">
                     <FormControl autoFocus type="email" value={this.state.email} onChange={this.handleChange}/>

@@ -7,7 +7,7 @@ frequence : stored in number of days, represent de gap between two learning
 const StateSchema = new mongoose.Schema({
     level : { type : Number, required : true},
     frequence : { type : Number, required : true}
-})
+});
 
 const State = mongoose.model('State', StateSchema);
 module.exports = State;

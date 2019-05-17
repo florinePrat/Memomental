@@ -15,10 +15,10 @@ module.exports = async (req, res) => {
               //if this label doesn't exit we create one
               label = await LabelController.createLabel(cat,'blue');
           }
-          const card = await CardController.createCard(nom,quest1,rep1,quest2,rep2,decoded.id,label._id)
+          const card = await CardController.createCard(nom,quest1,rep1,quest2,rep2,decoded.id,label._id);
         //we add one day to current date to set de first learning of the new card at tomorrow
         const nextDate = moment();
-          console.log("nouvelle date",nextDate)
+          console.log("nouvelle date",nextDate);
             const learning = await LearningController.createLearning(nextDate,decoded.id,card._id,true);
           //@TODO : return card with good name label
           console.log("learning ajouté :",learning);
@@ -29,6 +29,6 @@ module.exports = async (req, res) => {
         console.log("shit happens in add card :",error);
         res.status(error.code).json(error.message);
     }
-    }
+    };
 
 

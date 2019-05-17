@@ -14,7 +14,7 @@ const getLearningByUserAndCard = async (userId,cardId) => {
         console.log("Impossible de trouver le learning demandé ");
         return error;
     }
-}
+};
 const createLearning = async (nextDate, userId, cardId,recto) => {
     try {
         console.log(nextDate);
@@ -28,10 +28,10 @@ const createLearning = async (nextDate, userId, cardId,recto) => {
         console.log('learning cree');
         return savedLearning
     } catch (error) {
-        console.log(error.message)
+        console.log(error.message);
         return error;
     }
-}
+};
 const updateLearning = async(id,nextDate, level,recto) =>
 {
     try {
@@ -47,26 +47,26 @@ const updateLearning = async(id,nextDate, level,recto) =>
         console.log(error.message);
         return error;
     }
-}
+};
 /*  today is in date format : dd/MM/YYYY" */
 const getTodayLearnings = async(idUser) =>
 {
     try {
         //searching all learnings by user of today
         const today = moment().add("1","d").format("YYYY-MM-DD");
-            console.log("get today",today)
+            console.log("get today",today);
         const cards = await Learning.find({ user : idUser, nextDate : {$lte: today}}).populate([{path : 'card', populate : ["labels"]}]);
         console.log(cards);
         return cards;
     } catch(error)
     {
-        console.log(error.message)
+        console.log(error.message);
         return error;
     }
-}
+};
 module.exports = {
     getLearningByUserAndCard,
     createLearning,
     updateLearning,
     getTodayLearnings,
-}
+};

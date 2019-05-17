@@ -12,7 +12,7 @@ const getStateByLevel = async (level) => {
         console.log("Impossible de trouver le state demandé ");
         return error;
     }
-}
+};
 module.exports = {
     getStateByLevel
-}
+};
