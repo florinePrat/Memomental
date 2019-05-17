@@ -121,7 +121,7 @@ class addCard extends React.Component{
                     <h2> Informations </h2>
                     <p>Nom</p>
                     <FormGroup controlId="nom" bssize="large">
-                        <FormControl autoFocus type="text" value={this.state.nom} onChange={this.handleChange}/>
+                        <FormControl autoComplete="off" autoFocus type="text" value={this.state.nom} onChange={this.handleChange}/>
                     </FormGroup>
                     <p>Catégorie</p>
                     <FormGroup controlId="cat" bssize="large">
