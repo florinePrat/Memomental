@@ -23,11 +23,11 @@ module.exports = async (req, res) => {
             console.log('learning associé',learning)
             let validAnswer,wantedAnswer;
             if(learning.recto) {
-                validAnswer = answer.toString()===card.rectoAnswer;
+                validAnswer = answer.toString().trim().toLowerCase()===card.rectoAnswer;
                 wantedAnswer = card.rectoAnswer;
             }
             else {
-                validAnswer = answer.toString()===card.versoAnswer;
+                validAnswer = answer.toString().trim().toLowerCase()===card.versoAnswer;
                 wantedAnswer = card.versoAnswer;
             }
             console.log("réponse valide :",validAnswer);

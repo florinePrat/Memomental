@@ -16,7 +16,7 @@ module.exports = async (req, res) => {
             return res.status(400).json({error : "Aucun mot de passe saisi"});
         }
         const userExist = await UserController.getUserByEmail(email);
-        console.log(userExist)
+        console.log(userExist);
         if (userExist){
             return res.status(400).json({error : "Cet email est déjà utilisé"});
         }
