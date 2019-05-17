@@ -6,7 +6,8 @@ const State = require('../models/State');
 
 const getStateByLevel = async (level) => {
     try {
-        return await State.find({ level : level});
+        const state = await State.find({ level : level});
+        return state[0];
     } catch (error) {
         console.log("Impossible de trouver le state demandé ");
         return error;

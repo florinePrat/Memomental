@@ -12,7 +12,7 @@ module.exports = async (req, res) => {
         const decoded=await decodeToken(req);
         console.log("arrivé dans answer");
         const  {_id,answer} = req.body.rep;
-        console.log("requête " ,req.body.rep);
+        console.log("answer " ,answer);
         console.log("token :" ,decoded.id);
         const card = await CardController.getCardById(_id);
         console.log(card)
@@ -23,12 +23,12 @@ module.exports = async (req, res) => {
             console.log('learning associé',learning)
             let validAnswer,wantedAnswer;
             if(learning.recto) {
-                validAnswer = answer ===card.rectoAnswer
-                 wantedAnswer = card.rectoAnswer;
+                validAnswer = answer.toString()===card.rectoAnswer;
+                wantedAnswer = card.rectoAnswer;
             }
             else {
-                validAnswer = answer ===card.versoAnswer;
-                 wantedAnswer = card.rectoAnswer;
+                validAnswer = answer.toString()===card.versoAnswer;
+                wantedAnswer = card.versoAnswer;
             }
             console.log("réponse valide :",validAnswer);
             //getting learning of this card for this user
@@ -39,15 +39,15 @@ module.exports = async (req, res) => {
                 //getting state of this level +1
                 const state = await State.getStateByLevel(learning.level+1);
                 console.log("state",state)
-                const nextDate = moment(learning.nextDate).add(state.frequence,"d")
-                 updatedLearning  = await LearningController.updateLearning(learning._id,nextDate,state.level,!learning.recto);
+                const nextDate = moment().add(state.frequence,"d").format();
+                 updatedLearning  = await LearningController.updateLearning(learning._id,nextDate,learning.level+1,!learning.recto);
             }
             else {
-                if(learning.level===1)
+                if(learning.level<="1")
                 {
                     console.log('learning level =1');
                     //if already in level 1 we juste put it for tomorrow
-                    const nextDate = moment(Date.now()).add("1","d");
+                    const nextDate = moment().add("1","d").format();
                     console.log("nouvelle date",nextDate);
                    updatedLearning = await LearningController.updateLearning(learning._id,nextDate,"1",!learning.recto);
                 }
@@ -55,8 +55,11 @@ module.exports = async (req, res) => {
                     console.log('learning level >1');
                     //getting state of this level -1
                     const state = await State.getStateByLevel(learning.level - 1);
+                    console.log("state",state)
                     //setting next date at frequence of -1 level
-                    const nextDate = moment(learning.nextDate).add(state.frequence, "d");
+                    let nextDate = moment();
+                    nextDate.add(state.frequence,"d")
+                    console.log(nextDate);
                      updatedLearning = await LearningController.updateLearning(learning._id, nextDate, learning.level - 1, !learning.recto);
                 }
             }
