@@ -20,6 +20,7 @@ module.exports = async (req, res) => {
         { //if user can answer to this card
             console.log("is owner");
             const learning = await LearningController.getLearningByUserAndCard(decoded.id,_id);
+            console.log('learning associé',learning)
             let validAnswer,wantedAnswer;
             if(learning.recto) {
                 validAnswer = answer ===card.rectoAnswer
@@ -37,8 +38,9 @@ module.exports = async (req, res) => {
             if(validAnswer) {
                 //getting state of this level +1
                 const state = await State.getStateByLevel(learning.level+1);
+                console.log("state",state)
                 const nextDate = moment(learning.nextDate).add(state.frequence,"d")
-                 updatedLearning  = await LearningController.updateLearning(learning._id,nextDate,state.level+1,!learning.recto);
+                 updatedLearning  = await LearningController.updateLearning(learning._id,nextDate,state.level,!learning.recto);
             }
             else {
                 if(learning.level===1)

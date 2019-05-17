@@ -44,7 +44,7 @@ const updateLearning = async(id,nextDate, level,recto) =>
         return learning;
     } catch(error)
     {
-        console.log(error.message)
+        console.log(error.message);
         return error;
     }
 }
@@ -54,7 +54,7 @@ const getTodayLearnings = async(idUser) =>
     try {
         //searching all learnings by user of today
         const today = moment().add("1","d").format("YYYY-MM-DD");
-            console.log(today)
+            console.log("get today",today)
         const cards = await Learning.find({ user : idUser, nextDate : {$lte: today}}).populate([{path : 'card', populate : ["labels"]}]);
         console.log(cards);
         return cards;

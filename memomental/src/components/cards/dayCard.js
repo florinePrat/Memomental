@@ -81,8 +81,8 @@ class dayCard extends Component{
                     <h3  style={{backgroundColor:this.props.labels[0].color}}>Cat : {this.props.labels[0].name}</h3>
                     <p>Question : {this.props.question} </p>
 
-                    <FormGroup controlId="rep" bssize="large">
-                        <FormControl type="text" value={this.state.rep} onChange={this.handleChange}/>
+                    <FormGroup  controlId="rep" bssize="large">
+                        <FormControl autoComplete="off" type="text" value={this.state.rep} onChange={this.handleChange}/>
                     </FormGroup>
 
                     <Button

@@ -4,7 +4,7 @@ mongoose.Promise = Promise;
 require('dotenv').config();
 
 // Connect to Mongoose
-mongoose.connect(process.env.MONGO_URL, {
+mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true
 })
 

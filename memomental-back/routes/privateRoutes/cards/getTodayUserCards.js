@@ -7,10 +7,10 @@ module.exports = async (req, res) => {
     try {
         console.log('arrivé dans la recherche de learnings  ');
         const decoded= await decodeToken(req);
-        console.log("decoded token ",decoded);
-        console.log(moment().format("DD/MM/YYYY"));
+        console.log("decoded token ",decoded);;
         const todayCards = await LearningController.getTodayLearnings(decoded.id);
         const returnCards = todayCards.map(function(object){
+            console.log("objet",object)
             return {
                 _id : object.card._id,
                 name : object.card.name,

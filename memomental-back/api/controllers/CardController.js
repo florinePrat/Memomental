@@ -3,8 +3,7 @@ Card Controller handle all action with card database object : getting card by it
  */
 
 const Card = require('../models/Card');
-
-const LabelController = require('./LabelController');
+const Learning = require('../models/Card');
 
 const getCardById = async (id) => {
     try {
@@ -78,7 +77,9 @@ const isOwner = async(idUser,idCard) =>
 const deleteCard = async(idCard) =>
 {
     try {
+
         const deleted = await Card.deleteOne({_id : idCard});
+        const deleteLearning = await Learning.deleteMany({ card : idCard})
         return deleted;
     } catch (error) {
         console.log("erreur lors de la suppression",error.message)

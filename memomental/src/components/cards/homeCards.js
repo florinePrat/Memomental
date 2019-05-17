@@ -22,7 +22,6 @@ class card extends Component{
              .then(res => {
                  const cards = res.data;
                  this.setState({ cards });
-                 console.log(this.setState({cards}));
              }, function(data)
              {
                  console.log("Impossible de récupérer les cartes :",data.message)
