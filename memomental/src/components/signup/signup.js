@@ -49,7 +49,7 @@ export class signup extends React.Component {
             API.signup(this.state.email, this.state.firstName, this.state.password).then(res => {
                 localStorage.setItem('token', res.data.token);
                 window.location = "/card"
-            }, function (error) {
+            }, error =>{
                 console.log(error);
                 this.setState({error:error.response.data.error});
             })

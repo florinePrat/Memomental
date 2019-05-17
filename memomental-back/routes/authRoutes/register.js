@@ -14,7 +14,10 @@ module.exports = async (req, res) => {
             return res.status(400).json({error : "Aucun prénom saisi"});
         }else if (!password){
             return res.status(400).json({error : "Aucun mot de passe saisi"});
-        }else if (UserController.getUserByEmail(email)){
+        }
+        const userExist = await UserController.getUserByEmail(email);
+        console.log(userExist)
+        if (userExist){
             return res.status(400).json({error : "Cet email est déjà utilisé"});
         }
         else{
