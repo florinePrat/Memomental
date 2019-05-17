@@ -52,13 +52,13 @@ class gcard extends React.Component{
 
                     { this.state.cards.map(card =>
                         <Mycard
+                            _id={card._id}
                             name={card.name}
                             labels={card.labels}
                             rectoQuestion={card.rectoQuestion}
                             rectoAnswer={card.rectoAnswer}
                             versoQuestion={card.versoQuestion}
                             versoAnswer={card.versoAnswer}
-                            fn={(id)=>console.log(id)}
                         />
                         )}
 

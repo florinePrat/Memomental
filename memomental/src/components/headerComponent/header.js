@@ -6,22 +6,20 @@ import auth from "../../utils/auth";
 // the navbar of application
 class NavBar extends Component {
 
-    constructor(props)
-    {
+    constructor(props) {
         super(props);
         this.state = {
             isAuth : auth.isAuth(),
-        }
+        };
         this.logout.bind(this);
 
     }
 
-    logout = event =>
-    {
-        console.log("logout called")
+    logout = event => {
+        console.log("logout called");
         auth.logout();
         window.location= '/';
-    }
+    };
     render() {
         return (
             <Navbar bg="light" expand="lg">
@@ -39,14 +37,14 @@ class NavBar extends Component {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
 
-                        { !this.state.isAuth?(
+                        { !this.state.isAuth
+                            ?(
                             <Nav className="mr-auto">
                                  <Nav.Link href="/">Home</Nav.Link>
                                     <Nav.Link href="/signup">Login/Signup</Nav.Link>
                             </Nav>
                             )
-                            :
-                            (
+                            :(
                                 <Nav className="mr-auto">
                                     <Nav.Link href="/card">Home</Nav.Link>
                                     <Nav.Link href='/gcard' >Mes cartes</Nav.Link>

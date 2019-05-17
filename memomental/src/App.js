@@ -32,6 +32,7 @@ class App extends Component{
                     <PrivateRoute path='/card' component={card}/>
                     <PrivateRoute path='/myCard' component={myCard}/>
                     <PrivateRoute path='/addCard' component={addCard}/>
+                    <PrivateRoute path='/editCard/:card' component={addCard}/>
                     <PrivateRoute path='/gcard' component={gcard}/>
                 </Switch>
             </div>

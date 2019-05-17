@@ -8,16 +8,35 @@ class addCard extends React.Component{
 
     constructor(props) {
         super(props);
-        this.state = {
-            quest1: "",
-            rep1: "",
-            quest2: "",
-            rep2: "",
-            nom : "",
-            cat : "",
-            isRectoIn: false,
-            isAddIn: false
-        };
+        if(props.card)
+        {
+            const card = props.card;
+            console.log(card)
+            this.state = {
+                _id : card._id,
+                quest1: card.rectoQuestion,
+                rep1:" ",
+                quest2: "",
+                rep2: "",
+                nom : "",
+                cat : "",
+                isRectoIn: false,
+                isAddIn: false }
+        }
+
+        else {
+            this.state = {
+                quest1: "",
+                rep1: "",
+                quest2: "",
+                rep2: "",
+                nom : "",
+                cat : "",
+                isRectoIn: false,
+                isAddIn: false
+            };
+        }
+
         this.handleChange.bind(this);
         this.send.bind(this);
         this.handleRectoClick = this.handleRectoClick.bind(this);
@@ -64,12 +83,24 @@ class addCard extends React.Component{
             return;
         }
         else {
-            cardsRequest.addcard(this.state.nom,this.state.cat, this.state.quest1, this.state.rep1,this.state.quest2, this.state.rep2).then(function (data) {
-                window.location = "/gcard"
-            }, function (error) {
-                console.log(error);
-                return;
-            })
+            if(this.state._id)
+            {
+                cardsRequest.updateCard(this.state._id,this.state.nom,this.state.cat, this.state.quest1, this.state.rep1,this.state.quest2, this.state.rep2).then(function (data) {
+                    window.location = "/gcard"
+                }, function (error) {
+                    console.log(error);
+                    return;
+                })
+            }
+            else {
+                cardsRequest.addcard(this.state.nom,this.state.cat, this.state.quest1, this.state.rep1,this.state.quest2, this.state.rep2).then(function (data) {
+                    window.location = "/gcard"
+                }, function (error) {
+                    console.log(error);
+                    return;
+                })
+            }
+
         }
 
     };
@@ -84,7 +115,7 @@ class addCard extends React.Component{
     addCreation(){
         return(
             <div className="container-fluid">
-                <h1> Ajout d'une carte </h1>
+                <h1> {this.state._id?"Edition d'une carte" :"Ajout d'une carte"}</h1>
 
                 <div className="boxcarte">
                     <h2> Informations </h2>

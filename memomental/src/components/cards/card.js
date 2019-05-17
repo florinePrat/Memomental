@@ -1,6 +1,12 @@
 import {Component} from "react";
 import React from "react";
 import {Button} from "react-bootstrap";
+import axios from 'axios';
+import {tokenHeaders} from '../../utils/headers';
+import AddCard from './addCards';
+
+const burl = process.env.REACT_APP_API_URL;
+
 
 // this class return the front of managcards and use js to view details of cards
 class myCards  extends Component{
@@ -11,13 +17,30 @@ class myCards  extends Component{
         console.log(props);
         this.state = {
             isDeployed: false,
+            edit : false,
         };
+        this.delete.bind(this);
+        this.edit.bind(this);
+    }
+
+    delete=event =>{
+            axios.delete(burl + '/api/card/'+this.props._id, { headers: tokenHeaders})
+                .then(res =>{
+                    console.log(res.data);
+                    window.location = "/gcard"
+                })
+    }
+    edit = event => {
 
     }
 
     render(){
         console.log("données :",this.props)
         return(
+            this.state.edit?
+                    <AddCard
+                        card = {this.props}
+                    />:
 
                 this.state.isDeployed
                 ?   <div className="boxcarte" >
@@ -26,20 +49,20 @@ class myCards  extends Component{
                         <p>Reponse recto : {this.props.rectoAnswer} </p>
                         <p>Question verso : {this.props.versoQuestion} </p>
                         <p>Reponse verso : {this.props.versoAnswer} </p>
+
                         <Button
                             className="btn-info"
                             onClick={()=>{
-                                this.setState({isDeployed:false});
-                            }}
-                            bssize="large"
+                                this.setState({edit : true});
+
+                        }}
+                        bssize="large"
                         >
                             modifier
                         </Button>
                         <Button
                             className="btn-info"
-                            onClick={()=>{
-                                this.setState({isDeployed:false});
-                            }}
+                            onClick={ this.delete }
                             bssize="large"
                         >
                             supprimer
@@ -48,7 +71,6 @@ class myCards  extends Component{
                             className="btn-info"
                             onClick={()=>{
                                 this.setState({isDeployed:false});
-                                this.props.fn(this.props.name)
                             }}
                             bssize="large"
                         >
