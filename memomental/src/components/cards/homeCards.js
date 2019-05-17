@@ -4,6 +4,8 @@ import {Link} from "react-router-dom";
 import axios from 'axios';
 import {tokenHeaders} from '../../utils/headers';
 
+const burl = process.env.REACT_APP_API_URL;
+
 // this class is the home page for card, display nb of cards for the current day
 class card extends Component{
 
@@ -16,7 +18,7 @@ class card extends Component{
 
     componentDidMount() {
 
-        axios.get('http://localhost:8080/api/card/today',{
+        axios.get(burl + '/api/card/today',{
              headers: tokenHeaders
          } )
              .then(res => {
