@@ -3,6 +3,7 @@ import DayCard from './dayCard';
 import axios from 'axios';
 import {tokenHeaders} from '../../utils/headers';
 
+const burl = process.env.REACT_APP_API_URL;
 // this class manage myCard for the request to display the card of day
 class myCard extends React.Component{
 
@@ -12,7 +13,7 @@ class myCard extends React.Component{
         this.state = {
             rep : "",
             labels : "",
-            rectoQuestion: "",
+            question: "",
             cards: []
         };
 
@@ -20,7 +21,7 @@ class myCard extends React.Component{
     }
 
     componentDidMount() {
-        axios.get('https://memomental.herokuapp.com/api/card/today',{
+        axios.get(burl + '/api/card/today',{
                headers: tokenHeaders
            } )
                .then(res => {
@@ -38,9 +39,10 @@ class myCard extends React.Component{
 
                 { this.state.cards.map(card =>
                     <DayCard
+                        _id={card._id}
                         name={card.name}
                         labels={card.labels}
-                        rectoQuestion={card.rectoQuestion}
+                        question={card.question}
                     />
                 )}
 

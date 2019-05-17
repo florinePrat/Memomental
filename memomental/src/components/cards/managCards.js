@@ -5,8 +5,10 @@ import {Button} from "react-bootstrap";
 import axios from 'axios';
 import {tokenHeaders} from '../../utils/headers';
 
+const burl = process.env.REACT_APP_API_URL;
 // this class display all of the cards for 1 user and propose to manage them
 class gcard extends React.Component{
+
 
 
     constructor(props) {
@@ -19,7 +21,7 @@ class gcard extends React.Component{
 
     componentDidMount() {
 
-       axios.get('https://memomental.herokuapp.com/api/card/getCardsByUser',{
+       axios.get(burl + '/api/card/getCardsByUser',{
             headers: tokenHeaders
         } )
             .then(res => {
@@ -53,6 +55,9 @@ class gcard extends React.Component{
                             name={card.name}
                             labels={card.labels}
                             rectoQuestion={card.rectoQuestion}
+                            rectoAnswer={card.rectoAnswer}
+                            versoQuestion={card.versoQuestion}
+                            versoAnswer={card.versoAnswer}
                             fn={(id)=>console.log(id)}
                         />
                         )}

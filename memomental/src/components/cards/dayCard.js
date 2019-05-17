@@ -24,16 +24,18 @@ class dayCard extends Component{
         if(this.state.rep.length === 0){
             return;
         }
-        cardDay.dayCard(this.state.rep).then(function(res){
-            if( res.data === true)
+        console.log(this.props._id);
+        cardDay.dayCard({answer : this.state.rep, _id : this.props._id}).then(function(res){
+            console.log(res.data)
+            if( res.data)
             window.location = "/myCard"
             else (this.setState({isDeployed: true,rep : res.data}))
+
         },function(error){
             console.log(error);
             return;
         })
     };
-
 
     handleChange = event2 => {
         this.setState({
@@ -48,7 +50,7 @@ class dayCard extends Component{
             this.state.isDeployed
                 ?   <div className="boxcarte">
                     <h3 style={{backgroundColor:this.props.labels[0].color}}>Cat : {this.props.labels[0].name}</h3>
-                    <h2>Question : {this.props.rectoQuestion} </h2>
+                    <p>Question : {this.props.question} </p>
                     <h2>Reponse : {this.state.rep} </h2>
                     <Button
                         onClick={()=>{
@@ -64,13 +66,14 @@ class dayCard extends Component{
 
                 : <div className="boxcarte">
                     <h3  style={{backgroundColor:this.props.labels[0].color}}>Cat : {this.props.labels[0].name}</h3>
-                    <h2>Question : {this.props.rectoQuestion} </h2>
+                    <p>Question : {this.props.question} </p>
 
                     <FormGroup controlId="rep" bssize="large">
-                        <FormControl autoFocus type="text" value={this.state.rep} onChange={this.handleChange}/>
+                        <FormControl type="text" value={this.state.rep} onChange={this.handleChange}/>
                     </FormGroup>
 
                     <Button
+                        className="btn-info"
                         onClick={this.send}
                         block
                         bssize="large"

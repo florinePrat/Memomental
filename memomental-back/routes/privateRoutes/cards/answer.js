@@ -11,36 +11,34 @@ module.exports = async (req, res) => {
         //@TODO : check id card id is mongo id and respond 400 if not
         const decoded=await decodeToken(req);
         console.log("arrivé dans answer");
-        const  {_id,recto,answer} = req.body;
-        console.log(decoded.id);
-        const card = await CardController.getCardById(_id)
+        const  {_id,answer} = req.body.rep;
+        console.log("requête " ,req.body.rep);
+        console.log("token :" ,decoded.id);
+        const card = await CardController.getCardById(_id);
         console.log(card)
         if(card.owners.indexOf(decoded.id)!==-1)
         { //if user can answer to this card
             console.log("is owner");
+            const learning = await LearningController.getLearningByUserAndCard(decoded.id,_id);
             let validAnswer;
-            if(recto)
-            {
+            if(learning.recto) {
                 validAnswer = answer ===card.rectoAnswer?true:card.rectoAnswer;
             }
-            else
-            {
+            else {
                 validAnswer = answer ===card.versoAnswer?true:card.versoAnswer;
             }
             console.log("réponse valide :",validAnswer);
             //getting learning of this card for this user
-            const learning = await LearningController.getLearningByUserAndCard(decoded.id,_id);
+
             console.log("récupération du learning associé",learning);
             let  updatedLearning;
-            if(validAnswer)
-            {
+            if(validAnswer) {
                 //getting state of this level +1
                 const state = await State.getStateByLevel(learning.level+1);
                 const nextDate = moment(learning.nextDate).add(state.frequence,"d")
                  updatedLearning  = await LearningController.updateLearning(learning._id,nextDate,state.level+1,!learning.recto);
             }
-            else
-            {
+            else {
                 if(learning.level===1)
                 {
                     console.log('learning level =1');
@@ -61,8 +59,7 @@ module.exports = async (req, res) => {
             console.log("nouveau learning",updatedLearning);
             return res.status(200).json( {validAnswer})
         }
-        else
-        {
+        else{
             //else return unauthorized
             return res.status(403).send( {message : "Vous n'avez pas les droits pour répondre à cette carte"});
         }

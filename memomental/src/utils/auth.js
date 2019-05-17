@@ -1,10 +1,7 @@
 import axios from 'axios';
 import {basicHeaders} from './headers';
 
-
-//const burl = "https://memomental.herokuapp.com";
 const burl = process.env.REACT_APP_API_URL;
-console.log(burl);
 // this is the request for authentification
 export default {
     login : function(email,password) {
