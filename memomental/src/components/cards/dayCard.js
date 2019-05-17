@@ -88,7 +88,6 @@ class dayCard extends Component{
                     <Button
                         className="btn-info"
                         onClick={this.send}
-                        block
                         bssize="large"
                         type="submit"
                     >
