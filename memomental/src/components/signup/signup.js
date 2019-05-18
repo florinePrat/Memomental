@@ -45,7 +45,7 @@ export class signup extends React.Component {
                 localStorage.setItem('token', res.data.token);
                 localStorage.setItem('points', res.data.points);
                 localStorage.setItem('firstName', res.data.firstName);
-                window.location = "/card"
+                window.location = "/tutorial"
             }, error =>{
                 console.log(error);
                 this.setState({error:error.response.data.error});

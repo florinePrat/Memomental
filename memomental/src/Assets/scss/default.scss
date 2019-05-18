@@ -93,7 +93,7 @@ div{
   border-style: solid;
   border-color: #889cbf;
   border-width: 0.30px;
-  border-radius: 5%;
+  border-radius: 10px;
   background-color: rgba(216, 255, 243, 0.34);
   width: 90%;
   padding: 40px 3%;
@@ -125,5 +125,12 @@ div{
   margin-right: 1%;
   margin-left: 1%;
   left:2%;
+}
+
+.tuto{
+  display: block;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
 }
 

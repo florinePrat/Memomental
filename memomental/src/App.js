@@ -13,6 +13,7 @@ import { Switch } from 'react-router-dom';
 import { signup } from './components/signup/signup.js';
 import { PrivateRoute } from './components/PrivateRoute.js';
 import NavBar from "./components/headerComponent/header";
+import tutorial from "./components/cards/tutorial";
 
 
 // class App call all components and verify if login for some pages with PrivateRoute
@@ -33,6 +34,7 @@ class App extends Component{
                     <PrivateRoute path='/addCard' component={addCard}/>
                     <PrivateRoute path='/editCard/:card' component={addCard}/>
                     <PrivateRoute path='/gcard' component={gcard}/>
+                    <PrivateRoute path='/tutorial' component={tutorial}/>
                 </Switch>
             </div>
 
