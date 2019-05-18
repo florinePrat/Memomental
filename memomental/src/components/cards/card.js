@@ -41,7 +41,7 @@ class myCards  extends Component{
 
                 this.state.isDeployed
                 ?   <div className="boxcarte" >
-                        <h3 style={{backgroundColor:this.props.labels[0].color}}>Cat : {this.props.labels[0].name}</h3>
+                        <h3 style={{backgroundColor:this.props.labels[0].color}}> {this.props.labels[0].name}</h3>
                         <p>Question recto : {this.props.rectoQuestion} </p>
                         <p>Reponse recto : {this.props.rectoAnswer} </p>
                         <p>Question verso : {this.props.versoQuestion} </p>
@@ -77,7 +77,7 @@ class myCards  extends Component{
                     </div>
 
                     : <div className="boxcarte">
-                        <h3  style={{backgroundColor:this.props.labels[0].color}}>Cat : {this.props.labels[0].name}</h3>
+                        <h3  style={{backgroundColor:this.props.labels[0].color}}>{this.props.labels[0].name}</h3>
                         <p>Nom : {this.props.name} </p>
 
 

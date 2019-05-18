@@ -12,7 +12,8 @@ class card extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            cards: []
+            cards: [],
+            nocard:false
         }
     }
 
@@ -24,6 +25,9 @@ class card extends Component{
              .then(res => {
                  const cards = res.data;
                  this.setState({ cards });
+                 if (this.state.cards.length ===0){
+                     this.setState({nocard:true});
+                 }
              }, function(data)
              {
                  console.log("Impossible de récupérer les cartes :",data.message)
@@ -35,36 +39,51 @@ class card extends Component{
         return(
             <div className="container-fluid">
                 <h1> Mes cartes </h1>
+                <div>
+                {this.state.nocard?
 
-                <div className="boxcarte">
+                    <div className="boxcarte">
 
-                    <p>Aujourd'hui vous avez </p>
-                    <p>{this.state.cards.length} </p>
-                    <p> cartes à réviser </p>
+                        <p>Aujourd'hui vous avez pas de cartes a réviser ... </p>
+                        <Link to="/addCard">
+                            <Button
+                                className="btn-info"
+                                bssize="small"
+                                type="submit"
+                            >
+                                Ajoutez en une
+                            </Button>
+                        </Link>
+                    </div>
 
-                    <Link to="/myCard">
-                        <Button
-                            className="btn-info"
-                            bssize="small"
-                            type="submit"
-                        >
-                            C'est parti !
-                        </Button>
-                    </Link>
-                    <Link to="/gcard">
-                        <Button
-                            className="btn-info"
-                            bssize="small"
-                            type="submit"
-                        >
-                            Gérer mes cartes
-                        </Button>
-                    </Link>
+                    :<div className="boxcarte">
+                        <p>Aujourd'hui vous avez </p>
+                        <p className="nb">{this.state.cards.length} </p>
+                        <p> cartes à réviser </p>
 
-                </div>
+                        <Link to="/myCard">
+                            <Button
+                                className="btn-info"
+                                bssize="small"
+                                type="submit"
+                            >
+                                C'est parti !
+                            </Button>
+                        </Link>
+                        <Link to="/gcard">
+                            <Button
+                                className="btn-info"
+                                bssize="small"
+                                type="submit"
+                            >
+                                Gérer mes cartes
+                            </Button>
+                        </Link>
+                    </div>}
+                </div> );
 
-            </div>
-        )
+
     }
 }
+
 export default card;

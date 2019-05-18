@@ -10,7 +10,6 @@ class dayCard extends Component{
 
     constructor(props) {
         super(props);
-        console.log(props);
         this.state = {
             display:true,
             rep:"",
@@ -51,7 +50,7 @@ class dayCard extends Component{
 
     next = event =>{
         this.setState({display:false})
-    }
+    };
 
     handleChange = event2 => {
         this.setState({
@@ -64,7 +63,7 @@ class dayCard extends Component{
         return(
             this.state.display?
             <div className="boxcarte">
-                <h3  style={{backgroundColor:this.props.labels[0].color}}>Cat : {this.props.labels[0].name}</h3>
+                <h3  style={{backgroundColor:this.props.labels[0].color}}>{this.props.labels[0].name}</h3>
                 <p>Question : {this.props.question} </p>
                 {this.state.wantedAnswer || this.state.validAnswer ?
                     <div>

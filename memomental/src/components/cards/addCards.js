@@ -8,8 +8,7 @@ class addCard extends React.Component{
 
     constructor(props) {
         super(props);
-        if(props.card)
-        {
+        if(props.card) {
             const card = props.card;
             console.log(card)
             this.state = {

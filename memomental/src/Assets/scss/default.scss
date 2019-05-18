@@ -72,10 +72,19 @@ div{
   h1{
     text-align: center;
     padding-bottom: 20px;
+    font-family: "Comic Sans MS";
   }
 
   p{
     text-align: center;
+    font-family: "Comic Sans MS";
+  }
+  h3{
+    font-family: "Comic Sans MS";
+  }
+  .nb {
+    font-family: Algerian;
+    font-size: 50px;
   }
 }
 
@@ -83,8 +92,9 @@ div{
 .boxcarte{
   border-style: solid;
   border-color: #889cbf;
-  border-width: 0.50px;
+  border-width: 0.30px;
   border-radius: 5%;
+  background-color: rgba(216, 255, 243, 0.34);
   width: 90%;
   padding: 40px 3%;
   text-align: center;
