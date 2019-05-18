@@ -39,9 +39,8 @@ class card extends Component{
         return(
             <div className="container-fluid">
                 <h1> Mes cartes </h1>
-                <div>
-                {this.state.nocard?
 
+                {this.state.nocard ?
                     <div className="boxcarte">
 
                         <p>Aujourd'hui vous avez pas de cartes a réviser ... </p>
@@ -79,11 +78,12 @@ class card extends Component{
                                 Gérer mes cartes
                             </Button>
                         </Link>
-                    </div>}
-                </div> );
+                    </div>
+                }
+            </div>
+            )
+        }
 
-
-    }
 }
 
 export default card;
