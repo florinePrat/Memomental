@@ -5,8 +5,13 @@ const path = require('path');
 const favicon = require('serve-favicon');
 const bodyParser = require('body-parser');
 const http = require('http');
+//launch node schedule :
+const schedule = require('./api/schedule/notifCard');
+//let schedule = require('node-schedule');
+//schedule.scheduleJob('*/5 * * * * *', () => { console.log("shcedye"); })
 
 const app = express();
+
 //parse the request body
 app.use(bodyParser.json());
 
