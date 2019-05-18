@@ -32,19 +32,13 @@ export class signup extends React.Component {
 
     send = event => {
         if (this.state.email.length === 0) {
-            return(
-                alert('email vide')
-            );
+            this.setState({error:"email vide"});
         }
         else if (this.state.firstName.length === 0) {
-            return(
-                alert('firstName vide')
-            );
+            this.setState({error:"prenom vide"});
         }
         else if (this.state.password.length === 0 ) {
-            return(
-                alert('votre mot de passe est vide ou il est different de la confirmation')
-            );
+            this.setState({error:"mot de passe vide"});
         }else{
             API.signup(this.state.email, this.state.firstName, this.state.password).then(res => {
                 localStorage.setItem('token', res.data.token);
@@ -59,14 +53,10 @@ export class signup extends React.Component {
 
     sendLog = event => {
         if(this.state.email.length === 0){
-            return(
-                alert('mail vide')
-            );
+            this.setState({error:"email vide"});
         }
         else if(this.state.password.length === 0){
-            return(
-                alert('mot de passe vide')
-            );
+            this.setState({error:"mot de passe vide"});
         }
         else{
             API.login(this.state.email, this.state.password).then(res =>{

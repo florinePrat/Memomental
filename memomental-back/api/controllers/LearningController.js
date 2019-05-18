@@ -55,8 +55,8 @@ const getTodayLearnings = async(idUser) =>
         //searching all learnings by user of today
         const today = moment().add("1","d").format("YYYY-MM-DD");
             console.log("get today",today);
-        const cards = await Learning.find({ user : idUser, nextDate : {$lte: today}}).populate([{path : 'card', populate : ["labels"]}]);
-        console.log(cards);
+        const cards = await Learning.find({ user : idUser, nextDate : {$lte: today}}).populate([{path : 'card', populate : [{path : 'labels'}]}]);
+        console.log(cards)
         return cards;
     } catch(error)
     {

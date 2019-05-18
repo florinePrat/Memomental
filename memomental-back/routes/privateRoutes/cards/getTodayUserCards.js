@@ -10,7 +10,6 @@ module.exports = async (req, res) => {
         console.log("decoded token ",decoded);;
         const todayCards = await LearningController.getTodayLearnings(decoded.id);
         const returnCards = todayCards.map(function(object){
-            console.log("objet",object)
             return {
                 _id : object.card._id,
                 name : object.card.name,
@@ -18,7 +17,6 @@ module.exports = async (req, res) => {
                 labels : object.card.labels
             }
         })
-        console.log("cartes à retourner",returnCards);
         return res.status(200).json(returnCards);
     }catch(error) {
         console.log("impossible de récupérer les cartes ",error)

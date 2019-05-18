@@ -44,8 +44,8 @@ module.exports = async (req, res) => {
 
     }catch (e) {
 
-        return {
+        return res.status(500).json({
             error : "Impossible de créer l'utilisateur"
-        } ;
+        }) ;
     }
     };

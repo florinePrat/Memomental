@@ -12,10 +12,9 @@ module.exports = async (req, res) => {
         }else{
             const decoded= await decodeToken(req);
             console.log("id de l'utilisateur" ,decoded);
-            catclean = cat.toString().toLowerCase().trim();
+            let catclean = cat.toString().toLowerCase().trim();
             let label = await  LabelController.getLabelByName(catclean);
-            if(label ===undefined)
-            {
+            if(label ===undefined){
                 //creating random color
                 var letters = '0123456789ABCDEF';
                 var color = '#';
@@ -28,7 +27,7 @@ module.exports = async (req, res) => {
             const card = await CardController.createCard(nom.toLowerCase(),quest1.toLowerCase(),rep1.toLowerCase(),quest2.toLowerCase(),rep2.toLowerCase(),decoded.id,label._id);
             //we add one day to current date to set de first learning of the new card at tomorrow
             const nextDate = moment();
-            console.log("nouvelle date",nextDate);
+            console.log("nouvelle carte",card);
             const learning = await LearningController.createLearning(nextDate,decoded.id,card._id,true);
             //@TODO : return card with good name label
             console.log("learning ajouté :",learning);
@@ -38,9 +37,7 @@ module.exports = async (req, res) => {
         }
 
     }catch(e) {
-        return{
-            error : "Impossible d'ajouter la carte"
-        };
+        return res.status(500).json({error : "Impossible d'ajouter la carte"});
     }
 };
 

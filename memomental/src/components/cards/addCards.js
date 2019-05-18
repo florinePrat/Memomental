@@ -26,12 +26,12 @@ class addCard extends React.Component{
 
         else {
             this.state = {
-                quest1: "",
-                rep1: "",
-                quest2: "",
-                rep2: "",
-                nom : "",
-                cat : "",
+                quest1: "Qu'elle est la capitale ?",
+                rep1: "Canberra",
+                quest2: "De quel pays Canberra est-elle la capitale ?",
+                rep2: "l'australie",
+                nom : "capitale australie",
+                cat : "Capitale",
                 isRectoIn: false,
                 isAddIn: false
             };
@@ -40,23 +40,38 @@ class addCard extends React.Component{
         this.handleChange.bind(this);
         this.send.bind(this);
         this.handleRectoClick = this.handleRectoClick.bind(this);
-        this.handleAddClick = this.handleAddClick.bind(this);
         this.handleNoAddClick = this.handleNoAddClick.bind(this);
         this.handleVersoClick = this.handleVersoClick.bind(this);
     }
 
 
     handleRectoClick() {
-        this.setState({isRectoIn: true});
+        if(this.state.nom.length === 0){
+            this.setState({error:"Nom vide"});
+        }
+        else if(this.state.cat.length === 0){
+            this.setState({error:"categorie vide"});
+        }
+        else {
+            this.setState({error:""});
+            this.setState({isRectoIn: true});
+            this.setState({isAddIn: true});
+        }
     }
 
     handleVersoClick() {
-        this.setState({isRectoIn: false});
+        if (this.state.quest1.length === 0) {
+            this.setState({error:"champ question recto vide"});
+        }
+        else if (this.state.rep1.length === 0) {
+            this.setState({error:"champ reponse recto vide"});
+        }else{
+            this.setState({error:""});
+            this.setState({isRectoIn: false});
+        }
+
     }
 
-    handleAddClick() {
-        this.setState({isAddIn: true});
-    }
 
     handleNoAddClick() {
         this.setState({isAddIn: false});
@@ -65,39 +80,38 @@ class addCard extends React.Component{
 
     send = event => {
         if(this.state.nom.length === 0){
-            return;
+            this.setState({error:"nom vide"});
         }
         else if(this.state.cat.length === 0){
-            return;
+            this.setState({error:"categorie vide"});
         }
         else if (this.state.quest1.length === 0) {
-            return;
+            this.setState({error:"champ question recto vide"});
         }
         else if (this.state.rep1.length === 0) {
-            return;
+            this.setState({error:"champ reponse recto vide"});
         }
         else if (this.state.quest2.length === 0) {
-            return;
+            this.setState({error:"champ question verso vide"});
         }
         else if (this.state.rep2.length === 0) {
-            return;
+            this.setState({error:"champ reponse verso vide"});
         }
         else {
-            if(this.state._id)
-            {
-                cardsRequest.updateCard(this.state._id,this.state.nom,this.state.cat, this.state.quest1, this.state.rep1,this.state.quest2, this.state.rep2).then(function (data) {
+            if(this.state._id) {
+                cardsRequest.updateCard(this.state._id,this.state.nom,this.state.cat, this.state.quest1, this.state.rep1,this.state.quest2, this.state.rep2).then(res => {
                     window.location = "/gcard"
-                }, function (error) {
+                }, error => {
                     console.log(error);
-                    return;
+                    this.setState({error:error.response.res.error});
                 })
             }
             else {
-                cardsRequest.addcard(this.state.nom,this.state.cat, this.state.quest1, this.state.rep1,this.state.quest2, this.state.rep2).then(function (data) {
+                cardsRequest.addcard(this.state.nom,this.state.cat, this.state.quest1, this.state.rep1,this.state.quest2, this.state.rep2).then(res => {
                     window.location = "/gcard"
-                }, function (error) {
+                }, error => {
                     console.log(error);
-                    return;
+                    this.setState({error:error.response.res.error});
                 })
             }
 
@@ -119,6 +133,11 @@ class addCard extends React.Component{
 
                 <div className="boxcarte">
                     <h2> Informations </h2>
+                    {this.state.error ?
+                        <div style={{color:"red"}}>
+                            {this.state.error}
+                        </div>:false
+                    }
                     <p>Nom</p>
                     <FormGroup controlId="nom" bssize="large">
                         <FormControl autoComplete="off" autoFocus type="text" value={this.state.nom} onChange={this.handleChange}/>
@@ -129,7 +148,6 @@ class addCard extends React.Component{
                     </FormGroup>
                     <Button
                         onClick={() => {
-                            this.handleAddClick();
                                 this.handleRectoClick()
                         }}
                         block
@@ -152,6 +170,11 @@ class addCard extends React.Component{
                     <h1> Ajout d'une carte </h1>
                     <div className="boxcarte">
                         <h2> Recto </h2>
+                        {this.state.error ?
+                            <div style={{color:"red"}}>
+                                {this.state.error}
+                            </div>:false
+                        }
                         <p>Question</p>
                         <FormGroup controlId="quest1" bssize="large">
                             <FormControl autoFocus type="text" value={this.state.quest1} onChange={this.handleChange}/>
@@ -178,9 +201,13 @@ class addCard extends React.Component{
             <div>
                 <div className="container-fluid">
                     <h1> Ajout d'une carte </h1>
-
                     <div className="boxcarte">
                         <h2> Verso </h2>
+                        {this.state.error ?
+                            <div style={{color:"red"}}>
+                                {this.state.error}
+                            </div>:false
+                        }
                         <p>Question</p>
                         <FormGroup controlId="quest2" bssize="large">
                             <FormControl autoFocus type="text" value={this.state.quest2} onChange={this.handleChange}/>
