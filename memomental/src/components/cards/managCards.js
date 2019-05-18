@@ -1,5 +1,4 @@
 import React from 'react';
-import {Link} from "react-router-dom";
 import Mycard from './card';
 import {Button} from "react-bootstrap";
 import axios from 'axios';

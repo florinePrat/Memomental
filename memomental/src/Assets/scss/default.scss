@@ -83,7 +83,8 @@ div{
 .boxcarte{
   border-style: solid;
   border-color: #889cbf;
-  border-radius: 20%;
+  border-width: 0.50px;
+  border-radius: 5%;
   width: 90%;
   padding: 40px 3%;
   text-align: center;
@@ -91,7 +92,7 @@ div{
   margin: auto;
   margin-top: 8%;
   margin-bottom: 8%;
-  box-shadow: 8px 10px 10px black;
+  box-shadow: 3px 4px 4px #39383d;
   p,a{
     margin-right: 2%;
     margin-left: 2%;
