@@ -2,29 +2,32 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import * as serviceWorker from './serviceWorker';
+//import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
 
 const check = () => {
     if (!("serviceWorker" in navigator)) {
-        throw new Error("No Service Worker support!");
+        console.log("No Service Worker support!");
     }
     if (!("PushManager" in window)) {
-        throw new Error("No Push API Support!");
+        console.log("No Push API Support!");
     }
 };
 
 const registerServiceWorker = async () => {
     try {
-        const swRegistration = await navigator.serviceWorker.register("./service.js");
+        console.log("enter in regisration")
+        const swRegistration = await navigator.serviceWorker.register("/service.js");
+        console.log("regirstration")
         return swRegistration;
     } catch (error){
-        console.log(error)
+        console.log(error.response)
     }
 
 };
 
 const requestNotificationPermission = async () => {
+    console.log('notification asked')
     try {    const permission = await window.Notification.requestPermission();
         // value of permission can be 'granted', 'default', 'denied'
         // granted: user has accepted the request
@@ -48,4 +51,4 @@ ReactDOM.render(<BrowserRouter><App /></BrowserRouter>, document.getElementById(
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
-serviceWorker.unregister();
+//serviceWorker.unregister();

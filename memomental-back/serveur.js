@@ -4,7 +4,6 @@ const express = require('express');
 const path = require('path');
 const favicon = require('serve-favicon');
 const bodyParser = require('body-parser');
-
 const http = require('http');
 
 const app = express();
@@ -43,5 +42,6 @@ app.get("*", (req, res) => {
 server.listen(process.env.PORT || 8080, function(){
     console.log("Listening on 8080");
 });
+
 console.log(process.env.DB_HOST);
 app.use('*',(req,res) => res.sendStatus(404));

@@ -1,3 +1,6 @@
+import {tokenHeaders} from "./utils/headers";
+
+
 // urlB64ToUint8Array is a magic function that will encode the base64 public key
 // to Array buffer which is needed by the subscription option
 const urlB64ToUint8Array = base64String => {
@@ -17,9 +20,7 @@ const saveSubscription = async subscription => {
     const SERVER_URL = process.env.REACT_APP_API_URL+"/save-subscription";
     const response = await fetch(SERVER_URL, {
         method: "post",
-        headers: {
-            "Content-Type": "application/json"
-        },
+        headers: tokenHeaders,
         body: JSON.stringify(subscription)
     });
     return response.json();
