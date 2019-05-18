@@ -19,14 +19,14 @@ class addCard extends React.Component{
                 quest2: card.versoQuestion,
                 rep2: card.versoAnswer,
                 nom : card.name,
-                cat : card.label[0].name,
+                cat : card.labels[0].name,
                 isRectoIn: false,
                 isAddIn: false }
         }
 
         else {
             this.state = {
-                quest1: "Qu'elle est la capitale ?",
+                quest1: "Qu'elle est la capitale de l'australie ?",
                 rep1: "Canberra",
                 quest2: "De quel pays Canberra est-elle la capitale ?",
                 rep2: "l'australie",

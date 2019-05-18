@@ -23,10 +23,12 @@ export class signup extends React.Component {
 
     handleLoginClick() {
         this.setState({isLoggedIn: true});
+        this.setState({error:""});
     }
 
     handleLogoutClick() {
         this.setState({isLoggedIn: false});
+        this.setState({error:""});
     }
 
     send = event => {
