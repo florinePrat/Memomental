@@ -4,7 +4,8 @@ const UserSchema = new mongoose.Schema({
     firstName : { type : String, required : true},
     email : { type : String, required : true},
     password : { type : String, required : true},
-    points : { type: Number,default : 0 }
+    points : { type: Number,default : 0 },
+    pushKey : { type : String}
 });
 
 const User = mongoose.model('User', UserSchema);

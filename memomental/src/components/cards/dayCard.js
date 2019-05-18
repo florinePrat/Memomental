@@ -15,7 +15,8 @@ class dayCard extends Component{
             display:true,
             rep:"",
             wantedAnswer:"",
-            validAnswer:false
+            validAnswer:false,
+            message:""
         };
         this.handleChange.bind(this);
         this.send.bind(this);
@@ -32,16 +33,17 @@ class dayCard extends Component{
             cardDay.dayCard({answer : this.state.rep, _id : this.props._id}).then( res => {
                 console.log(res.data);
                 if(res.data.validAnswer) {
-                    this.setState({validAnswer:res.data.validAnswer})
+                    localStorage.setItem('points',res.data.points);
+                    this.setState({validAnswer:res.data.validAnswer,message:res.data.message})
                 }else {
                     this.setState({error:"mauvaise reponse", wantedAnswer : res.data.wantedAnswer});
                     result =  res.data.wantedAnswer;
                 }
 
 
-            },function(error){
+            },error => {
                 console.log(error);
-                this.setState({error:error.response.res.error});
+                this.setState({error:error.response.error});
             });
         }
 
@@ -78,7 +80,7 @@ class dayCard extends Component{
                         </div>:false}
                         {this.state.validAnswer ?
                             <div style={{color: "green"}}>
-                                Bonne réponse !
+                                Bonne réponse ! : {this.state.message}
                             </div>:false}
                         <Button
                             className="btn-info"

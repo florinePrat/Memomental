@@ -43,8 +43,28 @@ const getUserByEmail = async(email) => {
     }
 };
 
+const addPoint = async(idUser,points) => {
+    try {
+        const updatedUser = await User.findOneAndUpdate({_id:idUser}, {$inc:{points : points}},{new: true})
+        return updatedUser;
+    } catch(error) {
+        return error;
+    }
+};
+const addPushKey = async(idUser,pushKey) => {
+    try {
+        const updatedUser = await User.findOneAndUpdate({_id:idUser}, {pushKey : pushKey},{new: true})
+        return updatedUser;
+    } catch(error) {
+        return error;
+    }
+};
+
+
 module.exports = {
     getUserById,
     createUser,
     getUserByEmail,
+    addPoint,
+    addPushKey
 };

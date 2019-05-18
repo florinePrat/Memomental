@@ -38,7 +38,8 @@ module.exports = async (req, res) => {
                 success: true,
                 message: 'Connected !',
                 token: token,
-                firstName: user.firstName
+                firstName: user.firstName,
+                points:user.points
             });
         }
 

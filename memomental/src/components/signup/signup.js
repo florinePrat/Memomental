@@ -42,6 +42,8 @@ export class signup extends React.Component {
         }else{
             API.signup(this.state.email, this.state.firstName, this.state.password).then(res => {
                 localStorage.setItem('token', res.data.token);
+                localStorage.setItem('points', res.data.points);
+                localStorage.setItem('firstName', res.data.firstName);
                 window.location = "/card"
             }, error =>{
                 console.log(error);
@@ -62,6 +64,8 @@ export class signup extends React.Component {
             API.login(this.state.email, this.state.password).then(res =>{
                 console.log(res.data.token);
                 localStorage.setItem('token', res.data.token);
+                localStorage.setItem('points', res.data.points);
+                localStorage.setItem('firstName', res.data.firstName);
                 window.location = "/card"
             }, error=>{
                 console.log(error.response.data.error);

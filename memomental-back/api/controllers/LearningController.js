@@ -35,12 +35,11 @@ const createLearning = async (nextDate, userId, cardId,recto) => {
 const updateLearning = async(id,nextDate, level,recto) =>
 {
     try {
-        console.log("id : ",id,"nextDate",nextDate,level,recto);
+        //update learning with new data and return updated learning
         const learning = await Learning.findOneAndUpdate(
             {_id : id},
             {$set : { nextDate : nextDate, level : level, recto : recto}},
             {new : true});
-        console.log("in update",learning);
         return learning;
     } catch(error)
     {

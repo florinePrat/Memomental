@@ -14,7 +14,6 @@ class myCards  extends Component{
 
     constructor(props) {
         super(props);
-        console.log(props);
         this.state = {
             isDeployed: false,
             edit : false,
@@ -26,7 +25,6 @@ class myCards  extends Component{
     delete=event =>{
             axios.delete(burl + '/api/card/'+this.props._id, { headers: tokenHeaders})
                 .then(res =>{
-                    console.log(res.data);
                     window.location = "/gcard"
                 })
     }
@@ -35,7 +33,6 @@ class myCards  extends Component{
     }
 
     render(){
-        console.log("données :",this.props)
         return(
             this.state.edit?
                     <AddCard

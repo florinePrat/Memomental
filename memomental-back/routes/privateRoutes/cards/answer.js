@@ -1,31 +1,28 @@
 const CardController = require('../../../api/controllers/CardController');
 const LearningController = require('../../../api/controllers/LearningController');
-const UserController = require('../../../api/controllers/CardController');
+const UserController = require('../../../api/controllers/UserController');
 const State = require('../../../api/controllers/StateController');
 const decodeToken = require('../../../api/encryption/decodeToken');
 const moment = require('moment');
 const checkForHexRegExp = /^(?=[a-f\d]{24}$)(\d+[a-f]|[a-f]+\d)/i
 
-//@TODO : see how handle edit and add card in same file to avoid code duplication
+
 module.exports = async (req, res) => {
     try {
-        //@TODO : check id card id is mongo id and respond 400 if not
         const decoded=await decodeToken(req);
         const  {_id,answer} = req.body.rep;
         if (!_id.match(checkForHexRegExp)){
+            //if id card is an mongoose objectId
             return res.status(400).json({error : "Cette carte n'est reconnu"});
         }else if (!answer){
             return res.status(400).json({error : "Veuillez fournir une réponse"});
         }else{
-            // console.log("answer " ,answer);
-            console.log("token :" ,decoded.id);
             const card = await CardController.getCardById(_id);
-            console.log(card);
+            //if user can answer to this card
             if(card.owners.indexOf(decoded.id)!==-1)
-            { //if user can answer to this card
-                console.log("is owner");
+            {
+                //getting learning of this card for this user
                 const learning = await LearningController.getLearningByUserAndCard(decoded.id,_id);
-                console.log('learning associé',learning);
                 let validAnswer,wantedAnswer;
                 if(learning.recto) {
                     validAnswer = answer.toString().trim().toLowerCase()===card.rectoAnswer;
@@ -35,28 +32,25 @@ module.exports = async (req, res) => {
                     validAnswer = answer.toString().trim().toLowerCase()===card.versoAnswer;
                     wantedAnswer = card.versoAnswer;
                 }
-                console.log("réponse valide :",validAnswer);
-                //getting learning of this card for this user
-                let  updatedLearning;
+                let  updatedLearning,message, user;
                 if(validAnswer) {
                     //getting state of this level +1
-                    console.log(learning.level+1);
+                    if (learning.level===8){
+                        const message = "Félicitations vous avez atteint le niveau maximum pour cette carte";
+                    }
                     const state = await State.getStateByLevel(learning.level+1);
-                    console.log("state",state);
                     const nextDate = moment().add(state.frequence,"d").format();
                     updatedLearning  = await LearningController.updateLearning(learning._id,nextDate,learning.level+1,!learning.recto);
+                    user = await UserController.addPoint(decoded.id, learning.level);
+                    message = "Vous avez gagné "+learning.level+" points"
                 }
                 else {
-                    if(learning.level<="1")
-                    {
+                    if(learning.level<="1"){
                         console.log('learning level =1');
                         //if already in level 1 we juste put it for tomorrow
                         const nextDate = moment().add("1","d").format();
-                        console.log("nouvelle date",nextDate);
                         updatedLearning = await LearningController.updateLearning(learning._id,nextDate,1,!learning.recto);
-                    }
-                    else {
-                        console.log('learning level >1');
+                    } else {
                         //getting state of this level -1
                         const state = await State.getStateByLevel(learning.level - 1);
                         console.log("state",state);
@@ -66,8 +60,7 @@ module.exports = async (req, res) => {
                         updatedLearning = await LearningController.updateLearning(learning._id, nextDate, learning.level - 1, !learning.recto);
                     }
                 }
-                console.log("nouveau learning",updatedLearning);
-                return res.status(200).json( {validAnswer,wantedAnswer})
+                return res.status(200).json( {validAnswer,wantedAnswer,message,points:user.points})
             }
             else{
                 //else return unauthorized

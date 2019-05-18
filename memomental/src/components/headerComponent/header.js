@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import logo from './images/logo.png';
-import {Navbar, Nav, Button} from "react-bootstrap";
+import {Navbar, Nav} from "react-bootstrap";
 import auth from "../../utils/auth";
 
 // the navbar of application
@@ -10,10 +10,24 @@ class NavBar extends Component {
         super(props);
         this.state = {
             isAuth : auth.isAuth(),
+            firstName:localStorage.getItem("firstName"),
+            points:localStorage.getItem("points")
         };
         this.logout.bind(this);
+        this.updatePoints.bind(this);
 
     }
+    //@TODO : make listener to update point in header work
+    componentDidMount() {
+        console.log("called")
+        window.addEventListener('storage', this.updatePoints   );
+    }
+
+    updatePoints = data => {
+        console.log("set points")
+        this.setState({points : localStorage.getItem('points')})
+    }
+
 
     logout = event => {
         console.log("logout called");
@@ -50,6 +64,9 @@ class NavBar extends Component {
                                     <Nav.Link href='/gcard' >Mes cartes</Nav.Link>
                                     <Nav.Link href='/myCard' >Mes cartes du jour</Nav.Link>
                                     <Nav.Link onClick={this.logout} >Logout</Nav.Link>
+                                    <Navbar.Text>
+                                        {this.state.firstName} : {this.state.points} points
+                                    </Navbar.Text>
                                 </Nav>
                             )
 
@@ -57,6 +74,7 @@ class NavBar extends Component {
                 </Navbar.Collapse>
             </Navbar>
         )
+
     }
 }
 export default NavBar;

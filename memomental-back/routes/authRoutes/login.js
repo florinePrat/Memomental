@@ -38,6 +38,7 @@ module.exports = async (req,res)=> {
                     message: 'Connected !',
                     token: token,
                     firstName: user.firstName,
+                    points:user.points
                 });
             }
             else{

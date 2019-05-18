@@ -12,7 +12,8 @@ module.exports= function(){
 
 //Handle all resricted routes
      router.use('/api/card', require("./privateRoutes/cards"));
-
+//handle push subscription
+     router.post('/save-subscription',require("../api/push/push"));
     return router;
 };
 
