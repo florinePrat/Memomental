@@ -5,10 +5,6 @@ const path = require('path');
 const favicon = require('serve-favicon');
 const bodyParser = require('body-parser');
 const http = require('http');
-//launch node schedule :
-const schedule = require('./api/schedule/notifCard');
-//let schedule = require('node-schedule');
-//schedule.scheduleJob('*/5 * * * * *', () => { console.log("shcedye"); })
 
 const app = express();
 
@@ -28,8 +24,11 @@ app.use(function(req, res, next) {
         next();
     }
 });
+
 //All routes with retricted content pass trough the isAuth middleware to verify authentication
 app.all('/api/*', require('./middlewares/isAuth'));
+//launch node schedule :
+const schedule = require('./api/schedule/notifCard');
 //routes accessible without being authenticated are redirected in routes
 app.use('/', require('./routes')());
 //Create the server

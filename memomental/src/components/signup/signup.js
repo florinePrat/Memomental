@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, FormGroup, FormControl } from "react-bootstrap";
 import API from '../../utils/auth';
+import service from '../../utils/serviceFunctions'
 
 // this is the singup and login page swip with js
 export class signup extends React.Component {
@@ -54,29 +55,32 @@ export class signup extends React.Component {
         }
         ;
 
-    sendLog = event => {
-        if(this.state.email.length === 0){
-            this.setState({error:"email vide"});
-        }
-        else if(this.state.password.length === 0){
-            this.setState({error:"mot de passe vide"});
-        }
-        else{
-            API.login(this.state.email, this.state.password).then(res =>{
-                console.log(res.data.token);
-                localStorage.setItem('token', res.data.token);
-                localStorage.setItem('points', res.data.points);
-                localStorage.setItem('firstName', res.data.firstName);
-                window.location = "/card"
-            }, error=>{
-                console.log(error.response.data.error);
-                this.setState({error:error.response.data.error});})
+    sendLog = async () => {
+        if (this.state.email.length === 0) {
+            this.setState({error: "email vide"});
+        } else if (this.state.password.length === 0) {
+            this.setState({error: "mot de passe vide"});
+        } else {
 
+            const login = await API.login(this.state.email, this.state.password)
+            if(login.status===200) {
+                console.log(login.data.token);
+                localStorage.setItem('token', login.data.token);
+                localStorage.setItem('points', login.data.points);
+                localStorage.setItem('firstName', login.data.firstName);
+                await service()
+                window.location = "/card";
+
+            } else {
+                if (login.response) {
+                    console.log(login.response.data.error)
+                    this.setState({error: login.response.data.error});
+                } else {
+                    console.log(login);
+                }
             }
         }
-
-    ;
-
+    }
     handleChange = event => {
         this.setState({
             [event.target.id]: event.target.value

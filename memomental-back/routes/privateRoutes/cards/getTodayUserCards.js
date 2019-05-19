@@ -5,9 +5,7 @@ const moment = require('moment');
 
 module.exports = async (req, res) => {
     try {
-        console.log('arrivé dans la recherche de learnings  ');
         const decoded= await decodeToken(req);
-        console.log("decoded token ",decoded);;
         const todayCards = await LearningController.getTodayLearnings(decoded.id);
         const returnCards = todayCards.map(function(object){
             return {

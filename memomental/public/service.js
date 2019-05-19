@@ -1,15 +1,12 @@
 
-self.addEventListener("push", function(event) {
-    if (event.data) {
-        console.log("Push event!! ", event.data);
-        showLocalNotification('Yolo', event.data.text(),self.registration)
-    } else {
-        console.log("Push event but no data");
+self.addEventListener("push", event => {
+    const data = event.data.json()
+    const { title } = data
+
+    const body = {
+        body: data.body,
+        icon: data.icon
     }
-});
-const showLocalNotification = (title, body, swRegistration) => {
-    const options = {
-        body
-    };
-    swRegistration.showNotification(title, options);
-};
+
+    event.waitUntil(self.registration.showNotification(title, body))
+})

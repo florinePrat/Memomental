@@ -13,7 +13,7 @@ module.exports= function(){
 //Handle all resricted routes
      router.use('/api/card', require("./privateRoutes/cards"));
 //handle push subscription
-     router.post('/save-subscription',require("../api/push/push"));
+     router.use('/api/push/register',require("../api/push/register"));
     return router;
 };
 

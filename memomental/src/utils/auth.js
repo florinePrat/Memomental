@@ -4,8 +4,8 @@ import {basicHeaders} from './headers';
 const burl = process.env.REACT_APP_API_URL;
 // this is the request for authentification
 export default {
-    login : function(email,password) {
-        return axios.post(burl + '/login',{
+    login : async (email,password) => {
+        return  await axios.post(burl + '/login',{
             'email' : email,
             'password' : password
         },{
