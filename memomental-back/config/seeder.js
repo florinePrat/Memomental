@@ -1,4 +1,6 @@
 const State = require('../api/models/State');
+const Card = require('../api/models/Card');
+const Label = require('../api/models/Label');
 const mongoose = require('mongoose');
 mongoose.Promise = Promise;
 require('dotenv').config();
@@ -71,6 +73,76 @@ const init = async() => {
                 level: "8",
                 frequence: "128"
             });
+            //insert 3 default card in database
+        const insertLabel  = async (obj) => {
+            try {
+                let label  = await Label.findById(obj._id);
+                if (label === null) {
+                    label = new Label(obj);
+                    await label.save();
+                }
+                return label
+            } catch(error){
+                console.log("cette carte est déjà dans la base ");
+                return error;
+            }
+        }
+        const label1  = await insertLabel({
+            _id : "5ce2ac2421a8b34a99f6ba34",
+            name : "Histoire",
+            color : "orange"
+        })
+        const label2  = await insertLabel({
+            _id : "5ce2ac97ac87c8937a60f06e",
+            name : "Capitale",
+            color : "green"
+        });
+        const label3  = await insertLabel({
+            _id : "5ce2ae6593ca0ecd7278d53b",
+            name : "Langue française",
+            color : "blue"
+        })
+        const insertCard = async (obj) => {
+            try {
+                const alreadyExec = await Card.findById(obj._id);
+                if (alreadyExec === null) {
+                    let card = new Card(obj);
+                    await card.save();
+                }
+            } catch(error){
+                console.log("cette carte est déjà dans la base ");
+                return error;
+            }
+        }
+
+        await insertCard( {
+            _id : "5ce2ab0f18a9822a7ef05b7f",
+            name : "Capitale de l'Australie",
+            labels : [label2._id],
+            rectoQuestion : "Quelle est la capitale de l'Australie",
+            rectoAnswer : "Canberra",
+            versoQuestion : "De quel pays Canberra est elle la capitale ?",
+            versoAnswer : "Australie"
+            })
+        await insertCard( {
+                _id : "5ce2ad5a50fe89bc88676cc1",
+                name : "Année de naissance d'Albert Einstein",
+                labels : [label1._id],
+                rectoQuestion : "Quelle est l'année de naissance d'Albert Einstein ?",
+                rectoAnswer : "1879",
+                versoQuestion : "Quel scientifique est né en 1879 ?",
+                versoAnswer : "Albert Einstein"
+            })
+        await insertCard( {
+            _id : "5ce2add898c50b2a5c2d042f",
+            name : "Alexandrin",
+            labels : [label3._id],
+            rectoQuestion : "Qu'est ce qu'un vers de 12 syllabes ?",
+            rectoAnswer : "Alexandrin",
+            versoQuestion : "Qu'est ce qu'un Alexandrin ?",
+            versoAnswer : "Vers de 12 syllabes"
+        })
+        console.log("db set");
             return true;
     } catch (error) {
         console.log(error.message)

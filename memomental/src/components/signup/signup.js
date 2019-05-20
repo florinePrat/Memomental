@@ -62,18 +62,17 @@ export class signup extends React.Component {
             this.setState({error: "mot de passe vide"});
         } else {
 
-            const login = await API.login(this.state.email, this.state.password)
+            const login = await API.login(this.state.email, this.state.password);
             if(login.status===200) {
                 console.log(login.data.token);
                 localStorage.setItem('token', login.data.token);
                 localStorage.setItem('points', login.data.points);
                 localStorage.setItem('firstName', login.data.firstName);
-                await service()
                 window.location = "/card";
 
             } else {
                 if (login.response) {
-                    console.log(login.response.data.error)
+                    console.log(login.response.data.error);
                     this.setState({error: login.response.data.error});
                 } else {
                     console.log(login);

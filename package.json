@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/florinePrat/Memomental/issues"
   },
-  "homepage": "https://github.com/florinePrat/Memomental#readme"
+  "homepage": "https://github.com/florinePrat/Memomental#readme",
+  "dependencies": {
+    "mongoose-trigger": "^1.0.1"
+  }
 }

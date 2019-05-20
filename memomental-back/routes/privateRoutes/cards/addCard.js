@@ -11,7 +11,6 @@ module.exports = async (req, res) => {
             return res.status(400).json({error : "Erreur : le formulaire est incomplet"});
         }else{
             const decoded= await decodeToken(req);
-            console.log("id de l'utilisateur" ,decoded);
             let catclean = cat.toString().toLowerCase().trim();
             let label = await  LabelController.getLabelByName(catclean);
             if(label ===undefined){
@@ -27,12 +26,8 @@ module.exports = async (req, res) => {
             const card = await CardController.createCard(nom.toLowerCase(),quest1.toLowerCase(),rep1.toLowerCase(),quest2.toLowerCase(),rep2.toLowerCase(),decoded.id,label._id);
             //we add one day to current date to set de first learning of the new card at tomorrow
             const nextDate = moment();
-            console.log("nouvelle carte",card);
             const learning = await LearningController.createLearning(nextDate,decoded.id,card._id,true);
             //@TODO : return card with good name label
-            console.log("learning ajouté :",learning);
-            console.log("création de carte");
-            console.log(card);
             return res.status(200).json(card)
         }
 

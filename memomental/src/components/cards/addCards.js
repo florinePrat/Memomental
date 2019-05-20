@@ -25,12 +25,12 @@ class addCard extends React.Component{
 
         else {
             this.state = {
-                quest1: "Qu'elle est la capitale de l'australie ?",
-                rep1: "Canberra",
-                quest2: "De quel pays Canberra est-elle la capitale ?",
-                rep2: "l'australie",
-                nom : "capitale australie",
-                cat : "Capitale",
+                quest1: "",
+                rep1: "",
+                quest2: "",
+                rep2: "",
+                nom : "",
+                cat : "",
                 isRectoIn: false,
                 isAddIn: false
             };

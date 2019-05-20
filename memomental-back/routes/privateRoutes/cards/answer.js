@@ -47,7 +47,7 @@ module.exports = async (req, res) => {
                 else {
                     if(learning.level<="1"){
                         console.log('learning level =1');
-                        //if already in level 1 we juste put it for tomorrow
+                        //if already in level 1 we just put it for tomorrow
                         const nextDate = moment().add("1","d").format();
                         updatedLearning = await LearningController.updateLearning(learning._id,nextDate,1,!learning.recto);
                     } else {
@@ -60,7 +60,7 @@ module.exports = async (req, res) => {
                         updatedLearning = await LearningController.updateLearning(learning._id, nextDate, learning.level - 1, !learning.recto);
                     }
                 }
-                return res.status(200).json( {validAnswer,wantedAnswer,message,points:user.points})
+                return res.status(200).json( {validAnswer,wantedAnswer,message,points:user?user.points:false})
             }
             else{
                 //else return unauthorized
@@ -69,6 +69,6 @@ module.exports = async (req, res) => {
         }
 
     }catch(error) {
-        res.status(500).json({error : "Error lors de la gestion des reponses"});
+        res.status(500).json({error : "Error lors de la gestion des reponses :"+error});
     }
 };

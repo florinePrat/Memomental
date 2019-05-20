@@ -20,7 +20,6 @@ const createLabel = async (name,color) => {
             name: name,
             color : color,
         });
-        console.log('label ajouté');
         const savedLabel= await label.save();
         return savedLabel;
     } catch (error) {
@@ -30,9 +29,7 @@ const createLabel = async (name,color) => {
 };
 const getLabelByName = async(name) => {
     try {
-        console.log("est appelé");
         const label = await Label.find({name: name});
-        console.log(label);
         return label[0];
     } catch (error) {
         console.log("erreur lors de la recheche")

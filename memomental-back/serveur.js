@@ -5,7 +5,6 @@ const path = require('path');
 const favicon = require('serve-favicon');
 const bodyParser = require('body-parser');
 const http = require('http');
-
 const app = express();
 
 //parse the request body

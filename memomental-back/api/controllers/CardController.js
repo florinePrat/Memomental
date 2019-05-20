@@ -16,7 +16,6 @@ const getCardById = async (id) => {
 };
 const createCard = async (name, rectoQuestion, rectoAnswer, versoQuestion, versoAnswer,userId,labelId) => {
     try {
-        console.log(name);
         const card = new Card({
             name: name,
             rectoQuestion: rectoQuestion,
@@ -26,9 +25,7 @@ const createCard = async (name, rectoQuestion, rectoAnswer, versoQuestion, verso
             owners : [userId],
             labels : [labelId]
         });
-        console.log('carte cree');
-        const savedCard= await card.save();
-        return savedCard
+        return  await card.save();
     } catch (error) {
         console.log(error.message);
         return error;
@@ -54,7 +51,6 @@ const getCardsByUser = async(idUser) =>
     try {
         //searching all cards by user
         const cards = await Card.find({ owners : idUser}).populate('labels');
-        console.log(cards);
         return cards;
     } catch(error)
     {

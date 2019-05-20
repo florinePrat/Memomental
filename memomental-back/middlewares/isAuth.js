@@ -1,8 +1,6 @@
 module.exports = async (req,res,next) => {
  try {
      const jwt = require('jsonwebtoken');
-
-     console.log("is auth");
      let bearerToken;
      const bearerHeader = req.headers["authorization"];
      if (typeof bearerHeader !== 'undefined') {

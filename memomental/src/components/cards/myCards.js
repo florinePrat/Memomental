@@ -22,7 +22,7 @@ class myCard extends React.Component{
     }
 
     componentDidMount() {
-        service().then( res => {console.log("service appelé")});
+      //  service().then( res => {console.log("service appelé")});
         axios.get(burl + '/api/card/today',{
                headers: tokenHeaders
            } )
