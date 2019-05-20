@@ -135,15 +135,50 @@ div{
   position: relative;
 }
 
-.homePage{
-  padding-top: 10%;
-  padding-bottom: 150px;
-  width: 100%;
-  position: relative;
-  top: 0; bottom: 0;
-  background-color: rgb(241, 242, 240);
-  .btn-info{
-    left:35%;
-  }
-}
 
+  .homePage {
+    padding-top: 10%;
+    padding-bottom: 150px;
+    width: 100%;
+    position: relative;
+    top: 0;
+    bottom: 0;
+    background-color: rgb(241, 242, 240);
+    .d-blockw-100{
+      width: 100%;
+      top: 0;
+      bottom: 0;
+    }
+    .btn-info {
+      left: 35%;
+    }
+  }
+
+
+@media screen and (min-width: 600px) {
+  .homePage {
+    padding-top: 10%;
+    position: absolute;
+    background-size: 100%;
+    width: 100%;
+    top: 75px;
+    background-color: rgb(241, 242, 240);
+
+    .d-blockw-100{
+      width: 35%;
+      top: 0;
+      bottom: 0;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .btn-info {
+      position: relative;
+      left: 41%;
+      top: 70px;
+    }
+
+  }
+
+}

@@ -11,7 +11,7 @@ class homePage extends Component{
 
                         <p> Est-tu prêt à booster ta mémoire ??</p>
                         <img
-                            className="d-block w-100"
+                            className="d-blockw-100"
                             src={giphy}
                             alt="First slide"
                         />
