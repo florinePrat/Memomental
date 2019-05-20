@@ -9,7 +9,7 @@ class homePage extends Component{
         return(
                     <div className="homePage">
 
-                        <p> Est-tu prêt à booster ta mémoire ??</p>
+                        <p> Es-tu prêt à booster ta mémoire ??</p>
                         <img
                             className="d-blockw-100"
                             src={giphy}

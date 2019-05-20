@@ -95,7 +95,7 @@ div{
   border-color: #889cbf;
   border-width: 0.30px;
   border-radius: 10px;
-  background-color: rgba(216, 255, 243, 0.34);
+  background-color: rgb(241, 242, 240);
   width: 90%;
   padding: 40px 3%;
   text-align: center;
@@ -128,11 +128,39 @@ div{
   left:2%;
 }
 
-.tuto{
-  display: block;
-  margin: 0 auto;
-  overflow: hidden;
-  position: relative;
+  .tuto{
+    display: block;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    .d-blockw-100{
+      width: 35%;
+      top: 0;
+      bottom: 0;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .btn-info {
+      left: 45%;
+    }
+  }
+
+
+@media screen and (min-width:1000px) {
+  .tuto{
+    .d-blockw-100{
+      width: 25%;
+      top: 0;
+      bottom: 0;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .btn-info {
+      left: 65%;
+    }
+  }
 }
 
 
@@ -143,7 +171,7 @@ div{
     position: relative;
     top: 0;
     bottom: 0;
-    background-color: rgb(241, 242, 240);
+    background-color: rgba(250, 251, 252, 0.23);
     .d-blockw-100{
       width: 100%;
       top: 0;
@@ -157,7 +185,7 @@ div{
 
 @media screen and (min-width: 600px) {
   .homePage {
-    padding-top: 10%;
+    padding-top: 8%;
     position: absolute;
     background-size: 100%;
     width: 100%;
