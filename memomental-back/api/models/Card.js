@@ -3,19 +3,11 @@ const UserController = require('../../api/controllers/UserController');
 const sgMail = require('@sendgrid/mail');
 const CardSchema = new mongoose.Schema({
     name : { type : String, required : true},
-    versoQuestion : { type : String, required : true},
-    rectoQuestion : { type : String, required : true},
-    versoAnswer : { type : String, required : true},
-    rectoAnswer : { type : String, required : true},
+    recto : { type : String, required : true},
+    verso : { type : String, required : true},
     owners : [{ type: mongoose.Schema.Types.ObjectId, ref: "Card" }],
     labels : [{type:mongoose.Schema.Types.ObjectId, ref:"Label"}]
 });
-
-
-
-
-
-
 
 CardSchema.post('save',    async  (doc) => {
     try {

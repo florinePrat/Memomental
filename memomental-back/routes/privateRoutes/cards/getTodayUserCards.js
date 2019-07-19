@@ -11,7 +11,7 @@ module.exports = async (req, res) => {
             return {
                 _id : object.card._id,
                 name : object.card.name,
-                question : object.recto?object.card.rectoQuestion:object.card.versoQuestion,
+                question : object.recto?object.card.recto:object.card.versoQuestion,
                 labels : object.card.labels
             }
         })

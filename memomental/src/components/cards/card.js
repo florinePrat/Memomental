@@ -27,10 +27,10 @@ class myCards  extends Component{
                 .then(res =>{
                     window.location = "/gcard"
                 })
-    }
+    };
     edit = event => {
 
-    }
+    };
 
     render(){
         return(
@@ -42,10 +42,8 @@ class myCards  extends Component{
                 this.state.isDeployed
                 ?   <div className="boxcarte" >
                         <h3 style={{backgroundColor:this.props.labels[0].color}}> {this.props.labels[0].name}</h3>
-                        <p>Question recto : {this.props.rectoQuestion} </p>
-                        <p>Reponse recto : {this.props.rectoAnswer} </p>
-                        <p>Question verso : {this.props.versoQuestion} </p>
-                        <p>Reponse verso : {this.props.versoAnswer} </p>
+                        <p>Question : {this.props.recto} </p>
+                        <p>Reponse : {this.props.verso} </p>
 
                         <Button
                             className="btn-info"

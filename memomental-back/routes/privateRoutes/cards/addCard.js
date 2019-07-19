@@ -6,8 +6,8 @@ const moment = require('moment');
 
 module.exports = async (req, res) => {
     try {
-        const  {nom, cat, quest1, rep1, quest2 , rep2} = req.body;
-        if (!nom || !cat || !quest1 || !rep1 || !quest2 || !rep2){
+        const  {nom, cat, quest1, rep2} = req.body;
+        if (!nom || !cat || !quest1 || !rep2){
             return res.status(400).json({error : "Erreur : le formulaire est incomplet"});
         }else{
             const decoded= await decodeToken(req);
@@ -23,7 +23,7 @@ module.exports = async (req, res) => {
                 //if this label doesn't exit we create one
                 label = await LabelController.createLabel(catclean,color);
             }
-            const card = await CardController.createCard(nom.toLowerCase(),quest1.toLowerCase(),rep1.toLowerCase(),quest2.toLowerCase(),rep2.toLowerCase(),decoded.id,label._id);
+            const card = await CardController.createCard(nom.toLowerCase(),quest1.toLowerCase(),rep2.toLowerCase(),decoded.id,label._id);
             //we add one day to current date to set de first learning of the new card at tomorrow
             const nextDate = moment();
             const learning = await LearningController.createLearning(nextDate,decoded.id,card._id,true);

@@ -119,8 +119,8 @@ const init = async() => {
             _id : "5ce2ab0f18a9822a7ef05b7f",
             name : "Capitale de l'Australie",
             labels : [label2._id],
-            rectoQuestion : "Quelle est la capitale de l'Australie",
-            rectoAnswer : "Canberra",
+            recto : "Quelle est la capitale de l'Australie",
+            verso : "Canberra",
             versoQuestion : "De quel pays Canberra est elle la capitale ?",
             versoAnswer : "Australie"
             })
@@ -128,8 +128,8 @@ const init = async() => {
                 _id : "5ce2ad5a50fe89bc88676cc1",
                 name : "Année de naissance d'Albert Einstein",
                 labels : [label1._id],
-                rectoQuestion : "Quelle est l'année de naissance d'Albert Einstein ?",
-                rectoAnswer : "1879",
+                recto : "Quelle est l'année de naissance d'Albert Einstein ?",
+                verso : "1879",
                 versoQuestion : "Quel scientifique est né en 1879 ?",
                 versoAnswer : "Albert Einstein"
             })
@@ -137,8 +137,8 @@ const init = async() => {
             _id : "5ce2add898c50b2a5c2d042f",
             name : "Alexandrin",
             labels : [label3._id],
-            rectoQuestion : "Qu'est ce qu'un vers de 12 syllabes ?",
-            rectoAnswer : "Alexandrin",
+            recto : "Qu'est ce qu'un vers de 12 syllabes ?",
+            verso : "Alexandrin",
             versoQuestion : "Qu'est ce qu'un Alexandrin ?",
             versoAnswer : "Vers de 12 syllabes"
         })

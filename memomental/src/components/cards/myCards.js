@@ -2,7 +2,7 @@ import React from 'react';
 import DayCard from './dayCard';
 import axios from 'axios';
 import {tokenHeaders} from '../../utils/headers';
-import service from '../../utils/serviceFunctions'
+import service from '../../utils/serviceFunctions';
 
 const burl = process.env.REACT_APP_API_URL;
 // this class manage myCard for the request to display the card of day

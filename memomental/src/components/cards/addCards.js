@@ -14,8 +14,6 @@ class addCard extends React.Component{
             this.state = {
                 _id : card._id,
                 quest1: card.rectoQuestion,
-                rep1: card.rectoAnswer,
-                quest2: card.versoQuestion,
                 rep2: card.versoAnswer,
                 nom : card.name,
                 cat : card.labels[0].name,
@@ -26,8 +24,6 @@ class addCard extends React.Component{
         else {
             this.state = {
                 quest1: "",
-                rep1: "",
-                quest2: "",
                 rep2: "",
                 nom : "",
                 cat : "",
@@ -61,9 +57,6 @@ class addCard extends React.Component{
     handleVersoClick() {
         if (this.state.quest1.length === 0) {
             this.setState({error:"champ question recto vide"});
-        }
-        else if (this.state.rep1.length === 0) {
-            this.setState({error:"champ reponse recto vide"});
         }else{
             this.setState({error:""});
             this.setState({isRectoIn: false});
@@ -87,18 +80,12 @@ class addCard extends React.Component{
         else if (this.state.quest1.length === 0) {
             this.setState({error:"champ question recto vide"});
         }
-        else if (this.state.rep1.length === 0) {
-            this.setState({error:"champ reponse recto vide"});
-        }
-        else if (this.state.quest2.length === 0) {
-            this.setState({error:"champ question verso vide"});
-        }
         else if (this.state.rep2.length === 0) {
             this.setState({error:"champ reponse verso vide"});
         }
         else {
             if(this.state._id) {
-                cardsRequest.updateCard(this.state._id,this.state.nom,this.state.cat, this.state.quest1, this.state.rep1,this.state.quest2, this.state.rep2).then(res => {
+                cardsRequest.updateCard(this.state._id,this.state.nom,this.state.cat, this.state.quest1, this.state.rep2).then(res => {
                     window.location = "/gcard"
                 }, error => {
                     console.log(error);
@@ -106,11 +93,11 @@ class addCard extends React.Component{
                 })
             }
             else {
-                cardsRequest.addcard(this.state.nom,this.state.cat, this.state.quest1, this.state.rep1,this.state.quest2, this.state.rep2).then(res => {
+                cardsRequest.addcard(this.state.nom,this.state.cat, this.state.quest1, this.state.rep2).then(res => {
                     window.location = "/gcard"
                 }, error => {
                     console.log(error);
-                    this.setState({error:error.response.res.error});
+                    //this.setState({error:error.response.res.error});
                 })
             }
 
@@ -178,10 +165,6 @@ class addCard extends React.Component{
                         <FormGroup controlId="quest1" bssize="large">
                             <FormControl autoFocus type="text" value={this.state.quest1} onChange={this.handleChange}/>
                         </FormGroup>
-                        <p>Réponse</p>
-                        <FormGroup controlId="rep1" bssize="large">
-                            <FormControl type="text" value={this.state.rep1} onChange={this.handleChange}/>
-                        </FormGroup>
                         <Button
                             onClick={this.handleVersoClick}
                             block
@@ -207,10 +190,6 @@ class addCard extends React.Component{
                                 {this.state.error}
                             </div>:false
                         }
-                        <p>Question</p>
-                        <FormGroup controlId="quest2" bssize="large">
-                            <FormControl autoFocus type="text" value={this.state.quest2} onChange={this.handleChange}/>
-                        </FormGroup>
                         <p>Réponse</p>
                         <FormGroup controlId="rep2" bssize="large">
                             <FormControl type="text" value={this.state.rep2} onChange={this.handleChange}/>

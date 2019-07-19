@@ -14,14 +14,12 @@ const getCardById = async (id) => {
         return error;
     }
 };
-const createCard = async (name, rectoQuestion, rectoAnswer, versoQuestion, versoAnswer,userId,labelId) => {
+const createCard = async (name, recto, verso,userId,labelId) => {
     try {
         const card = new Card({
             name: name,
-            rectoQuestion: rectoQuestion,
-            rectoAnswer: rectoAnswer,
-            versoQuestion: versoQuestion,
-            versoAnswer : versoAnswer,
+            recto: recto,
+            verso : verso,
             owners : [userId],
             labels : [labelId]
         });
@@ -31,14 +29,12 @@ const createCard = async (name, rectoQuestion, rectoAnswer, versoQuestion, verso
         return error;
     }
 };
-const updateCard = async (id,name, rectoQuestion, rectoAnswer, versoQuestion, versoAnswer,labelId) => {
+const updateCard = async (id,name, recto, verso,labelId) => {
     try {
         console.log(id);
         return await Card.findOneAndUpdate({_id : id}, {$set :{ name: name,
-                rectoQuestion: rectoQuestion,
-                rectoAnswer: rectoAnswer,
-                versoQuestion: versoQuestion,
-                versoAnswer : versoAnswer,
+                recto: recto,
+                verso: verso,
                 labels : [labelId]} },
             { new : true});
     } catch (error) {

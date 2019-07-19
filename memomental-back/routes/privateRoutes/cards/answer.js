@@ -25,8 +25,8 @@ module.exports = async (req, res) => {
                 const learning = await LearningController.getLearningByUserAndCard(decoded.id,_id);
                 let validAnswer,wantedAnswer;
                 if(learning.recto) {
-                    validAnswer = answer.toString().trim().toLowerCase()===card.rectoAnswer;
-                    wantedAnswer = card.rectoAnswer;
+                    validAnswer = answer.toString().trim().toLowerCase()===card.verso;
+                    wantedAnswer = card.verso;
                 }
                 else {
                     validAnswer = answer.toString().trim().toLowerCase()===card.versoAnswer;

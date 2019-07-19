@@ -54,10 +54,8 @@ class gcard extends React.Component{
                             _id={card._id}
                             name={card.name}
                             labels={card.labels}
-                            rectoQuestion={card.rectoQuestion}
-                            rectoAnswer={card.rectoAnswer}
-                            versoQuestion={card.versoQuestion}
-                            versoAnswer={card.versoAnswer}
+                            recto={card.recto}
+                            verso={card.verso}
                         />
                         )}
 

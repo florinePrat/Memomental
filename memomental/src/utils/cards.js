@@ -6,14 +6,12 @@ const burl = process.env.REACT_APP_API_URL;
 
 // this is the request for card's actions
 export default {
-    addcard : function(nom,cat,quest1,rep1,quest2,rep2) {
+    addcard : function(nom,cat,quest1,rep2) {
         console.log(tokenHeaders)
         return axios.post(burl + '/api/card/add',{
             'nom' : nom,
             'cat' : cat,
             'quest1' : quest1,
-            'rep1' : rep1,
-            'quest2' : quest2,
             'rep2' : rep2
         },{
             headers: tokenHeaders
@@ -53,16 +51,14 @@ export default {
             )
     },
 
-    updateCard : function(_id, name, label, rectoQuestion, versoQuestion, rectoAnswer, versoAnswer) {
+    updateCard : function(_id, name, label, recto, verso) {
         console.log(tokenHeaders);
         return axios.put(burl + '/api/card/edit',{
             '_id' : _id,
             'name': name,
             'label': label,
-            'rectoQuestion': rectoQuestion,
-            'versoQuestion': versoQuestion,
-            'rectoAnswer': versoAnswer,
-            'versoAnswer': versoAnswer
+            'recto': recto,
+            'verso': verso
         },{
             headers: tokenHeaders
         })
