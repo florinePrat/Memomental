@@ -1,36 +1,38 @@
 import React from 'react';
-import Mycard from './card';
+import Mycard from './lookcard';
 import {Button} from "react-bootstrap";
 import axios from 'axios';
 import {tokenHeaders} from '../../utils/headers';
 
 const burl = process.env.REACT_APP_API_URL;
-// this class display all of the labels for 1 user and propose to manage them
-class gcard extends React.Component{
+// this class display all of the cards for 1 user and propose to manage them
+class mancard extends React.Component{
 
 
 
     constructor(props) {
         super(props);
         this.state = {
-            labels: []
+            cards: []
         }
     }
 
+
     componentDidMount() {
 
-       axios.get(burl + '/api/user/getLabelsByUser',{
+        axios.get(burl + '/api/card/getCardsByUser/',{
             headers: tokenHeaders
         } )
             .then(res => {
-                const labels = res.data;
-                console.log(labels[0]);
-                this.setState({ labels });
-
+                const cards = res.data;
+                this.setState({ cards });
+                console.log(this.state.cards);
             }, function(data){
                 console.log(data);
             })
     }
+
+
 
     render(){
         return(
@@ -47,16 +49,19 @@ class gcard extends React.Component{
                 </nav>
 
 
-                    { this.state.labels.map(label   =>
-                        <Mycard
-                            _id={label.label._id}
-                            name={label.label.name}
-                            color={label.label.color}
-                            number={label.number}
-                        />
-                        )}
+                { this.state.cards.map(card =>
+                    <Mycard
+                        _id={card._id}
+                        name={card.name}
+                        labels={card.labels}
+                        recto={card.recto}
+                        verso={card.verso}
+                    />
+                )}
+
             </div>
         )
     }
+
 }
-export default gcard;
+export default mancard;

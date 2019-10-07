@@ -37,8 +37,10 @@ const getLabelByName = async(name) => {
 };
 
 
+
+
 module.exports = {
     getLabelById,
     createLabel,
-    getLabelByName,
+    getLabelByName
 };

@@ -19,14 +19,14 @@ class NavBar extends Component {
     }
     //@TODO : make listener to update point in header work
     componentDidMount() {
-        console.log("called")
+        console.log("called");
         window.addEventListener('storage', this.updatePoints   );
     }
 
     updatePoints = data => {
-        console.log("set points")
+        console.log("set points");
         this.setState({points : localStorage.getItem('points')})
-    }
+    };
 
 
     logout = event => {
@@ -36,7 +36,7 @@ class NavBar extends Component {
     };
     render() {
         return (
-            <Navbar bg="light" expand="lg">
+            <Navbar bg="primary" variant="dark" expand="lg">
 
                 <Navbar.Brand href="/">
                     <img

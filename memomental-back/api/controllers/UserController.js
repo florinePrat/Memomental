@@ -45,7 +45,7 @@ const getUserByEmail = async(email) => {
 
 const addPoint = async(idUser,points) => {
     try {
-        const updatedUser = await User.findOneAndUpdate({_id:idUser}, {$inc:{points : points}},{new: true})
+        const updatedUser = await User.findOneAndUpdate({_id:idUser}, {$inc:{points : points}},{new: true});
         return updatedUser;
     } catch(error) {
         return error;
@@ -53,10 +53,39 @@ const addPoint = async(idUser,points) => {
 };
 const addPushKey = async(idUser,pushKey) => {
     try {
-        const updatedUser = await User.findOneAndUpdate({_id:idUser}, {pushKey : pushKey},{new: true})
+        const updatedUser = await User.findOneAndUpdate({_id:idUser}, {pushKey : pushKey},{new: true});
         return updatedUser;
     } catch(error) {
         return error;
+    }
+};
+
+const addLabel = async(idUser,newLabel) => {
+    try {
+        const updatedUser = await User.findOneAndUpdate({_id:idUser}, {$push: {labels : { label : newLabel}}},{new: true});
+        return updatedUser;
+    } catch(error) {
+        return error;
+    }
+};
+
+const addNumberLabel = async(idUser, idLabel) => {
+    try {
+        const updatedUser = await User.findOneAndUpdate({_id:idUser, "labels.label":idLabel}, {$inc: {"labels.$.number" : 1}},{new: true});
+        return updatedUser;
+    } catch(error) {
+        return error;
+    }
+};
+
+const getLabelsByUser = async (idUser) => {
+    try {
+        const user = await User.findById(idUser).populate({path: 'labels.label'});
+        console.log(user.labels)
+        return user.labels;
+    } catch (error) {
+        console.log("Impossible de trouver l'utilisateur");
+        throw error
     }
 };
 
@@ -66,5 +95,8 @@ module.exports = {
     createUser,
     getUserByEmail,
     addPoint,
-    addPushKey
+    addPushKey,
+    addLabel,
+    addNumberLabel,
+    getLabelsByUser
 };

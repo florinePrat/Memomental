@@ -3,7 +3,8 @@ import React from "react";
 import {Button} from "react-bootstrap";
 import axios from 'axios';
 import {tokenHeaders} from '../../utils/headers';
-import AddCard from './addCards';
+import Badge from "react-bootstrap/Badge";
+import Mylabel from "./lookcard";
 
 const burl = process.env.REACT_APP_API_URL;
 
@@ -15,83 +16,58 @@ class myCards  extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            isDeployed: false,
-            edit : false,
+            cards: []
         };
-        this.delete.bind(this);
-        this.edit.bind(this);
+        this.getlabelCard.bind(this);
     }
 
-    delete=event =>{
-            axios.delete(burl + '/api/card/'+this.props._id, { headers: tokenHeaders})
-                .then(res =>{
-                    window.location = "/gcard"
-                })
-    };
-    edit = event => {
+    getlabelCard() {
+        console.log("card",this.props._id);
+        axios.get(burl + '/api/card/getCardsByUserLabels/',{
+            headers: tokenHeaders, params:{labelId:this.props._id}
+        } )
+            .then(res => {
+                console.log("cardsss"+res.data[0]._id);
+                const cards = res.data[0];
+                console.log("cardsss"+cards);
+                this.setState({ cards });
+                console.log(this.state.cards);
+                window.location = "/lookcard";
+            }, function(data){
+                console.log(data);
+            });
 
-    };
+            console.log("tesssst"+this.state.cards);
+            { this.state.cards.map(card =>
+                <Mylabel
+                    _id={card._id}
+                    name={card.name}
+                    labels={card.labels}
+                    recto={card.recto}
+                    verso={card.verso}
+                />
+            )}
+    }
 
     render(){
         return(
-            this.state.edit?
-                    <AddCard
-                        card = {this.props}
-                    />:
 
-                this.state.isDeployed
-                ?   <div className="boxcarte" >
-                        <h3 style={{backgroundColor:this.props.labels[0].color}}> {this.props.labels[0].name}</h3>
-                        <p>Question : {this.props.recto} </p>
-                        <p>Reponse : {this.props.verso} </p>
+                <div className="boxcarte" >
+                        <h3  style={{backgroundColor:this.props.color}}>{this.props.name}</h3>
+                        <Badge className="nombrelabel" pill variant="success">{this.props.number}</Badge>
 
                         <Button
                             className="btn-info"
-                            onClick={()=>{
-                                this.setState({edit : true});
-
-                        }}
-                        bssize="large"
-                        >
-                            modifier
-                        </Button>
-                        <Button
-                            className="btn-info"
-                            onClick={ this.delete }
-                            bssize="large"
-                        >
-                            supprimer
-                        </Button>
-                        <Button
-                            className="btn-info"
-                            onClick={()=>{
-                                this.setState({isDeployed:false});
+                            onClick={() => {
+                                this.getlabelCard();
                             }}
                             bssize="large"
                         >
-                            retour
+                            Voir mes cartes
                         </Button>
 
-                    </div>
 
-                    : <div className="boxcarte">
-                        <h3  style={{backgroundColor:this.props.labels[0].color}}>{this.props.labels[0].name}</h3>
-                        <p>Nom : {this.props.name} </p>
-
-
-                        <Button
-                            className="btn-info"
-                            onClick={()=>{
-                                this.setState({isDeployed:true})
-                            }}
-                            bssize="large"
-                        >
-                            Voir
-                        </Button>
-
-                    </div>
-
-
+                </div>
 
         )
     }

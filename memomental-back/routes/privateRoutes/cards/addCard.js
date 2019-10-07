@@ -1,6 +1,7 @@
 const CardController = require('../../../api/controllers/CardController');
 const LabelController = require('../../../api/controllers/LabelController');
 const LearningController = require('../../../api/controllers/LearningController');
+const UserController = require('../../../api/controllers/UserController');
 const decodeToken = require('../../../api/encryption/decodeToken');
 const moment = require('moment');
 
@@ -22,6 +23,11 @@ module.exports = async (req, res) => {
                 }
                 //if this label doesn't exit we create one
                 label = await LabelController.createLabel(catclean,color);
+                const user = await UserController.addLabel(decoded.id,label._id);
+                console.log(user.labels)
+            }else{
+                await UserController.addNumberLabel(decoded.id,label._id);
+                console.log("j'appelle la fonction numberlabel")
             }
             const card = await CardController.createCard(nom.toLowerCase(),quest1.toLowerCase(),rep2.toLowerCase(),decoded.id,label._id);
             //we add one day to current date to set de first learning of the new card at tomorrow

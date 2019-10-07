@@ -3,6 +3,7 @@ Card Controller handle all action with card database object : getting card by it
  */
 
 const Card = require('../models/Card');
+const Label = require('../models/Label');
 const Learning = require('../models/Learning');
 
 const getCardById = async (id) => {
@@ -54,6 +55,21 @@ const getCardsByUser = async(idUser) =>
         return error;
     }
 };
+
+const getCardsByUserLabels = async(idUser,idLabel) =>
+{
+    try {
+        //searching all cards by user and by labels
+        const card = await Card.find({owners : idUser, labels : idLabel}).populate("labels");
+        console.log("ketchi"+card[0].labels);
+        return card;
+    } catch(error)
+    {
+        console.log(error.message);
+        return error;
+    }
+};
+
 const isOwner = async(idUser,idCard) =>
 {
     try {
@@ -85,5 +101,6 @@ module.exports = {
     getCardsByUser,
     updateCard,
     isOwner,
-    deleteCard
+    deleteCard,
+    getCardsByUserLabels,
 };

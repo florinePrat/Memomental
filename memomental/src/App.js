@@ -9,6 +9,8 @@ import card from './components/cards/homeCards';
 import myCard from './components/cards/myCards';
 import addCard from './components/cards/addCards';
 import gcard from './components/cards/managCards';
+import lookcard from './components/cards/lookcard';
+import mancard from './components/cards/thelookcard';
 import { Switch } from 'react-router-dom';
 import { signup } from './components/signup/signup.js';
 import { PrivateRoute } from './components/PrivateRoute.js';
@@ -34,6 +36,8 @@ class App extends Component{
                     <PrivateRoute path='/addCard' component={addCard}/>
                     <PrivateRoute path='/editCard/:card' component={addCard}/>
                     <PrivateRoute path='/gcard' component={gcard}/>
+                    <PrivateRoute path='/lookcard' component={lookcard}/>
+                    <PrivateRoute path='/mancard' component={mancard}/>
                     <PrivateRoute path='/tutorial' component={tutorial}/>
                 </Switch>
             </div>

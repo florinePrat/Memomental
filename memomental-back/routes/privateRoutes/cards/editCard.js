@@ -26,7 +26,7 @@ module.exports = async (req, res) => {
 
 
     }catch(error) {
-        console.log("shit happens in edit card ")
+        console.log("shit happens in edit card ");
         return res.status(500).json(error.message);
     }
 }

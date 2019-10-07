@@ -12,6 +12,7 @@ module.exports= function(){
 
 //Handle all resricted routes
      router.use('/api/card', require("./privateRoutes/cards"));
+     router.use('/api/user', require("./privateRoutes/users"));
 //handle push subscription
      router.use('/api/push/register',require("../api/push/register"));
     return router;
