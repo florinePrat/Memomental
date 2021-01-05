@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "@mobiscroll/react-lite": "^4.6.3",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "bootstrap": "^4.3.1",
     "browserify-optional": "^1.0.1",
     "dotenv": "^8.0.0",
